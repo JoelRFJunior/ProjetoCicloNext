@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.ciclonext.ciclonext.model.util.TipoPostagem;
 
@@ -24,6 +25,7 @@ public class Postagem {
 	private long id;
 
 	@NotEmpty
+	@Size(min=10, max=500)
 	private String corpo;
 
 	private String urlImagemVideo;
