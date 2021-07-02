@@ -29,11 +29,10 @@ import com.ciclonext.ciclonext.services.UsuarioService;
 @RequestMapping("/api/v1/usuario")
 public class UsuarioController {
 
-	@Autowired
-	private UsuarioRepository repositoryU;
 
-	@Autowired
-	private UsuarioService service;
+	private @Autowired UsuarioRepository repositoryU;
+	
+	private @Autowired UsuarioService service;
 
 	@GetMapping("/getAll") // Método para pegar tudo
 	public ResponseEntity<List<Usuario>> findAll() {

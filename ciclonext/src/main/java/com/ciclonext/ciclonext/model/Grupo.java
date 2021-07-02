@@ -22,7 +22,6 @@ public class Grupo {
 	@NotEmpty
 	private String nomeGrupo;
 
-	@NotEmpty
 	@Enumerated(EnumType.STRING)
 	private Categoria categoria;
 
