@@ -30,7 +30,7 @@ public class Postagem {
 
 	private String urlImagemVideo;
 
-	@NotEmpty
+	
 	@Enumerated(EnumType.STRING)
 	private TipoPostagem tipoPostagem;
 
