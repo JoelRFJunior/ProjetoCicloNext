@@ -1,12 +1,11 @@
 package com.ciclonext.ciclonext.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.CreatedBy;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -70,6 +69,11 @@ public class PostagemController {
 		
 	}
 	
+	@GetMapping("/tipoPostagem/{tipoPostagem}")
+	public ResponseEntity<List<Postagem>> encontrarPorTipoPostagem(@PathVariable  String tipoPostagem) {
+
+		return ResponseEntity.ok().body(repositoryP.findAllByTipoPostagem(tipoPostagem));
+	}
 	
 
 }
