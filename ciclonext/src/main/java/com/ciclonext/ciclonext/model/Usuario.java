@@ -3,6 +3,7 @@ package com.ciclonext.ciclonext.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,7 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idUsuario;
+	private Long idUsuario;
 
 	@NotEmpty
 	private String nome;
@@ -34,7 +35,7 @@ public class Usuario {
 
 	private String urlImagemPerfil;
 
-	@OneToMany(mappedBy =  "criador")
+	@OneToMany(mappedBy =  "criador", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties({"idGrupo", "descricao", "urlImagemGrupo", "criador","postagens"})
 	private List<Grupo> gruposCriados = new ArrayList<>();
 
@@ -47,11 +48,11 @@ public class Usuario {
 	@JsonIgnoreProperties({"idPostagem", "grupo", "urlImagemVideo", "autor"})
 	private List<Postagem> publicacoes = new ArrayList<>();
 	
-	public long getIdUsuario() {
+	public Long getIdUsuario() {
 		return idUsuario;
 	}
 
-	public void setIdUsuario(long idUsuario) {
+	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
@@ -73,6 +74,22 @@ public class Usuario {
 
 	public String getSenha() {
 		return senha;
+	}
+
+	public List<Grupo> getGruposCriados() {
+		return gruposCriados;
+	}
+
+	public void setGruposCriados(List<Grupo> gruposCriados) {
+		this.gruposCriados = gruposCriados;
+	}
+
+	public List<Postagem> getPublicacoes() {
+		return publicacoes;
+	}
+
+	public void setPublicacoes(List<Postagem> publicacoes) {
+		this.publicacoes = publicacoes;
 	}
 
 	public void setSenha(String senha) {

@@ -1,5 +1,6 @@
 package com.ciclonext.ciclonext.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -23,7 +24,7 @@ public class Grupo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idGrupo;
+	private Long idGrupo;
 
 	@NotEmpty
 	private String nomeGrupo;
@@ -38,18 +39,18 @@ public class Grupo {
 
 	@OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties({"grupo", "idPostagem"})
-	private List<Postagem> postagens;
+	private List<Postagem> postagens = new ArrayList<>();
 
-	@NotEmpty
+	
 	@ManyToOne
 	@JsonIgnoreProperties({"gruposCriados", "senha", "idUsuario"})
 	private Usuario criador;
 	
-	public long getIdGrupo() {
+	public Long getIdGrupo() {
 		return idGrupo;
 	}
 
-	public void setIdGrupo(long idGrupo) {
+	public void setIdGrupo(Long idGrupo) {
 		this.idGrupo = idGrupo;
 	}
 
@@ -93,4 +94,12 @@ public class Grupo {
 		this.postagens = postagens;
 	}
 
+	public Usuario getCriador() {
+		return criador;
+	}
+
+	public void setCriador(Usuario criador) {
+		this.criador = criador;
+	}
+ 
 }
