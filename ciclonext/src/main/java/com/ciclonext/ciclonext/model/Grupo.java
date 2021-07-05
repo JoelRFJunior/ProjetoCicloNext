@@ -1,15 +1,21 @@
 package com.ciclonext.ciclonext.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import com.ciclonext.ciclonext.model.util.Categoria;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_grupo")
@@ -17,7 +23,7 @@ public class Grupo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long idGrupo;
 
 	@NotEmpty
 	private String nomeGrupo;
@@ -28,12 +34,23 @@ public class Grupo {
 	@NotEmpty
 	private String descricao;
 
-	public long getId() {
-		return id;
+	private String urlImagemGrupo;
+
+	@OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties({"grupo", "idPostagem"})
+	private List<Postagem> postagens;
+
+	@NotEmpty
+	@ManyToOne
+	@JsonIgnoreProperties({"gruposCriados", "senha", "idUsuario"})
+	private Usuario criador;
+	
+	public long getIdGrupo() {
+		return idGrupo;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setIdGrupo(long idGrupo) {
+		this.idGrupo = idGrupo;
 	}
 
 	public String getNomeGrupo() {
@@ -58,6 +75,22 @@ public class Grupo {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public String getUrlImagemGrupo() {
+		return urlImagemGrupo;
+	}
+
+	public void setUrlImagemGrupo(String urlImagemGrupo) {
+		this.urlImagemGrupo = urlImagemGrupo;
+	}
+
+	public List<Postagem> getPostagens() {
+		return postagens;
+	}
+
+	public void setPostagens(List<Postagem> postagens) {
+		this.postagens = postagens;
 	}
 
 }
