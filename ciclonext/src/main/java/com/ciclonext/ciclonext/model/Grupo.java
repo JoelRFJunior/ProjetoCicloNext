@@ -26,13 +26,13 @@ public class Grupo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idGrupo;
 
-	@NotEmpty
+	@NotEmpty(message = "Campo obrigatório.")
 	private String nomeGrupo;
 
 	@Enumerated(EnumType.STRING)
 	private Categoria categoria;
 
-	@NotEmpty
+	@NotEmpty(message = "Campo obrigatório.")
 	private String descricao;
 
 	private String urlImagemGrupo;
