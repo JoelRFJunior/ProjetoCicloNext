@@ -26,7 +26,7 @@ public class Postagem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idPostagem;
 
-	@NotEmpty
+	@NotEmpty(message = "Escreva aqui o texto da sua postagem.")
 	@Size(min = 10, max = 500)
 	private String corpo;
 
