@@ -22,14 +22,14 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idUsuario;
 
-	@NotEmpty
+	@NotEmpty(message = "Campo obrigatório.")
 	private String nome;
 
-	@NotEmpty
+	@NotEmpty(message = "Campo obrigatório.")
 	@Email
 	private String email;
 
-	@NotEmpty
+	@NotEmpty(message = "Campo obrigatório.")
 	private String senha;
 
 	private String urlImagemPerfil;
