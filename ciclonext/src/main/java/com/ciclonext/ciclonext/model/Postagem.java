@@ -24,7 +24,7 @@ public class Postagem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idPostagem;
+	private Long idPostagem;
 
 	@NotEmpty(message = "Escreva aqui o texto da sua postagem.")
 	@Size(min = 10, max = 500)
@@ -46,11 +46,11 @@ public class Postagem {
 	@JsonIgnoreProperties({ "idUsuario", "senha", "email", "publicacoes", "gruposCriados" })
 	private Usuario autor;
 
-	public long getIdPostagem() {
+	public Long getIdPostagem() {
 		return idPostagem;
 	}
 
-	public void setIdPostagem(long idPostagem) {
+	public void setIdPostagem(Long idPostagem) {
 		this.idPostagem = idPostagem;
 	}
 
@@ -92,6 +92,14 @@ public class Postagem {
 
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
+	}
+
+	public Usuario getAutor() {
+		return autor;
+	}
+
+	public void setAutor(Usuario autor) {
+		this.autor = autor;
 	}
 
 }

@@ -16,8 +16,10 @@ public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository repositoryU;
-	
+	@Autowired
 	private GrupoRepository repositoryG;
+	@Autowired
+	private GrupoService service;
 
 	public Optional<Object> cadastrarUsuario(Usuario novoUsuario) {
 
@@ -37,15 +39,24 @@ public class UsuarioService {
 			return Optional.empty();
 		});
 	}
-	
-	//metodo para um usuário criar um grupo
-	/*public Optional<Grupo> criarGrupo(Long idUsuario, Grupo grupoParaSerCriado) {
-		return repositoryU.findById(idUsuario).map(usuarioExistente -> {
-			grupoParaSerCriado.setCriador(usuarioExistente);
-			return Optional.ofNullable(repositoryG.save(grupoParaSerCriado));
-		}).orElseGet(() -> {
+
+	// metodo para um usuário criar um grupo
+	public Optional<Grupo> criarGrupo(Long idUsuario, Grupo grupoParaSerCriado) {
+		Optional<Object> grupoJaExistente = service.verificarGrupo(grupoParaSerCriado);
+
+		if (grupoJaExistente.isPresent()) {
+			return repositoryU.findById(idUsuario).map(usuarioExistente -> {
+				grupoParaSerCriado.setCriador(usuarioExistente);
+				return Optional.ofNullable(repositoryG.save(grupoParaSerCriado));
+			}).orElseGet(() -> {
+				return Optional.empty();
+			});
+			
+		} else {
 			return Optional.empty();
-		});
-	}*/
+			
+		}
+
+	}
 
 }
