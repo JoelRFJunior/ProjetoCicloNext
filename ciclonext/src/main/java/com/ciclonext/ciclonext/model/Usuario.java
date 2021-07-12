@@ -5,14 +5,9 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -40,26 +35,19 @@ public class Usuario {
 
 	private String urlImagemPerfil;
 
-	@OneToMany(mappedBy = "criador", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties({ "idGrupo", "descricao", "urlImagemGrupo", "criador", "postagens" })
+	@OneToMany(mappedBy =  "criador", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties({"idGrupo", "descricao", "urlImagemGrupo", "criador","postagens"})
 	private List<Grupo> gruposCriados = new ArrayList<>();
 
-	@ManyToMany(mappedBy = "seguidores", fetch = FetchType.EAGER)
-	@JsonIgnoreProperties({ "idGrupo", "categoria", "descricao", "urlImagemGrupo", "postagens", "seguidores", "criador",
-			"gruposQueSeguimos" })
-	private List<Grupo> gruposQueSeguimos = new ArrayList<>();
-	// private Usuario amizade;
-
-	@OneToMany
-	@JoinTable(name = "engajamento", joinColumns = @JoinColumn(name = "seguidor"), inverseJoinColumns = @JoinColumn(name = "influencer"))
-	@JsonIgnoreProperties({ "idUsuario", "senha", "email", "urlImagemPerfil", "gruposCriados", "gruposQueSeguimos",
-			"seguindo", "publicacoes" })
-	private List<Usuario> seguindo = new ArrayList<>();
-
-	@OneToMany(mappedBy = "autor")
-	@JsonIgnoreProperties({ "idPostagem", "grupo", "urlImagemVideo", "autor" })
+	//private Usuario amizade;
+	
+	//@OneToMany(mappedBy = "amizade")
+	//private List<Usuario> amigos = new ArrayList<>();
+	
+	@OneToMany(mappedBy =  "autor")
+	@JsonIgnoreProperties({"idPostagem", "grupo", "urlImagemVideo", "autor"})
 	private List<Postagem> publicacoes = new ArrayList<>();
-
+	
 	public Long getIdUsuario() {
 		return idUsuario;
 	}
@@ -114,22 +102,6 @@ public class Usuario {
 
 	public void setUrlImagemPerfil(String urlImagemPerfil) {
 		this.urlImagemPerfil = urlImagemPerfil;
-	}
-
-	public List<Grupo> getGruposQueSeguimos() {
-		return gruposQueSeguimos;
-	}
-
-	public void setGruposQueSeguimos(List<Grupo> gruposQueSeguimos) {
-		this.gruposQueSeguimos = gruposQueSeguimos;
-	}
-
-	public List<Usuario> getSeguindo() {
-		return seguindo;
-	}
-
-	public void setSeguindo(List<Usuario> seguindo) {
-		this.seguindo = seguindo;
 	}
 
 }
