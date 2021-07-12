@@ -15,6 +15,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.ciclonext.ciclonext.model.util.Destinatario;
 import com.ciclonext.ciclonext.model.util.TipoPostagem;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -39,13 +40,24 @@ public class Postagem {
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
 	@ManyToOne
-	@JsonIgnoreProperties({ "idGrupo", "postagens", "urlImagemGrupo", "descricao" })
+	@JsonIgnoreProperties({ "idGrupo", "categoria", "descricao", "urlImagemGrupo", "postagens", "seguidores", "criador",
+	"grupo" })
 	private Grupo grupo;
 
 	@ManyToOne
-	@JsonIgnoreProperties({ "idUsuario", "senha", "email", "publicacoes", "gruposCriados" })
+	@JsonIgnoreProperties({"idUsuario", "senha", "email", "urlImagemPerfil", "gruposCriados", "gruposQueSeguimos",
+		"seguindo", "publicacoes", "autor" })
 	private Usuario autor;
 
+	
+	@Enumerated(EnumType.STRING)
+	private Destinatario destinatario;
+	
+	@ManyToOne
+	@JsonIgnoreProperties({"idUsuario", "senha", "email", "urlImagemPerfil", "gruposCriados", "gruposQueSeguimos",
+		"seguindo", "publicacoes", "usuarioDestino" })
+	private Usuario usuarioDestino;
+	
 	public Long getIdPostagem() {
 		return idPostagem;
 	}
