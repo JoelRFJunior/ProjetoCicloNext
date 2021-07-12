@@ -46,7 +46,7 @@ public class UsuarioController {
 		return repositoryU.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 
-	@PostMapping()
+	@PostMapping("/cadastrar")
 	public ResponseEntity<Object> postUsuario(@Valid @RequestBody Usuario novoUsuario) {
 
 		Optional<Object> cadastrarUsuario = service.cadastrarUsuario(novoUsuario);
@@ -67,11 +67,7 @@ public class UsuarioController {
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 
-	@PostMapping("/cadastrar")
-	public ResponseEntity<Usuario> novoUsuario(@RequestBody Usuario usuario) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(service.CadastrarUsuario(usuario));
-	}
-
+	
 	@PutMapping("/{id}/atualizar")
 	public ResponseEntity<Usuario> putUsuario(@Valid @PathVariable(value = "id") Long id,
 			@Valid @RequestBody UsuarioDTO usuarioParaAtualizar) {
