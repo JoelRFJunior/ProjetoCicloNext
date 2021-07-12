@@ -1,11 +1,15 @@
 package com.ciclonext.ciclonext.services;
 
+import java.nio.charset.Charset;
 import java.util.Optional;
 
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ciclonext.ciclonext.dtos.UsuarioDTO;
+import com.ciclonext.ciclonext.dtos.UsuarioLoginDTO;
 import com.ciclonext.ciclonext.model.Grupo;
 import com.ciclonext.ciclonext.model.Usuario;
 import com.ciclonext.ciclonext.repository.GrupoRepository;
@@ -51,10 +55,44 @@ public class UsuarioService {
 			}).orElseGet(() -> {
 				return Optional.empty();
 			});
-			
+
 		} else {
 			return Optional.empty();
-			
+
+		}
+
+	}
+
+	public Usuario CadastrarUsuario(Usuario usuario) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+		String senhaEncoder = encoder.encode(usuario.getSenha());
+		usuario.setSenha(senhaEncoder);
+
+		return repositoryU.save(usuario);
+	}
+
+	public Optional<UsuarioLoginDTO> logar(Optional<UsuarioLoginDTO> user) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		Optional<Usuario> usuario = repositoryU.findByEmail(user.get().getEmail());
+
+		if (usuario.isPresent()) {
+			if (encoder.matches(user.get().getSenha(), usuario.get().getSenha())) {
+				String auth = user.get().getEmail() + ":" + user.get().getSenha();
+				byte[] encoderAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
+				String authHeader = "Basic " + new String(encoderAuth);
+
+				user.get().setToken(authHeader);
+				user.get().setEmail(usuario.get().getEmail());
+
+				return user;
+			} else {
+				return null;
+			}
+
+		} else {
+			return null;
+
 		}
 
 	}

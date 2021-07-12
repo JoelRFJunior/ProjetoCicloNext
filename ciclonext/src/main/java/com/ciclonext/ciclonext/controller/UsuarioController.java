@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ciclonext.ciclonext.dtos.UsuarioDTO;
+import com.ciclonext.ciclonext.dtos.UsuarioLoginDTO;
 import com.ciclonext.ciclonext.model.Usuario;
 import com.ciclonext.ciclonext.repository.UsuarioRepository;
 import com.ciclonext.ciclonext.services.UsuarioService;
@@ -29,9 +30,8 @@ import com.ciclonext.ciclonext.services.UsuarioService;
 @RequestMapping("/api/v1/usuario")
 public class UsuarioController {
 
-
 	private @Autowired UsuarioRepository repositoryU;
-	
+
 	private @Autowired UsuarioService service;
 
 	@GetMapping("/getAll") // Método para pegar tudo
@@ -46,7 +46,7 @@ public class UsuarioController {
 		return repositoryU.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 
-	@PostMapping
+	@PostMapping()
 	public ResponseEntity<Object> postUsuario(@Valid @RequestBody Usuario novoUsuario) {
 
 		Optional<Object> cadastrarUsuario = service.cadastrarUsuario(novoUsuario);
@@ -59,6 +59,17 @@ public class UsuarioController {
 
 		}
 
+	}
+
+	@PostMapping("/logar")
+	public ResponseEntity<UsuarioLoginDTO> autentication(@RequestBody Optional<UsuarioLoginDTO> user) {
+		return service.logar(user).map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+	}
+
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Usuario> novoUsuario(@RequestBody Usuario usuario) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(service.CadastrarUsuario(usuario));
 	}
 
 	@PutMapping("/{id}/atualizar")
@@ -79,7 +90,7 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Usuario>> encontrarPorNome(@PathVariable  String nome) {
+	public ResponseEntity<List<Usuario>> encontrarPorNome(@PathVariable String nome) {
 
 		return ResponseEntity.ok().body(repositoryU.findAllByNomeContainingIgnoreCase(nome));
 	}

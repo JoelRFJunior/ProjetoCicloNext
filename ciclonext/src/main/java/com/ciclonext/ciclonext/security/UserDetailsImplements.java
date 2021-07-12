@@ -1,6 +1,7 @@
 package com.ciclonext.ciclonext.security;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +17,8 @@ public class UserDetailsImplements implements UserDetails {
 
 	private String userEmail;
 	private String password;
+	private List<GrantedAuthority> autorizacoes;
+	
 	
 	public UserDetailsImplements(Usuario usuario) {
 		this.userEmail = usuario.getEmail();
@@ -28,7 +31,7 @@ public class UserDetailsImplements implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		return null;
+		return autorizacoes;
 	}
 
 	@Override
