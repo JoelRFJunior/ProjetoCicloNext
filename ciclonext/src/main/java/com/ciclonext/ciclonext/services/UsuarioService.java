@@ -30,14 +30,21 @@ public class UsuarioService {
 		return repositoryU.findByEmail(novoUsuario.getEmail()).map(usuarioExistente -> {
 			return Optional.empty();
 		}).orElseGet(() -> {
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+			String senhaEncoder = encoder.encode(novoUsuario.getSenha());
+			novoUsuario.setSenha(senhaEncoder);
 			return Optional.ofNullable(repositoryU.save(novoUsuario));
 		});
 	}
 
-	public Optional<Usuario> atualizarUsuario(Long idUsuario, UsuarioDTO usuarioParaAtualizar) {
+	public Optional<?> atualizarUsuario(Long idUsuario, UsuarioDTO usuarioParaAtualizar) {
 		return repositoryU.findById(idUsuario).map(usuarioExistente -> {
 			usuarioExistente.setNome(usuarioParaAtualizar.getNome());
-			usuarioExistente.setSenha(usuarioParaAtualizar.getSenha());
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			String senhaEncoder = encoder.encode(usuarioParaAtualizar.getSenha());
+			usuarioExistente.setSenha(senhaEncoder);
+
 			return Optional.ofNullable(repositoryU.save(usuarioExistente));
 		}).orElseGet(() -> {
 			return Optional.empty();
@@ -62,15 +69,16 @@ public class UsuarioService {
 		}
 
 	}
-
-	public Usuario CadastrarUsuario(Usuario usuario) {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
-		String senhaEncoder = encoder.encode(usuario.getSenha());
-		usuario.setSenha(senhaEncoder);
-
-		return repositoryU.save(usuario);
-	}
+//Antigo metodo de cadastrar usuario...
+	/*
+	 * public Usuario CadastrarUsuario(Usuario usuario) { BCryptPasswordEncoder
+	 * encoder = new BCryptPasswordEncoder();
+	 * 
+	 * String senhaEncoder = encoder.encode(usuario.getSenha());
+	 * usuario.setSenha(senhaEncoder);
+	 * 
+	 * return repositoryU.save(usuario); }
+	 */
 
 	public Optional<UsuarioLoginDTO> logar(Optional<UsuarioLoginDTO> user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
