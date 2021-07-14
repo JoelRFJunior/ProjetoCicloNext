@@ -27,6 +27,7 @@ public class GrupoService {
 			GrupoExistente.setNomeGrupo(grupoParaAtualizar.getNomeGrupo());
 			GrupoExistente.setCategoria(grupoParaAtualizar.getCategoria());
 			GrupoExistente.setDescricao(grupoParaAtualizar.getDescricao());
+			GrupoExistente.setUrlImagemGrupo(grupoParaAtualizar.getUrlImagemGrupo());
 			return Optional.ofNullable(repositoryG.save(GrupoExistente));
 		}).orElseGet(() -> {
 			return Optional.empty();

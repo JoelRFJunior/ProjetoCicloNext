@@ -18,27 +18,25 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserDetailsServiceImplements service;
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(service);
+		auth.inMemoryAuthentication().withUser("boaz").password(passwordEncoder().encode("boaz"))
+				.authorities("ROLE_ADMIN");
 	}
-	
+
 	@Bean
-	public PasswordEncoder passwordEncoder () {
+	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-		.antMatchers("/api/v1/usuario/logar").permitAll()
-		.antMatchers("/api/v1/usuario/cadastrar").permitAll()
-		.anyRequest().authenticated()
-		.and().httpBasic()
-		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-		.and().cors()
-		.and().csrf().disable();
-		
+		http.authorizeRequests().antMatchers("/api/v1/usuario/logar").permitAll()
+				.antMatchers("/api/v1/usuario/cadastrar").permitAll().anyRequest().authenticated().and().httpBasic()
+				.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().cors().and()
+				.csrf().disable();
+
 	}
 }
