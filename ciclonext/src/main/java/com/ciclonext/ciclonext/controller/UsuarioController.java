@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ciclonext.ciclonext.dtos.UsuarioDTO;
+import com.ciclonext.ciclonext.dtos.UsuarioLoginDTO;
+import com.ciclonext.ciclonext.model.Grupo;
 import com.ciclonext.ciclonext.model.Usuario;
 import com.ciclonext.ciclonext.repository.UsuarioRepository;
 import com.ciclonext.ciclonext.services.UsuarioService;
@@ -29,9 +31,8 @@ import com.ciclonext.ciclonext.services.UsuarioService;
 @RequestMapping("/api/v1/usuario")
 public class UsuarioController {
 
-
 	private @Autowired UsuarioRepository repositoryU;
-	
+
 	private @Autowired UsuarioService service;
 
 	@GetMapping("/getAll") // Método para pegar tudo
@@ -46,29 +47,59 @@ public class UsuarioController {
 		return repositoryU.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 
-	@PostMapping
+	@PostMapping("/cadastrar")
 	public ResponseEntity<Object> postUsuario(@Valid @RequestBody Usuario novoUsuario) {
 
 		Optional<Object> cadastrarUsuario = service.cadastrarUsuario(novoUsuario);
 
 		if (cadastrarUsuario.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Usuário já existente!");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+					.body(novoUsuario.getEmail() + "\nEmail já foi cadastrado anteriormente!");
 
 		} else {
-			return ResponseEntity.status(HttpStatus.CREATED).body("Usuário cadastrado.");
+			return ResponseEntity.status(HttpStatus.CREATED).body(novoUsuario.getNome()
+					+ "\nUsuário cadastrado.");
 
 		}
 
 	}
 
+	@PostMapping("/{id}/criarGrupo")
+	public ResponseEntity<Object> criarGrupo(@Valid @PathVariable(value = "id") Long id, @Valid @RequestBody Grupo novoGrupo) {
+
+		Optional<Grupo> grupoCriado = service.criarGrupo(id, novoGrupo);
+		if(grupoCriado.isPresent()) {
+			return ResponseEntity.status(HttpStatus.CREATED).body(novoGrupo.getNomeGrupo()+"\nGrupo criado.");
+		}
+		else {
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Não foi possível criar o grupo, insira corretamente os dados.");
+		}
+	}
+
+	@PostMapping("/logar")
+	public ResponseEntity<UsuarioLoginDTO> autentication(@RequestBody Optional<UsuarioLoginDTO> user) {
+		return service.logar(user).map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+	}
+
 	@PutMapping("/{id}/atualizar")
-	public ResponseEntity<Usuario> putUsuario(@Valid @PathVariable(value = "id") Long id,
+	public ResponseEntity<?> putUsuario(@Valid @PathVariable(value = "id") Long id,
 			@Valid @RequestBody UsuarioDTO usuarioParaAtualizar) {
 
-		return service.atualizarUsuario(id, usuarioParaAtualizar)
-				.map(usuarioAtualizado -> ResponseEntity.ok().body(usuarioAtualizado))
-				.orElse(ResponseEntity.badRequest().build());
+		Optional<?> usuarioAtualizado = service.atualizarUsuario(id, usuarioParaAtualizar);
+		if (usuarioAtualizado.isPresent()) {
+			return ResponseEntity.ok().body(usuarioAtualizado);
 
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+					usuarioParaAtualizar + "\nProblema ao atualizar " + "usuário, dados inválidos. Tente novamente");
+		}
+
+		/*
+		 * return service.atualizarUsuario(id, usuarioParaAtualizar)
+		 * .map(usuarioAtualizado -> ResponseEntity.ok().body(usuarioAtualizado))
+		 * .orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+		 */
 	}
 
 	@DeleteMapping("/{id}")
@@ -79,7 +110,7 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Usuario>> encontrarPorNome(@PathVariable  String nome) {
+	public ResponseEntity<List<Usuario>> encontrarPorNome(@PathVariable String nome) {
 
 		return ResponseEntity.ok().body(repositoryU.findAllByNomeContainingIgnoreCase(nome));
 	}
