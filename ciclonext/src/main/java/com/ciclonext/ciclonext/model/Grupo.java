@@ -7,9 +7,13 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -38,14 +42,19 @@ public class Grupo {
 	private String urlImagemGrupo;
 
 	@OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties({"grupo", "idPostagem"})
+	@JsonIgnoreProperties({ "grupo", "idPostagem" })
 	private List<Postagem> postagens = new ArrayList<>();
 
-	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "Membros", joinColumns = @JoinColumn(name = "seguidor_id"), inverseJoinColumns = @JoinColumn(name = "grupo_id"))
+	@JsonIgnoreProperties({ "idUsuario", "senha", "email", "urlImagemPerfil", "gruposCriados", "gruposQueSeguimos",
+			"seguindo", "publicacoes", "seguidores" })
+	private List<Usuario> seguidores = new ArrayList<>();
+
 	@ManyToOne
-	@JsonIgnoreProperties({"gruposCriados", "senha", "idUsuario", "email", "publicacoes"})
+	@JsonIgnoreProperties({ "gruposCriados", "senha", "idUsuario","email", "publicacoes" })
 	private Usuario criador;
-	
+
 	public Long getIdGrupo() {
 		return idGrupo;
 	}
@@ -101,5 +110,14 @@ public class Grupo {
 	public void setCriador(Usuario criador) {
 		this.criador = criador;
 	}
- 
+
+	public List<Usuario> getSeguidores() {
+		return seguidores;
+	}
+
+	public void setSeguidores(List<Usuario> seguidores) {
+		this.seguidores = seguidores;
+	}
+
 }
+
