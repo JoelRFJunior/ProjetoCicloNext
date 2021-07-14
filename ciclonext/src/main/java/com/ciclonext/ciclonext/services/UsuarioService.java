@@ -105,4 +105,18 @@ public class UsuarioService {
 
 	}
 
+/*		
+	public Optional<Usuario> entrarNoGrupo(Long idUsuario, Long idGrupo) {
+        Optional<Grupo> grupoExistente = repositoryG.findById(idGrupo);
+        if (grupoExistente.isPresent()) {
+            return repositoryU.findById(idUsuario).map(usuarioExistente -> {
+                usuarioExistente.getGruposInscritos().add(grupoExistente.get());
+                return Optional.ofNullable(repositoryU.save(usuarioExistente));
+            }).orElseGet(() -> {
+                return Optional.empty();
+            });
+        } else {
+            return Optional.empty();
+        }
+    }*/
 }

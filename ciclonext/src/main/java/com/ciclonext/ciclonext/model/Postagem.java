@@ -39,7 +39,7 @@ public class Postagem {
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
 	@ManyToOne
-	@JsonIgnoreProperties({ "idGrupo", "postagens", "urlImagemGrupo", "descricao" })
+	@JsonIgnoreProperties({ "idGrupo", "postagens", "urlImagemGrupo", "descricao", "criador", "categoria"})
 	private Grupo grupo;
 
 	@ManyToOne

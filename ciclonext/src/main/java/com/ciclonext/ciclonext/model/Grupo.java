@@ -43,7 +43,7 @@ public class Grupo {
 
 	
 	@ManyToOne
-	@JsonIgnoreProperties({"gruposCriados", "senha", "idUsuario"})
+	@JsonIgnoreProperties({"gruposCriados", "senha", "idUsuario", "email", "publicacoes"})
 	private Usuario criador;
 	
 	public Long getIdGrupo() {
