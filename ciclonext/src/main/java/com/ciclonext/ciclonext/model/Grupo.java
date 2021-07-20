@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.ciclonext.ciclonext.model.util.Categoria;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -39,20 +40,23 @@ public class Grupo {
 	@NotEmpty(message = "Campo obrigatório.")
 	private String descricao;
 
+	@Size(min = 5, max = 500)
 	private String urlImagemGrupo;
 
 	@OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties({ "grupo", "idPostagem" })
 	private List<Postagem> postagens = new ArrayList<>();
 
+	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "Membros", joinColumns = @JoinColumn(name = "seguidor_id"), inverseJoinColumns = @JoinColumn(name = "grupo_id"))
 	@JsonIgnoreProperties({ "idUsuario", "senha", "email", "urlImagemPerfil", "gruposCriados", "gruposQueSeguimos",
 			"seguindo", "publicacoes", "seguidores" })
 	private List<Usuario> seguidores = new ArrayList<>();
 
+
 	@ManyToOne
-	@JsonIgnoreProperties({ "gruposCriados", "senha", "idUsuario","email", "publicacoes" })
+	@JsonIgnoreProperties({ "gruposCriados", "senha", "idUsuario", "email", "publicacoes" })
 	private Usuario criador;
 
 	public Long getIdGrupo() {
@@ -111,6 +115,7 @@ public class Grupo {
 		this.criador = criador;
 	}
 
+
 	public List<Usuario> getSeguidores() {
 		return seguidores;
 	}
@@ -118,6 +123,7 @@ public class Grupo {
 	public void setSeguidores(List<Usuario> seguidores) {
 		this.seguidores = seguidores;
 	}
+
 
 }
 
