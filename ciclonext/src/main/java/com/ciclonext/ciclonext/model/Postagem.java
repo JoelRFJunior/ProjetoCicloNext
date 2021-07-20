@@ -31,6 +31,7 @@ public class Postagem {
 	@Size(min = 10, max = 500)
 	private String corpo;
 
+	@Size(min = 5, max = 500)
 	private String urlImagemVideo;
 
 	@Enumerated(EnumType.STRING)
@@ -40,24 +41,22 @@ public class Postagem {
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
 	@ManyToOne
-	@JsonIgnoreProperties({ "idGrupo", "categoria", "descricao", "urlImagemGrupo", "postagens", "seguidores", "criador",
-	"grupo" })
+	@JsonIgnoreProperties({ "idGrupo", "categoria", "descricao", "urlImagemGrupo", "postagens", "seguidores", "criador","grupo" })
 	private Grupo grupo;
 
 	@ManyToOne
-	@JsonIgnoreProperties({"idUsuario", "senha", "email", "urlImagemPerfil", "gruposCriados", "gruposQueSeguimos",
-		"seguindo", "publicacoes", "autor" })
+	@JsonIgnoreProperties({ "idUsuario", "senha", "email", "urlImagemPerfil", "gruposCriados", "gruposQueSeguimos",
+			"seguindo", "publicacoes", "autor" })
 	private Usuario autor;
 
-	
 	@Enumerated(EnumType.STRING)
 	private Destinatario destinatario;
-	
+
 	@ManyToOne
-	@JsonIgnoreProperties({"idUsuario", "senha", "email", "urlImagemPerfil", "gruposCriados", "gruposQueSeguimos",
-		"seguindo", "publicacoes", "usuarioDestino" })
+	@JsonIgnoreProperties({ "idUsuario", "senha", "email", "urlImagemPerfil", "gruposCriados", "gruposQueSeguimos",
+			"seguindo", "publicacoes", "usuarioDestino" })
 	private Usuario usuarioDestino;
-	
+
 	public Long getIdPostagem() {
 		return idPostagem;
 	}

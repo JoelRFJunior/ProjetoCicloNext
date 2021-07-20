@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -37,7 +38,8 @@ public class Usuario {
 
 	@NotEmpty(message = "Campo obrigatório.")
 	private String senha;
-
+	
+	@Size(min=5, max=500)
 	private String urlImagemPerfil;
 
 	@OneToMany(mappedBy = "criador", cascade = CascadeType.ALL)
