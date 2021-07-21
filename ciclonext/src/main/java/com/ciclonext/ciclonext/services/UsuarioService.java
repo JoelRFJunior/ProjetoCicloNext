@@ -104,6 +104,21 @@ public class UsuarioService {
 		}
 
 	}
+	
+	public Optional<Usuario> seguir(Long idUsuario1, Long  idUsuario2) {
+		Optional<Usuario> usuarioExistente1 = repositoryU.findById(idUsuario1);
+		Optional<Usuario> usuarioExistente2 = repositoryU.findById(idUsuario2);
+		
+		if (usuarioExistente1.isPresent() && usuarioExistente2.isPresent()) {
+			usuarioExistente1.get().getSeguindo().add(usuarioExistente2.get());
+			
+			return Optional.ofNullable(repositoryU.save(usuarioExistente1.get()));
+			
+		}
+		else {
+			return null;
+		}
+	}
 
 /*		
 	public Optional<Usuario> entrarNoGrupo(Long idUsuario, Long idGrupo) {
@@ -119,4 +134,6 @@ public class UsuarioService {
             return Optional.empty();
         }
     }*/
+
+
 }

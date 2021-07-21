@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ciclonext.ciclonext.dtos.UsuarioDTO;
 import com.ciclonext.ciclonext.dtos.UsuarioLoginDTO;
 import com.ciclonext.ciclonext.model.Grupo;
+import com.ciclonext.ciclonext.model.Postagem;
 import com.ciclonext.ciclonext.model.Usuario;
 import com.ciclonext.ciclonext.repository.UsuarioRepository;
 import com.ciclonext.ciclonext.services.UsuarioService;
@@ -113,5 +113,19 @@ public class UsuarioController {
 	public ResponseEntity<List<Usuario>> encontrarPorNome(@PathVariable String nome) {
 
 		return ResponseEntity.ok().body(repositoryU.findAllByNomeContainingIgnoreCase(nome));
+	}
+	
+	@PutMapping("/{idUsuario1}/seguir/{idUsuario2}")
+	public ResponseEntity<Usuario> seguir(@PathVariable(value = "idUsuario1") Long idUsuario1,
+			@PathVariable(value = "idUsuario2") Long idUsuario2) {
+		 
+		Optional<Usuario> seguidorExistente = service.seguir(idUsuario1, idUsuario2);
+				if (seguidorExistente.isPresent()) {
+					
+		
+					return ResponseEntity.status(HttpStatus.OK).body(seguidorExistente.get());
+				} else {
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+				}
 	}
 }
