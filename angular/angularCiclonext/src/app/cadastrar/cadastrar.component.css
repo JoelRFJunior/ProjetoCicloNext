@@ -1,0 +1,22 @@
+#img-bg{
+    background-image: url('https://imgur.com/ah5dHfa.jpg');
+
+    min-height: 1100px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-color-voltar{
+    background-color: #E59347;
+    color: white;
+    border-radius: 40px;
+    
+}
+
+.bg-color-cadastrar{
+    background-color: #34878B;
+    color: white;
+    border-radius: 40px;
+}
