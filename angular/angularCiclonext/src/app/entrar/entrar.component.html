@@ -2,14 +2,14 @@
     <div class="row ">
 
         <div class="col-md-6 d-flex justify-content-center align-items-center">
-            
+
             <div class="row ">
-               
-                 <div class="col-md-12  ">
+
+                <div class="col-md-12  ">
 
                     <h1 class="text-center mb-3">Entrar</h1>
 
-                                     
+
                     <div class="form-group mb-3">
                         <label for="email">Email</label>
                         <input class="form-control" type="text" name="email" id="email" placeholder="Seu Usuario">
@@ -21,18 +21,19 @@
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn bg-color-entrar fw-bold">Entrar</button>
+                        <a routerLink='/home'><button type="submit"
+                                class="btn bg-color-entrar fw-bold">Entrar</button></a>
 
                     </div>
 
                     <hr class="mb-5 mt-5">
 
                     <p class="text-center">
-                        Não tem uma conta? <a routerLink = '/cadastrar' >Cadastre-se</a>
+                        Não tem uma conta? <a routerLink='/cadastrar'>Cadastre-se</a>
                     </p>
 
 
-                </div> 
+                </div>
 
             </div>
 
@@ -43,3 +44,5 @@
 
     </div>
 </div>
+
+<app-rodape></app-rodape>

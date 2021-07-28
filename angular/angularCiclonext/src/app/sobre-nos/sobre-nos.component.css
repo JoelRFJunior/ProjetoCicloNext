@@ -1,0 +1,18 @@
+body {
+    background: url('../../assets/img/wallpaper.svg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.maintxt {
+    position: relative;
+}
+.maintxt > img, .overlay-text {
+    position: absolute;
+}
+.overlay-text {padding: 150px 50px;}
+
+.fotobg {
+    background-color: #E8E8E8;
+}
