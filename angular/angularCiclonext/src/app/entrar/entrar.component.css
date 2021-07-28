@@ -1,0 +1,15 @@
+#img-bg{
+    background-image: url('https://imgur.com/VReb3qh.jpg');
+
+    min-height: 1100px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-color-entrar{
+    background-color: #34878B;
+    color: white;
+    border-radius: 40px;
+}
