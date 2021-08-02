@@ -128,4 +128,45 @@ public class UsuarioController {
 					return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 				}
 	}
+	
+	@DeleteMapping("/{idUsuario1}/seguir/{idUsuario2}")
+	public ResponseEntity<Usuario> deixarDeSeguir(@PathVariable(value = "idUsuario1") Long idUsuario1,
+			@PathVariable(value = "idUsuario2") Long idUsuario2) {
+		 
+		Optional<Usuario> seguidorExistente = service.deixarDeSeguir(idUsuario1, idUsuario2);
+				if (seguidorExistente.isPresent()) {
+					
+		
+					return ResponseEntity.status(HttpStatus.OK).body(seguidorExistente.get());
+				} else {
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+				}
+	}
+	
+	@PutMapping("/{idUsuario}/grupo/{idGrupo}")
+	public ResponseEntity<Usuario> entrarNoGrupo(@PathVariable (value="idUsuario") Long idUsuario, @PathVariable (value="idGrupo") Long idGrupo){
+		
+		Optional<Usuario> usuarioExistente = service.entrarNoGrupo(idUsuario, idGrupo);
+		if (usuarioExistente.isPresent()) {
+			
+			return ResponseEntity.status(HttpStatus.OK).body(usuarioExistente.get());
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}
+	}
+	
+	@DeleteMapping("/{idUsuario}/grupo/{idGrupo}")
+	public ResponseEntity<Usuario> sairDoGrupo(@PathVariable (value="idUsuario") Long idUsuario, @PathVariable (value="idGrupo") Long idGrupo){
+		
+		Optional<Usuario> usuarioExistente = service.sairDoGrupo(idUsuario, idGrupo);
+		if (usuarioExistente.isPresent()) {
+			
+			return ResponseEntity.status(HttpStatus.OK).body(usuarioExistente.get());
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}
+	
+	}
+	
+	
 }
