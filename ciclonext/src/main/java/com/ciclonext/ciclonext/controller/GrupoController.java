@@ -90,5 +90,10 @@ public class GrupoController {
 	public ResponseEntity<List<Grupo>> encontrarPorNomeGrupo(@PathVariable String nomeGrupo) {
 		return ResponseEntity.ok().body(repositoryG.findAllByNomeGrupoContainingIgnoreCase(nomeGrupo));
 	}
+	
+	@PutMapping("/alterar")
+	public ResponseEntity<Grupo> alterarGrupo(@Valid @RequestBody Grupo grupoParaAtualizar){
+		return ResponseEntity.ok().body(repositoryG.save(grupoParaAtualizar));
+	}
 
 }

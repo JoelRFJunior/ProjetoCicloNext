@@ -36,7 +36,7 @@ public class Grupo {
 	@NotEmpty(message = "Campo obrigatório.")
 	private String descricao;
 
-	@Size(min = 5, max = 500)
+	@Size(max = 500)
 	private String urlImagemGrupo;
 
 	@OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL)

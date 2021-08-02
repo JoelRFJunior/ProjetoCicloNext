@@ -30,7 +30,7 @@ public class Postagem {
 	@Size(min = 10, max = 500)
 	private String corpo;
 
-	@Size(min = 5, max = 500)
+	@Size(max = 500)
 	private String urlImagemVideo;
 
 	@Enumerated(EnumType.STRING)

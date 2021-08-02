@@ -23,6 +23,7 @@ import com.ciclonext.ciclonext.dtos.UsuarioDTO;
 import com.ciclonext.ciclonext.dtos.UsuarioLoginDTO;
 import com.ciclonext.ciclonext.model.Grupo;
 import com.ciclonext.ciclonext.model.Usuario;
+import com.ciclonext.ciclonext.repository.GrupoRepository;
 import com.ciclonext.ciclonext.repository.UsuarioRepository;
 import com.ciclonext.ciclonext.services.UsuarioService;
 
@@ -32,6 +33,8 @@ import com.ciclonext.ciclonext.services.UsuarioService;
 public class UsuarioController {
 
 	private @Autowired UsuarioRepository repositoryU;
+	
+	private @Autowired GrupoRepository repositoryG;
 
 	private @Autowired UsuarioService service;
 
@@ -75,6 +78,9 @@ public class UsuarioController {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Não foi possível criar o grupo, insira corretamente os dados.");
 		}
 	}
+	
+	
+	
 
 	@PostMapping("/logar")
 	public ResponseEntity<UsuarioLoginDTO> autentication(@RequestBody Optional<UsuarioLoginDTO> user) {
@@ -114,4 +120,19 @@ public class UsuarioController {
 
 		return ResponseEntity.ok().body(repositoryU.findAllByNomeContainingIgnoreCase(nome));
 	}
+	
+	@PutMapping("/alterar")
+	public ResponseEntity<Usuario> alterarUsuario(@Valid @RequestBody Usuario usuarioParaAtualizar){
+		
+		return ResponseEntity.ok().body(repositoryU.save(usuarioParaAtualizar));
+		
+	}
+	
+	@PostMapping("/criarGrupo")
+	public ResponseEntity<Grupo> criarGrupo2(@Valid @RequestBody Grupo grupoCriado){
+		
+		return ResponseEntity.ok().body(repositoryG.save(grupoCriado));
+	}
+	
+		
 }
