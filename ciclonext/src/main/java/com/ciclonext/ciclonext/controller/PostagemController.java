@@ -49,7 +49,7 @@ public class PostagemController {
 
 	}
 
-	@PostMapping("/{idUsuario}/postar/{idGrupo}")
+	@PostMapping("/{idUsuario}/postar/{idGrupo}") //Se não passar um idGrupo será um post do Usuário fora de grupo
 	public ResponseEntity<Postagem> postPostagem(@Valid @RequestBody Postagem novaPostagem, 
 			@PathVariable(value = "idUsuario") Long idUsuario,
 			@PathVariable(value = "idGrupo") Long idGrupo) {
@@ -61,14 +61,33 @@ public class PostagemController {
 			if (grupoExistente.isPresent()) {
 				novaPostagem.setGrupo(grupoExistente.get());
 			}
+			
 			return ResponseEntity.status(HttpStatus.CREATED).body(repositoryP.save(novaPostagem));
 		} else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 	
 	}
+
+	@PostMapping("/{idUsuario1}/mensagem/{idUsuario2}")
+	public ResponseEntity<Postagem> mensagem(@Valid @RequestBody Postagem novaPostagem, 
+			@PathVariable(value = "idUsuario1") Long idUsuario1,
+			@PathVariable(value = "idUsuario2") Long idUsuario2) {
+		
+		Optional<Usuario> usuarioExistente1 = repositoryU.findById(idUsuario1);
+		Optional<Usuario> usuarioExistente2 = repositoryU.findById(idUsuario2);
+		if (usuarioExistente1.isPresent() && usuarioExistente2.isPresent()) {
+			novaPostagem.setAutor(usuarioExistente1.get());
+			novaPostagem.setUsuarioDestino(usuarioExistente2.get());
+						
+			return ResponseEntity.status(HttpStatus.CREATED).body(repositoryP.save(novaPostagem));
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}
 	
-	@PostMapping("/grupo/{id}/postar")
+	}
+
+		@PostMapping("/grupo/{id}/postar")
 	public ResponseEntity<Postagem> grupoPostagem(@Valid @RequestBody Postagem novaPostagem, @PathVariable Long id ) {
 
 		Optional<Grupo> grupoExistente = repositoryG.findById(id);

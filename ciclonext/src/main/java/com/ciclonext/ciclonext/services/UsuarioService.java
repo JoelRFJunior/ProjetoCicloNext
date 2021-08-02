@@ -119,13 +119,26 @@ public class UsuarioService {
 			return null;
 		}
 	}
-
-/*		
+	public Optional<Usuario> deixarDeSeguir(Long idUsuario1, Long  idUsuario2) {
+		Optional<Usuario> usuarioExistente1 = repositoryU.findById(idUsuario1);
+		Optional<Usuario> usuarioExistente2 = repositoryU.findById(idUsuario2);
+		
+		if (usuarioExistente1.isPresent() && usuarioExistente2.isPresent()) {
+			usuarioExistente1.get().getSeguindo().remove(usuarioExistente2.get());
+			
+			return Optional.ofNullable(repositoryU.save(usuarioExistente1.get()));
+			
+		} else {
+			return null;
+		}
+		
+	}
+		
 	public Optional<Usuario> entrarNoGrupo(Long idUsuario, Long idGrupo) {
         Optional<Grupo> grupoExistente = repositoryG.findById(idGrupo);
         if (grupoExistente.isPresent()) {
             return repositoryU.findById(idUsuario).map(usuarioExistente -> {
-                usuarioExistente.getGruposInscritos().add(grupoExistente.get());
+                usuarioExistente.getGruposQueSeguimos().add(grupoExistente.get());
                 return Optional.ofNullable(repositoryU.save(usuarioExistente));
             }).orElseGet(() -> {
                 return Optional.empty();
@@ -133,7 +146,20 @@ public class UsuarioService {
         } else {
             return Optional.empty();
         }
-    }*/
+    }
 
+	public Optional<Usuario> sairDoGrupo(Long idUsuario, Long idGrupo) {
+        Optional<Grupo> grupoExistente = repositoryG.findById(idGrupo);
+        if (grupoExistente.isPresent()) {
+            return repositoryU.findById(idUsuario).map(usuarioExistente -> {
+                usuarioExistente.getGruposQueSeguimos().remove(grupoExistente.get());
+                return Optional.ofNullable(repositoryU.save(usuarioExistente));
+            }).orElseGet(() -> {
+                return Optional.empty();
+            });
+        } else {
+            return Optional.empty();
+        }
+    }
 
 }

@@ -113,4 +113,20 @@ public class Postagem {
 		this.autor = autor;
 	}
 
+	public Destinatario getDestinatario() {
+		return destinatario;
+	}
+
+	public void setDestinatario(Destinatario destinatario) {
+		this.destinatario = destinatario;
+	}
+
+	public Usuario getUsuarioDestino() {
+		return usuarioDestino;
+	}
+
+	public void setUsuarioDestino(Usuario usuarioDestino) {
+		this.usuarioDestino = usuarioDestino;
+	}
+
 }
