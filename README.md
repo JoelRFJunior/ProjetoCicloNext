@@ -18,9 +18,9 @@ A CicloNext promove a conexão entre entidades promovendo a doação de recursos
 
 ## #Integrantes:
 
-* [Agda](https://github.com/agdaa)
-* [Bruno](https://github.com/brunosequeira1)
-* [Esdras](https://github.com/Esdrashx)
-* [Jamily](https://github.com/JamilyM)
-* [Joel](https://github.com/JoelRFJunior)
-* [Wendew](https://github.com/wendewfranco)
+* [Agda Camilla](https://github.com/agdaa)
+* [Bruno Sequeira](https://github.com/brunosequeira1)
+* [Esdras Teixeira](https://github.com/Esdrashx)
+* [Jamily Melo](https://github.com/JamilyM)
+* [Joel Roberto](https://github.com/JoelRFJunior)
+* [Wendew Luiz](https://github.com/wendewfranco)
