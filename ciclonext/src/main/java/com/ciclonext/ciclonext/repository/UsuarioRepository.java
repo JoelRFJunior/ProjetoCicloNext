@@ -16,7 +16,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	Optional<Usuario> findByEmail(String email);
 	
 	public List<Usuario> findAllByNomeContainingIgnoreCase(String nome);
-	
+
+		
 	//metodo para um usuário criar um grupo
 	//public Optional<Grupo> criarGrupo(Long idUsuario, Grupo grupoParaSerCriado);	
 	

@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,6 +16,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.ciclonext.ciclonext.model.util.TipoPostagem;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_postagem")
@@ -22,27 +24,35 @@ public class Postagem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long idPostagem;
 
-	@NotEmpty
-	@Size(min=10, max=500)
+	@NotEmpty(message = "Escreva aqui o texto da sua postagem.")
+	@Size(min = 10, max = 500)
 	private String corpo;
 
+	@Size(min = 5, max = 500)
 	private String urlImagemVideo;
 
-	@NotEmpty
 	@Enumerated(EnumType.STRING)
 	private TipoPostagem tipoPostagem;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
-	public long getId() {
-		return id;
+	@ManyToOne
+	@JsonIgnoreProperties({ "idGrupo", "postagens", "urlImagemGrupo", "descricao", "criador", "categoria" })
+	private Grupo grupo;
+
+	@ManyToOne
+	@JsonIgnoreProperties({ "idUsuario", "senha", "email", "publicacoes", "gruposCriados" })
+	private Usuario autor;
+
+	public Long getIdPostagem() {
+		return idPostagem;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setIdPostagem(Long idPostagem) {
+		this.idPostagem = idPostagem;
 	}
 
 	public String getCorpo() {
@@ -75,6 +85,22 @@ public class Postagem {
 
 	public void setData(Date data) {
 		this.data = data;
+	}
+
+	public Grupo getGrupo() {
+		return grupo;
+	}
+
+	public void setGrupo(Grupo grupo) {
+		this.grupo = grupo;
+	}
+
+	public Usuario getAutor() {
+		return autor;
+	}
+
+	public void setAutor(Usuario autor) {
+		this.autor = autor;
 	}
 
 }

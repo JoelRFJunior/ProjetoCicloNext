@@ -22,17 +22,18 @@ import com.ciclonext.ciclonext.model.Grupo;
 import com.ciclonext.ciclonext.model.util.Categoria;
 import com.ciclonext.ciclonext.repository.GrupoRepository;
 import com.ciclonext.ciclonext.services.GrupoService;
+import com.ciclonext.ciclonext.services.UsuarioService;
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/api/v1/grupo")
 public class GrupoController {
 
-	
 	private @Autowired GrupoRepository repositoryG;
 
-	
 	private @Autowired GrupoService service;
+
+	private @Autowired UsuarioService serviceU;
 
 	@GetMapping("/getAll") // Método para pegar tudo
 	public ResponseEntity<List<Grupo>> findAll() {
@@ -41,21 +42,21 @@ public class GrupoController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Grupo> findById(@PathVariable long id) {
+	public ResponseEntity<Grupo> findById(@PathVariable Long id) {
 
 		return repositoryG.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 
-	@PostMapping
-	public ResponseEntity<Object> postGrupo(@Valid @RequestBody Grupo novoGrupo) {
+	@PostMapping("/criarGrupo/{id}")
+	public ResponseEntity<Object> criarGrupo(@Valid @PathVariable (value = "id") Long idUsuario, @RequestBody Grupo novoGrupo) {
 
-		Optional<Object> cadastrarGrupo = service.cadastrarGrupo(novoGrupo);
+		Optional<Grupo> cadastrarGrupo = serviceU.criarGrupo(idUsuario, novoGrupo);
 
 		if (cadastrarGrupo.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Grupo já existente, tente outro nome.");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Grupo já existente, ou criador inválido. Tente novamente.");
 
 		} else {
-			return ResponseEntity.status(HttpStatus.CREATED).body("Grupo criado.");
+			return ResponseEntity.status(HttpStatus.CREATED).body("O grupo "+novoGrupo.getNomeGrupo()+ " foi criado com sucesso.");
 
 		}
 
@@ -72,7 +73,7 @@ public class GrupoController {
 	}
 
 	@DeleteMapping("/{id}")
-	public void deletarGrupo(@PathVariable long id) {
+	public void deletarGrupo(@PathVariable Long id) {
 
 		repositoryG.deleteById(id);
 
