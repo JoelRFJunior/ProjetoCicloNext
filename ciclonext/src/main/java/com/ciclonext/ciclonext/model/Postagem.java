@@ -30,7 +30,7 @@ public class Postagem {
 	@Size(min = 10, max = 500)
 	private String corpo;
 
-	@Size(min = 5, max = 500)
+	@Size(max = 500)
 	private String urlImagemVideo;
 
 	@Enumerated(EnumType.STRING)
@@ -40,11 +40,11 @@ public class Postagem {
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
 	@ManyToOne
-	@JsonIgnoreProperties({ "idGrupo", "postagens", "urlImagemGrupo", "descricao", "criador", "categoria" })
+	@JsonIgnoreProperties({ "idGrupo", "postagens", "urlImagemGrupo", "descricao", "criador" })
 	private Grupo grupo;
 
 	@ManyToOne
-	@JsonIgnoreProperties({ "idUsuario", "senha", "email", "publicacoes", "gruposCriados" })
+	@JsonIgnoreProperties({ "idUsuario", "senha", "email", "publicacoes", "gruposCriados","categoria" })
 	private Usuario autor;
 
 	public Long getIdPostagem() {
