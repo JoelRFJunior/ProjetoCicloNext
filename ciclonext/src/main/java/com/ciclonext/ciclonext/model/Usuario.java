@@ -34,7 +34,7 @@ public class Usuario {
 	@NotEmpty(message = "Campo obrigatório.")
 	private String senha;
 	
-	@Size(min=5, max=500)
+	@Size(max=500)
 	private String urlImagemPerfil;
 
 	@OneToMany(mappedBy =  "criador", cascade = CascadeType.ALL)
