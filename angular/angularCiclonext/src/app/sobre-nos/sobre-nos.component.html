@@ -1,5 +1,5 @@
 <!-- As a link -->
-<nav class="navbar navbar-light" style="background-color:#69D8D8">
+<nav *ngIf='auth.naoLogado()' class="navbar navbar-light" style="background-color:#69D8D8">
     <div class="container-fluid">
       <a class="navbar-brand" href="/entrar"><img src="https://imgur.com/PJ5E37b.jpg" height="80px" width="80px" alt=""></a>
     </div>
@@ -115,7 +115,6 @@
 
 </div>
 
-<app-rodape></app-rodape>
 
 
   

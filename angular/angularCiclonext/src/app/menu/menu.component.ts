@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-menu',
@@ -6,10 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+   
 
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(
+    private router: Router
+  ) { }
+
+  ngOnInit(){
+
+  }
+
+  sair(){
+    
+    alert('Usuario deslogado')
+
+    environment.token = ''
+    environment.idUsuario=0
+    environment.nome = ''
+    environment.urlImagemPerfil = ''
+    this.router.navigate(['/entrar'])
+
+    
+
   }
 
 }
