@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +14,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-import com.ciclonext.ciclonext.model.util.Categoria;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -30,13 +27,10 @@ public class Grupo {
 	@NotEmpty(message = "Campo obrigatório.")
 	private String nomeGrupo;
 
-	@Enumerated(EnumType.STRING)
-	private Categoria categoria;
-
 	@NotEmpty(message = "Campo obrigatório.")
 	private String descricao;
 
-	@Size(min = 5, max = 500)
+	@Size(max = 500)
 	private String urlImagemGrupo;
 
 	@OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL)
@@ -44,7 +38,7 @@ public class Grupo {
 	private List<Postagem> postagens = new ArrayList<>();
 
 	@ManyToOne
-	@JsonIgnoreProperties({ "gruposCriados", "senha", "idUsuario", "email", "publicacoes" })
+	@JsonIgnoreProperties({ "gruposCriados", "senha", "idUsuario", "email", "publicacoes","categoria" })
 	private Usuario criador;
 
 	public Long getIdGrupo() {
@@ -61,14 +55,6 @@ public class Grupo {
 
 	public void setNomeGrupo(String nomeGrupo) {
 		this.nomeGrupo = nomeGrupo;
-	}
-
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
 	}
 
 	public String getDescricao() {

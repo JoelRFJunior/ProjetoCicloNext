@@ -79,16 +79,14 @@ public class GrupoController {
 
 	}
 
-	@GetMapping("/categoria/{categoria}")
-	public ResponseEntity<List<Grupo>> encontrarPorCategoria(@PathVariable Categoria categoria) {
-
-		return ResponseEntity.ok().body(repositoryG.findAllByCategoria(categoria));
-
-	}
-
 	@GetMapping("/nome/{nomeGrupo}")
 	public ResponseEntity<List<Grupo>> encontrarPorNomeGrupo(@PathVariable String nomeGrupo) {
 		return ResponseEntity.ok().body(repositoryG.findAllByNomeGrupoContainingIgnoreCase(nomeGrupo));
+	}
+	
+	@PutMapping("/alterar")
+	public ResponseEntity<Grupo> alterarGrupo(@Valid @RequestBody Grupo grupoParaAtualizar){
+		return ResponseEntity.ok().body(repositoryG.save(grupoParaAtualizar));
 	}
 
 }

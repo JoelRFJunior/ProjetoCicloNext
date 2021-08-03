@@ -13,8 +13,6 @@ import com.ciclonext.ciclonext.model.util.Categoria;
 @Repository
 public interface GrupoRepository extends JpaRepository<Grupo, Long> {
 	
-	public List<Grupo> findAllByCategoria(Categoria categoria);
-	
 	Optional<Grupo> findByNomeGrupo(String nomeGrupo);
 	
 	public List<Grupo> findAllByNomeGrupoContainingIgnoreCase(String nomeGrupo);
