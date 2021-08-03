@@ -91,8 +91,11 @@ public class UsuarioService {
 				String authHeader = "Basic " + new String(encoderAuth);
 
 				user.get().setToken(authHeader);
-				user.get().setEmail(usuario.get().getEmail());
-
+				user.get().setUrlImagemPerfil(usuario.get().getUrlImagemPerfil());
+				user.get().setNome(usuario.get().getNome());
+				user.get().setCategoria(usuario.get().getCategoria());
+				user.get().setIdUsuario(usuario.get().getIdUsuario());
+				
 				return user;
 			} else {
 				return null;

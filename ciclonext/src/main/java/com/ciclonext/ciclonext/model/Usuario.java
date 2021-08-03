@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +16,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.ciclonext.ciclonext.model.util.Categoria;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -36,6 +39,9 @@ public class Usuario {
 	
 	@Size(max=500)
 	private String urlImagemPerfil;
+	
+	@Enumerated(EnumType.STRING)
+	private Categoria categoria; 
 
 	@OneToMany(mappedBy =  "criador", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties({"idGrupo", "descricao", "urlImagemGrupo", "criador","postagens"})
@@ -106,4 +112,13 @@ public class Usuario {
 		this.urlImagemPerfil = urlImagemPerfil;
 	}
 
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	
 }

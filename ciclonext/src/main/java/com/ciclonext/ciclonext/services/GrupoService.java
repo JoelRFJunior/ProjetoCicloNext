@@ -25,7 +25,6 @@ public class GrupoService {
 	public Optional<Grupo> atualizarGrupo(Long idGrupo, Grupo grupoParaAtualizar) {
 		return repositoryG.findById(idGrupo).map(GrupoExistente -> {
 			GrupoExistente.setNomeGrupo(grupoParaAtualizar.getNomeGrupo());
-			GrupoExistente.setCategoria(grupoParaAtualizar.getCategoria());
 			GrupoExistente.setDescricao(grupoParaAtualizar.getDescricao());
 			GrupoExistente.setUrlImagemGrupo(grupoParaAtualizar.getUrlImagemGrupo());
 			return Optional.ofNullable(repositoryG.save(GrupoExistente));
