@@ -132,11 +132,5 @@ public class UsuarioController {
 		
 	}
 	
-	@PostMapping("/criarGrupo")
-	public ResponseEntity<Grupo> criarGrupo2(@Valid @RequestBody Grupo grupoCriado){
-		
-		return ResponseEntity.ok().body(repositoryG.save(grupoCriado));
-	}
-	
 		
 }

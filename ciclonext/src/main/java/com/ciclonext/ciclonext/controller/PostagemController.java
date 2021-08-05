@@ -49,6 +49,7 @@ public class PostagemController {
 
 	}
 
+	/*
 	@PostMapping("/{idUsuario}/postar/{idGrupo}")
 	public ResponseEntity<Postagem> postPostagem(@Valid @RequestBody Postagem novaPostagem, 
 			@PathVariable(value = "idUsuario") Long idUsuario,
@@ -94,6 +95,8 @@ public class PostagemController {
 	}).orElse(ResponseEntity.notFound().build());
 	}
 	
+	*/
+	
 	@DeleteMapping("/{id}")
 	public void delete (@PathVariable long id) {
 		
@@ -108,4 +111,14 @@ public class PostagemController {
 	}
 	
 
+	@PostMapping
+	public ResponseEntity<Postagem> postPostagem (@Valid @RequestBody Postagem novaPostagem){
+		return ResponseEntity.status(HttpStatus.CREATED).body(repositoryP.save(novaPostagem));
+	}
+	
+	@PutMapping
+	public ResponseEntity<Postagem> putPostagem (@Valid @RequestBody Postagem novaPostagem){
+		return ResponseEntity.ok().body(repositoryP.save(novaPostagem));
+	}
+	
 }
