@@ -7,6 +7,6 @@ export class Postagem {
     public corpo: string
     public tipoPostagem: string
     public data: Date
-    public usuario: Usuario
+    public autor: Usuario
     public grupo: Grupo 
     }
