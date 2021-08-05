@@ -13,15 +13,30 @@
         </div>
 
         <div class="col-md-8 mt-5">
+            <div class="form-group mb-3 px-lg-5">
+                <label for="urlImagem">URLImagem</label>
+                <input class="form-control" type="text" name="urlImagem" id="urlImagem" placeholder="Insira o link da sua foto">
+            </div>
             <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                <label for="floatingTextarea">Escreva aqui..</label>
+                <textarea class="form-control" placeholder="Leave a comment here" id="textoDaMensagem"[(ngModel)]='postagem.corpo'></textarea>
+                <label for="textoDaMensagem">Escreva aqui..</label>
             </div>
             <!--<div class="COLOCAR A IMAGEM AQUI"></div>-->
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end p-3">
-                <button class="btn btn-primary me-md-2" type="button">Button</button>
 
-                <button class="btn btn-outline-success" type="button">Publicar</button>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end p-3">
+                <div class="form-group mb-3">
+                        <label for="tipoPostagem">Tipo de postagem</label>
+                        <select class="form-control" name="tipoPostagem" id="tipoPostagem"  >
+                            <option>Selecione um tipo de mensagem</option>
+                            <option value="TEXTO">Texto</option>
+                            <option value="DOACAO">Doação</option>
+                            <option value="AGRADECIMENTO">Agradecimento</option>
+                            <option value="OUTROS">Outros</option>
+                        </select>
+                    </div>
+                <button class="btn btn-primary me-md-2" type="button" (click)='cancelarPost()'>cancelar</button>
+
+                <button class="btn btn-outline-success" type="button" (click)='postarNoFeed()'>Publicar</button>
             </div>
 <div class="container" style="background-color: #E8E8E8;">
             <div class="dropdown p-3">
