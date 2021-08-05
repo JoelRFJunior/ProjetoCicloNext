@@ -13,6 +13,8 @@ import { EntrarComponent } from './entrar/entrar.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { HomeComponent } from './home/home.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { GrupoComponent } from './grupo/grupo.component';
+import { PostagemComponent } from './postagem/postagem.component';
 
 
 
@@ -25,7 +27,9 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     MenuComponent,
     EntrarComponent,
     CadastrarComponent,
-    HomeComponent
+    HomeComponent,
+    GrupoComponent,
+    PostagemComponent
   ],
   imports: [
     BrowserModule,
