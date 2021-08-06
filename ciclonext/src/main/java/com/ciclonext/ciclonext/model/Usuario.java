@@ -31,7 +31,6 @@ public class Usuario {
 	private String nome;
 
 	@NotEmpty(message = "Campo obrigatório.")
-	@Email
 	private String email;
 
 	@NotEmpty(message = "Campo obrigatório.")
@@ -44,7 +43,7 @@ public class Usuario {
 	private Categoria categoria; 
 
 	@OneToMany(mappedBy =  "criador", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties({"idGrupo", "descricao", "urlImagemGrupo", "criador","postagens"})
+	@JsonIgnoreProperties({"descricao", "urlImagemGrupo", "criador","postagens"})
 	private List<Grupo> gruposCriados = new ArrayList<>();
 
 	//private Usuario amizade;
@@ -53,7 +52,7 @@ public class Usuario {
 	//private List<Usuario> amigos = new ArrayList<>();
 	
 	@OneToMany(mappedBy =  "autor", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties({"idPostagem", "grupo", "urlImagemVideo", "autor"})
+	@JsonIgnoreProperties({"grupo", "urlImagemVideo", "autor"})
 	private List<Postagem> publicacoes = new ArrayList<>();
 	
 	public Long getIdUsuario() {

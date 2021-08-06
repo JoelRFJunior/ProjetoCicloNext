@@ -27,7 +27,7 @@ import com.ciclonext.ciclonext.repository.PostagemRepository;
 import com.ciclonext.ciclonext.repository.UsuarioRepository;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api/v1/postagem")
 public class PostagemController {
 
@@ -112,12 +112,12 @@ public class PostagemController {
 	
 
 	@PostMapping
-	public ResponseEntity<Postagem> postPostagem (@Valid @RequestBody Postagem novaPostagem){
+	public ResponseEntity<Postagem> postPostagem (@RequestBody Postagem novaPostagem){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repositoryP.save(novaPostagem));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Postagem> putPostagem (@Valid @RequestBody Postagem novaPostagem){
+	public ResponseEntity<Postagem> putPostagem (@RequestBody Postagem novaPostagem){
 		return ResponseEntity.ok().body(repositoryP.save(novaPostagem));
 	}
 	

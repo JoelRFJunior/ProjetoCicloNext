@@ -25,7 +25,7 @@ import com.ciclonext.ciclonext.services.GrupoService;
 import com.ciclonext.ciclonext.services.UsuarioService;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api/v1/grupo")
 public class GrupoController {
 
@@ -93,12 +93,12 @@ public class GrupoController {
 	}
 	
 	@PutMapping
-	public ResponseEntity<Grupo> alterarGrupo(@Valid @RequestBody Grupo grupoParaAtualizar){
+	public ResponseEntity<Grupo> alterarGrupo(@RequestBody Grupo grupoParaAtualizar){
 		return ResponseEntity.ok().body(repositoryG.save(grupoParaAtualizar));
 	}
 
 	@PostMapping
-	public ResponseEntity<Grupo> criarGrupo2(@Valid @RequestBody Grupo grupoCriado){
+	public ResponseEntity<Grupo> criarGrupo2(@RequestBody Grupo grupoCriado){
 		
 		return ResponseEntity.ok().body(repositoryG.save(grupoCriado));
 	}

@@ -33,7 +33,7 @@ public class Grupo {
 	@Size(max = 500)
 	private String urlImagemGrupo;
 
-	@OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "grupo", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties({ "grupo", "idPostagem" })
 	private List<Postagem> postagens = new ArrayList<>();
 

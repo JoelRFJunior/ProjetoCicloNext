@@ -53,7 +53,7 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Object> postUsuario(@Valid @RequestBody Usuario novoUsuario) {
+	public ResponseEntity<Object> postUsuario(@RequestBody Usuario novoUsuario) {
 
 		Optional<Object> cadastrarUsuario = service.cadastrarUsuario(novoUsuario);
 
@@ -124,7 +124,7 @@ public class UsuarioController {
 	}
 	
 	@PutMapping("/alterar")
-	public ResponseEntity<Usuario> alterarUsuario(@Valid @RequestBody Usuario usuarioParaAtualizar){
+	public ResponseEntity<Usuario> alterarUsuario(@RequestBody Usuario usuarioParaAtualizar){
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String senhaCriptografada = encoder.encode(usuarioParaAtualizar.getSenha());
 		usuarioParaAtualizar.setSenha(senhaCriptografada);
