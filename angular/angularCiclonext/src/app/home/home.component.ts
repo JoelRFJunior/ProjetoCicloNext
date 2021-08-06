@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   foto = environment.urlImagemPerfil
   token = environment.token
   idUsuario = environment.idUsuario
-
+  id: string
   tipoPostagem: string
   user: Usuario = new Usuario
   postagem: Postagem = new Postagem()
@@ -33,7 +33,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     window.scroll(0, 0)
     console.log(this.token)
-console.log("token "+environment.token)
+    console.log("token "+environment.token)
+    console.log(this.postagem.autor)
     let id = this.idUsuario
 
     this.findAllPostagem()
@@ -45,10 +46,11 @@ console.log("token "+environment.token)
     }
   }
   findUsuarioById(id: number) {
-    this.postagemService.procurarUsuario(id).subscribe((resp: Usuario) => {
+    this.postagemService.procurarUsuario(this.idUsuario).subscribe((resp: Usuario) => {
       this.user = resp
     })
   }
+
 
   tipoDaPostagem(event: any) {
     this.tipoPostagem = event.target.value
@@ -63,13 +65,16 @@ console.log("token "+environment.token)
 
   postarNoFeed() {
     this.findUsuarioById(this.idUsuario)
+    this.user.idUsuario = this.idUsuario
+    this.postagem.autor = this.user
     console.log(this.user)
+    console.log(this.postagem.autor)
     console.log(this.tipoPostagem)
     console.log(this.postagem)
     console.log(this.token)
 
-
-    //this.postagem.autor = this.user.idUsuario
+  //  this.user.idUsuario = Number(this.idUsuario)
+  //  this.postagem.autor = this.user
     // this.postagem.tipoPostagem = this.tipoPostagem
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
