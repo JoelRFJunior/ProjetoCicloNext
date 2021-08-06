@@ -16,7 +16,7 @@
             <div class="form-group mb-3 px-lg-5">
                 <label for="urlImagem">URLImagem</label>
                 <input class="form-control" type="text" name="urlImagem" id="urlImagem"
-                    placeholder="Insira o link da sua foto">
+                    placeholder="Insira o link da sua foto" [(ngModel)]='postagem.urlImagemVideo'>
             </div>
             <div class="form-floating">
                 <textarea class="form-control" placeholder="Leave a comment here" id="textoDaMensagem"
@@ -27,8 +27,8 @@
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-end p-3">
                 <div class="form-group mb-3">
-                    <label for="tipoPostagem">Tipo de postagem</label>
-                    <select class="form-control" name="tipoPostagem" id="tipoPostagem">
+                    <label for="tipoDaPostagem">Tipo de postagem</label>
+                    <select class="form-control" name="tipoDaPostagem" id="tipoDaPostagem" (change)='tipoDaPostagem($event)'>
                         <option>Selecione um tipo de mensagem</option>
                         <option value="TEXTO">Texto</option>
                         <option value="DOACAO">Doação</option>
@@ -62,7 +62,7 @@
                                     <img class="rounded-circle" width="45" src= '' alt="">
                                 </div>
                                 <div class="ml-2">
-                                    <div class="h5 m-0">{{post.autor}}</div>
+                                    <div class="h5 m-0">{{post.autor.nome}}</div>
                                     <div class="h7 text-muted">{{post.tipoPostagem}}</div>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
 
                     </div>
                     <div class="card-body">
-                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{post.data}}</div>
                         <a class="card-link" href="#">
                             <h5 class="card-title">{{post.urlImagemVideo}}</h5>
                         </a>

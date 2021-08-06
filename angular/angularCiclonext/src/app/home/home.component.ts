@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Usuario } from '../model/Usuario';
+import { AuthService } from '../service/auth.service';
 import { PostagemService } from '../service/postagem.service';
 
 
@@ -18,36 +19,47 @@ export class HomeComponent implements OnInit {
   nome = environment.nome
   foto = environment.urlImagemPerfil
   token = environment.token
-  idUsuario = environment.idUsuario
-  id: string
+  idUser = environment.idUsuario
+  
   tipoPostagem: string
   user: Usuario = new Usuario
   postagem: Postagem = new Postagem()
   listaPostagens: Postagem[]
+  user2: Usuario = new Usuario
 
   constructor(
     private router: Router,
-    private postagemService: PostagemService
+    private postagemService: PostagemService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     window.scroll(0, 0)
     console.log(this.token)
     console.log("token "+environment.token)
-    console.log(this.postagem.autor)
-    let id = this.idUsuario
-
+    
     this.findAllPostagem()
+
+    
 
     if (environment.token == '') {
       //alert('Sua sessão expirou, faça o login novamente!')
       this.router.navigate(['/entrar'])
 
     }
+
+    this.findUsuarioById(this.idUser)
+
   }
   findUsuarioById(id: number) {
-    this.postagemService.procurarUsuario(this.idUsuario).subscribe((resp: Usuario) => {
+    this.postagemService.procurarUsuario(this.idUser).subscribe((resp: Usuario) => {
       this.user = resp
+    })
+  }
+
+  findByIdUser(){
+    this.authService.getByIdUser(this.idUser).subscribe((resp: Usuario) => {
+      this.user2 = resp
     })
   }
 
@@ -64,8 +76,9 @@ export class HomeComponent implements OnInit {
   }
 
   postarNoFeed() {
-    this.findUsuarioById(this.idUsuario)
-    this.user.idUsuario = this.idUsuario
+    
+
+    this.user.idUsuario = this.idUser
     this.postagem.autor = this.user
     console.log(this.user)
     console.log(this.postagem.autor)
@@ -75,7 +88,7 @@ export class HomeComponent implements OnInit {
 
   //  this.user.idUsuario = Number(this.idUsuario)
   //  this.postagem.autor = this.user
-    // this.postagem.tipoPostagem = this.tipoPostagem
+     this.postagem.tipoPostagem = this.tipoPostagem
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
       alert('Postagem criada com sucesso')
@@ -87,7 +100,7 @@ export class HomeComponent implements OnInit {
   }
 
   'cancelarPost'() {
-    this.postagem = new Postagem
+    this.postagem = new Postagem()
   }
 
 
