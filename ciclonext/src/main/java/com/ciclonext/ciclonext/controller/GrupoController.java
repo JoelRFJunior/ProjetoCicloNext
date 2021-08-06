@@ -47,30 +47,38 @@ public class GrupoController {
 		return repositoryG.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 
-	@PostMapping("/criarGrupo/{id}")
-	public ResponseEntity<Object> criarGrupo(@Valid @PathVariable (value = "id") Long idUsuario, @RequestBody Grupo novoGrupo) {
+	/*
+	 * @PostMapping("/{idUsuario}") public ResponseEntity<Object>
+	 * criarGrupo(@Valid @PathVariable (value = "idUsuario") Long
+	 * idUsuario, @RequestBody Grupo novoGrupo) {
+	 * 
+	 * Optional<Grupo> cadastrarGrupo = serviceU.criarGrupo(idUsuario, novoGrupo);
+	 * 
+	 * if (cadastrarGrupo.isEmpty()) { return
+	 * ResponseEntity.status(HttpStatus.BAD_REQUEST).
+	 * body("Grupo já existente, ou criador inválido. Tente novamente.");
+	 * 
+	 * } else { return
+	 * ResponseEntity.status(HttpStatus.CREATED).body("O grupo "+novoGrupo.
+	 * getNomeGrupo()+ " foi criado com sucesso.");
+	 * 
+	 * }
+	 * 
+	 * }
+	 */
 
-		Optional<Grupo> cadastrarGrupo = serviceU.criarGrupo(idUsuario, novoGrupo);
-
-		if (cadastrarGrupo.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Grupo já existente, ou criador inválido. Tente novamente.");
-
-		} else {
-			return ResponseEntity.status(HttpStatus.CREATED).body("O grupo "+novoGrupo.getNomeGrupo()+ " foi criado com sucesso.");
-
-		}
-
-	}
-
-	@PutMapping("/{id}/atualizar")
-	public ResponseEntity<Grupo> putGrupo(@Valid @PathVariable(value = "id") Long id,
-			@Valid @RequestBody Grupo grupoParaAtualizar) {
-
-		return service.atualizarGrupo(id, grupoParaAtualizar)
-				.map(grupoAtualizado -> ResponseEntity.ok().body(grupoAtualizado))
-				.orElse(ResponseEntity.badRequest().build());
-
-	}
+	/*
+	 * @PutMapping("/{id}/atualizar") public ResponseEntity<Grupo>
+	 * putGrupo(@Valid @PathVariable(value = "id") Long id,
+	 * 
+	 * @Valid @RequestBody Grupo grupoParaAtualizar) {
+	 * 
+	 * return service.atualizarGrupo(id, grupoParaAtualizar) .map(grupoAtualizado ->
+	 * ResponseEntity.ok().body(grupoAtualizado))
+	 * .orElse(ResponseEntity.badRequest().build());
+	 * 
+	 * }
+	 */
 
 	@DeleteMapping("/{id}")
 	public void deletarGrupo(@PathVariable Long id) {
@@ -84,9 +92,14 @@ public class GrupoController {
 		return ResponseEntity.ok().body(repositoryG.findAllByNomeGrupoContainingIgnoreCase(nomeGrupo));
 	}
 	
-	@PutMapping("/alterar")
+	@PutMapping
 	public ResponseEntity<Grupo> alterarGrupo(@Valid @RequestBody Grupo grupoParaAtualizar){
 		return ResponseEntity.ok().body(repositoryG.save(grupoParaAtualizar));
 	}
 
+	@PostMapping
+	public ResponseEntity<Grupo> criarGrupo2(@Valid @RequestBody Grupo grupoCriado){
+		
+		return ResponseEntity.ok().body(repositoryG.save(grupoCriado));
+	}
 }

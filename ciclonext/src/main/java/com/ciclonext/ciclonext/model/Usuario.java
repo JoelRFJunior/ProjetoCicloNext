@@ -43,7 +43,7 @@ public class Usuario {
 	@Enumerated(EnumType.STRING)
 	private Categoria categoria; 
 
-	@OneToMany(mappedBy =  "criador", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy =  "criador", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties({"idGrupo", "descricao", "urlImagemGrupo", "criador","postagens"})
 	private List<Grupo> gruposCriados = new ArrayList<>();
 
@@ -52,7 +52,7 @@ public class Usuario {
 	//@OneToMany(mappedBy = "amizade")
 	//private List<Usuario> amigos = new ArrayList<>();
 	
-	@OneToMany(mappedBy =  "autor")
+	@OneToMany(mappedBy =  "autor", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties({"idPostagem", "grupo", "urlImagemVideo", "autor"})
 	private List<Postagem> publicacoes = new ArrayList<>();
 	
