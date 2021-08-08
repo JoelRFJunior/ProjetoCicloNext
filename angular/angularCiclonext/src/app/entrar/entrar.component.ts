@@ -23,7 +23,7 @@ export class EntrarComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0, 0)
-    environment.token=''
+   
   }
 
   entrar() {
@@ -32,13 +32,15 @@ export class EntrarComponent implements OnInit {
      
       this.userLogin = resp
 
+      console.log('antes de entrar : ' + environment.token)
       
+      environment.token = this.userLogin.token
       environment.nome = this.userLogin.nome
       environment.urlImagemPerfil = this.userLogin.urlImagemPerfil
       environment.idUsuario = this.userLogin.idUsuario
-      environment.token = this.userLogin.token
+     
       
-      console.log(environment.token)
+      console.log('ao entrar : ' + environment.token)
       console.log(environment.nome)
 
       this.router.navigate(['/home'])
@@ -46,8 +48,6 @@ export class EntrarComponent implements OnInit {
     }, erro => {
       if (erro.status == 500) {
         alert('Usuario ou senha Inválidos!')
-      }else{
-
       }
     })
   }

@@ -7,7 +7,7 @@ import { AuthService } from './service/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angularCiclonext';
+  title = 'Ciclonext';
 
   constructor(
     public auth: AuthService

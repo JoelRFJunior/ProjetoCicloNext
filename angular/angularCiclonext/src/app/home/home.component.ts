@@ -9,6 +9,7 @@ import { AuthService } from '../service/auth.service';
 import { PostagemService } from '../service/postagem.service';
 
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -29,25 +30,22 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
+    
+    private authService: AuthService,
     private postagemService: PostagemService,
-    private authService: AuthService
+    
   ) { }
 
   ngOnInit() {
     window.scroll(0, 0)
     console.log(this.token)
     console.log("token "+environment.token)
-    
-    this.findAllPostagem()
-
-    
-
-    if (environment.token == '') {
+      if (environment.token == '') {
       //alert('Sua sessão expirou, faça o login novamente!')
       this.router.navigate(['/entrar'])
 
     }
-
+    this.findAllPostagem()
     this.findUsuarioById(this.idUser)
 
   }
@@ -80,11 +78,7 @@ export class HomeComponent implements OnInit {
 
     this.user.idUsuario = this.idUser
     this.postagem.autor = this.user
-    console.log(this.user)
-    console.log(this.postagem.autor)
-    console.log(this.tipoPostagem)
-    console.log(this.postagem)
-    console.log(this.token)
+    
 
   //  this.user.idUsuario = Number(this.idUsuario)
   //  this.postagem.autor = this.user

@@ -34,11 +34,11 @@ public class Grupo {
 	private String urlImagemGrupo;
 
 	@OneToMany(mappedBy = "grupo", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties({ "grupo", "idPostagem" })
+	@JsonIgnoreProperties({"grupo","autor", "criador","postagens","gruposCriados", "publicacoes" })
 	private List<Postagem> postagens = new ArrayList<>();
 
 	@ManyToOne
-	@JsonIgnoreProperties({ "gruposCriados", "senha", "idUsuario", "email", "publicacoes","categoria" })
+	@JsonIgnoreProperties({ "grupo","autor", "postagens","gruposCriados", "publicacoes"})
 	private Usuario criador;
 
 	public Long getIdGrupo() {

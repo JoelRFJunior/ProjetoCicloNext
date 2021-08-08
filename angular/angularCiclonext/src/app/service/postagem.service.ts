@@ -1,34 +1,55 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment.prod';
-import { Postagem } from '../model/Postagem';
-import { Usuario } from '../model/Usuario';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { environment } from "src/environments/environment.prod";
+import { Postagem } from "../model/Postagem";
+import { Usuario } from "../model/Usuario";
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostagemService {
+export class PostagemService {  
 
-  constructor(
-    private http: HttpClient
-  ) {}
+  constructor(private http: HttpClient) {}
+
 
   token = {
-    headers: new HttpHeaders().set('Authorization',"Basic d2VuZGV3QGNpY2xvbmV4dC5jb206MTIzNDU2")
+    headers: new HttpHeaders().set('Authorization', 'Basic b2RpbkBjaWNsb25leHQuY29tOm9kaW4xMjM0')
   }
+  
+  //  token = {
+  //    headers: new HttpHeaders().set('Authorization', environment.token)
+  // }
+
+  // getAllPostagem(): Observable<Postagem[]> {
+   
+  //   return this.http.get<Postagem[]>('https://ciclonext.herokuapp.com/api/v1/postagem/getAll', this.token)
+    
+  // }
+
+  // postPostagem(postagem: Postagem): Observable<Postagem> {
+  //   return this.http.post<Postagem>('https://ciclonext.herokuapp.com/api/v1/postagem', postagem, this.token)
+  // }
+
+  // procurarUsuario(id: number): Observable<Usuario>{
+  //   return this.http.get<Usuario>(`https://ciclonext.herokuapp.com/api/v1/usuario/${id}`, this.token)
+  
+  // }
+
 
   getAllPostagem(): Observable<Postagem[]> {
-    return this.http.get<Postagem[]>('https://ciclonext.herokuapp.com/api/v1/postagem/getAll', this.token)
+   
+    return this.http.get<Postagem[]>('http://localhost:8080/api/v1/postagem/getAll', this.token)
     
   }
 
   postPostagem(postagem: Postagem): Observable<Postagem> {
-    return this.http.post<Postagem>('https://ciclonext.herokuapp.com/api/v1/postagem', postagem, this.token)
+    return this.http.post<Postagem>('http://localhost:8080/api/v1/postagem', postagem, this.token)
   }
 
   procurarUsuario(id: number): Observable<Usuario>{
-    return this.http.get<Usuario>(`https://ciclonext.herokuapp.com/api/v1/usuario/${id}`, this.token)
+    return this.http.get<Usuario>(`http://localhost:8080/api/v1/usuario/${id}`, this.token)
   
   }
 
