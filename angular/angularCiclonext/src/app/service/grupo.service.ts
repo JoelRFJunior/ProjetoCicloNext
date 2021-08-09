@@ -24,7 +24,10 @@ export class GrupoService {
     //   headers: new HttpHeaders().set('Authorization', environment.token)
     // }
 
-  // getAllGrupo(): Observable<Grupo[]>{
+  getAllGrupo(): Observable<Grupo[]>{
+
+
+       return this.http.get<Grupo[]>('https://ciclonext.herokuapp.com/api/v1/grupo/getAll', this.token)
 
   //      return this.http.get<Grupo[]>('https://ciclonext.herokuapp.com/api/v1/grupo/getAll', this.token)
   // }
@@ -55,24 +58,47 @@ export class GrupoService {
  getAllGrupo(): Observable<Grupo[]>{
 
        return this.http.get<Grupo[]>('http://localhost:8080/api/v1/grupo/getAll', this.token)
+
   }
 
   getByIdGrupo(id: number): Observable<Grupo>{
-    return this.http.get<Grupo>(`http://localhost:8080/api/v1/grupo/${id}`, this.token)
+    return this.http.get<Grupo>(`https://ciclonext.herokuapp.com/api/v1/grupo/${id}`, this.token)
 
   }
 
   postGrupo(grupo: Grupo): Observable<Grupo>{
-    return this.http.post<Grupo>('http://localhost:8080/api/v1/grupo', grupo, this.token)
+    return this.http.post<Grupo>('https://ciclonext.herokuapp.com/api/v1/grupo', grupo, this.token)
   }
 
   putGrupo(grupo: Grupo): Observable<Grupo>{
-    return this.http.put<Grupo>('http://localhost:8080/api/v1/grupo', grupo, this.token)
+    return this.http.put<Grupo>('https://ciclonext.herokuapp.com/api/v1/grupo', grupo, this.token)
   }
 
   deleteGrupo(id: number){
-    return this.http.delete(`http://localhost:8080/api/v1/grupo/${id}`, this.token)
+    return this.http.delete(`https://ciclonext.herokuapp.com/api/v1/grupo/${id}`, this.token)
   }
+
+//  getAllGrupo(): Observable<Grupo[]>{
+
+//        return this.http.get<Grupo[]>('http://localhost:8080/api/v1/grupo/getAll', this.token)
+//   }
+
+//   getByIdGrupo(id: number): Observable<Grupo>{
+//     return this.http.get<Grupo>(`http://localhost:8080/api/v1/grupo/${id}`, this.token)
+
+//   }
+
+//   postGrupo(grupo: Grupo): Observable<Grupo>{
+//     return this.http.post<Grupo>('http://localhost:8080/api/v1/grupo', grupo, this.token)
+//   }
+
+//   putGrupo(grupo: Grupo): Observable<Grupo>{
+//     return this.http.put<Grupo>('http://localhost:8080/api/v1/grupo', grupo, this.token)
+//   }
+
+//   deleteGrupo(id: number){
+//     return this.http.delete(`http://localhost:8080/api/v1/grupo/${id}`, this.token)
+//   }
 
 
   //http://localhost:8080/usuario/

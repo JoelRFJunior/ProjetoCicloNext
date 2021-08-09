@@ -15,33 +15,33 @@ export class AuthService {
 
   ) { }
 
+entrar(usuarioLoginDTO: UsuarioLoginDTO ): Observable<UsuarioLoginDTO>{
+  return this.http.post<UsuarioLoginDTO>('https://ciclonext.herokuapp.com/api/v1/usuario/logar', usuarioLoginDTO)
+
+}
+
+cadastrar(usuario: Usuario): Observable<Usuario>{
+  return this.http.post<Usuario>('https://ciclonext.herokuapp.com/api/v1/usuario/cadastrar', usuario)
+
+}
+
+getByIdUser(id: number): Observable<Usuario>{
+  return this.http.get<Usuario>(`http://ciclonext.herokuapp.com/api/v1/usuario/${id}`)
+}
+
 // entrar(usuarioLoginDTO: UsuarioLoginDTO ): Observable<UsuarioLoginDTO>{
-//   return this.http.post<UsuarioLoginDTO>('https://ciclonext.herokuapp.com/api/v1/usuario/logar', usuarioLoginDTO)
+//   return this.http.post<UsuarioLoginDTO>('http://localhost:8080/api/v1/usuario/logar', usuarioLoginDTO)
 
 // }
 
 // cadastrar(usuario: Usuario): Observable<Usuario>{
-//   return this.http.post<Usuario>('https://ciclonext.herokuapp.com/api/v1/usuario/cadastrar', usuario)
+//   return this.http.post<Usuario>('http://localhost:8080/api/v1/usuario/cadastrar', usuario)
 
 // }
 
 // getByIdUser(id: number): Observable<Usuario>{
 //   return this.http.get<Usuario>(`http://localhost:8080/usuarios/${id}`)
 // }
-
-entrar(usuarioLoginDTO: UsuarioLoginDTO ): Observable<UsuarioLoginDTO>{
-  return this.http.post<UsuarioLoginDTO>('http://localhost:8080/api/v1/usuario/logar', usuarioLoginDTO)
-
-}
-
-cadastrar(usuario: Usuario): Observable<Usuario>{
-  return this.http.post<Usuario>('http://localhost:8080/api/v1/usuario/cadastrar', usuario)
-
-}
-
-getByIdUser(id: number): Observable<Usuario>{
-  return this.http.get<Usuario>(`http://localhost:8080/usuarios/${id}`)
-}
 
 
 logado(){
