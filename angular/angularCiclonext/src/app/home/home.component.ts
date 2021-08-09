@@ -47,10 +47,10 @@ export class HomeComponent implements OnInit {
 
     }
     this.findAllPostagem()
-    this.findUsuarioById(this.idUser)
+    this.findUsuarioById()
 
   }
-  findUsuarioById(id: number) {
+  findUsuarioById() {
     this.postagemService.procurarUsuario(this.idUser).subscribe((resp: Usuario) => {
       this.user = resp
     })

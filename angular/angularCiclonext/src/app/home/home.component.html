@@ -41,16 +41,14 @@
                 <button class="btn btn-outline-success" type="button" (click)='postarNoFeed()'>Publicar</button>
             </div>
             <div class="container" style="background-color: #E8E8E8;">
-                <div class="dropdown p-3">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li><button class="dropdown-item" type="button">Action</button></li>
-                        <li><button class="dropdown-item" type="button">Another action</button></li>
-                        <li><button class="dropdown-item" type="button">Something else here</button></li>
-                    </ul>
+                <div class="form-group mb-3 px-lg-5">
+                    <select class="form-select" name="tipoPostagem" id="tipoPostagem">
+                        <option>Filtrar tipo de postagens</option>
+                        <option value="TEXTO">Texto</option>
+                        <option value="DOACAO">Doação</option>
+                        <option value="AGRADECIMENTO">Agradecimento</option>
+                        <option value="OUTROS">Outros</option>
+                    </select>
                 </div>
 
                 <!--- \\\\\\\Post-->
@@ -68,17 +66,14 @@
                             </div>
                             <div>
                                 <div class="dropdown">
-                                    <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-ellipsis-h"></i>
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                      
                                     </button>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
-                                        <div class="h6 dropdown-header">Configuration</div>
-                                        <a class="dropdown-item" href="#">Save</a>
-                                        <a class="dropdown-item" href="#">Hide</a>
-                                        <a class="dropdown-item" href="#">Report</a>
-                                    </div>
-                                </div>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                      <li><a class="dropdown-item" [routerLink] = "['/postagem-edit', post.idPostagem]" href="#">Editar</a></li>
+                                      <li><a class="dropdown-item" [routerLink] = "['/postagem-delete', post.idPostagem]" href="#">Apagar</a></li>
+                                    </ul>
+                                  </div>
                             </div>
                         </div>
 

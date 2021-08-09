@@ -19,17 +19,13 @@ export class PostagemService {
   // }
   
    token = {
-     headers: new HttpHeaders().set('Authorization', 'Basic b2RpbkBjaWNsb25leHQuY29tOm9kaW4xMjM0')
+     headers: new HttpHeaders().set('Authorization', 'Basic amFtaWx5bWVsbzc4N0BnbWFpbC5jb206MTIz')
   }
 
 
   getAllPostagem(): Observable<Postagem[]> {
    
     return this.http.get<Postagem[]>('https://ciclonext.herokuapp.com/api/v1/postagem/getAll', this.token)
-  // getAllPostagem(): Observable<Postagem[]> {
-  //  console.log("why:" + this.token)
-  //   return this.http.get<Postagem[]>('https://ciclonext.herokuapp.com/api/v1/postagem/getAll', this.token)
-
     
   }
 
@@ -50,6 +46,9 @@ export class PostagemService {
     return this.http.put<Postagem>('https://ciclonext.herokuapp.com/api/v1/postagem', postagem, this.token)
   }
 
+  deletePostagem(id: number){
+    return this.http.delete(`https://ciclonext.herokuapp.com/api/v1/postagem/${id}`, this.token)
+  }
 
   // getAllPostagem(): Observable<Postagem[]> {
    

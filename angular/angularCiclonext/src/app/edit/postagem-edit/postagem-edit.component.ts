@@ -17,6 +17,7 @@ export class PostagemEditComponent implements OnInit {
   grupo: Grupo = new Grupo()
   listaGrupos: Grupo[]
   idGrupo: number
+  tipoPostagem: string 
 
   constructor(
     private router: Router,
@@ -56,9 +57,16 @@ export class PostagemEditComponent implements OnInit {
     })
   }
 
+
+  tipoDaPostagem(event: any) {
+    this.tipoPostagem = event.target.value
+
+  }
+
 atualizar(){
   this.grupo.idGrupo = this.idGrupo
   this.postagem.grupo = this.grupo
+  this.postagem.tipoPostagem = this.tipoPostagem
 
   this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem) => {
     this.postagem = resp
