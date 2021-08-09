@@ -14,17 +14,22 @@ export class PostagemService {
   constructor(private http: HttpClient) {}
 
 
-  token = {
-    headers: new HttpHeaders().set('Authorization', 'Basic b2RpbkBjaWNsb25leHQuY29tOm9kaW4xMjM0')
-  }
-  
-  //  token = {
-  //    headers: new HttpHeaders().set('Authorization', environment.token)
+  // token = {
+  //   headers: new HttpHeaders().set('Authorization', 'Basic b2RpbkBjaWNsb25leHQuY29tOm9kaW4xMjM0')
   // }
+  
+   token = {
+     headers: new HttpHeaders().set('Authorization', 'Basic b2RpbkBjaWNsb25leHQuY29tOm9kaW4xMjM0')
+  }
+
 
   getAllPostagem(): Observable<Postagem[]> {
    
     return this.http.get<Postagem[]>('https://ciclonext.herokuapp.com/api/v1/postagem/getAll', this.token)
+  // getAllPostagem(): Observable<Postagem[]> {
+  //  console.log("why:" + this.token)
+  //   return this.http.get<Postagem[]>('https://ciclonext.herokuapp.com/api/v1/postagem/getAll', this.token)
+
     
   }
 

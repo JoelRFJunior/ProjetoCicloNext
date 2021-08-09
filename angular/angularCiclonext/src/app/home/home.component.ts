@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Usuario } from '../model/Usuario';
 import { AuthService } from '../service/auth.service';
+import { GrupoService } from '../service/grupo.service';
 import { PostagemService } from '../service/postagem.service';
 
 
@@ -31,7 +32,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private postagemService: PostagemService
+    private postagemService: PostagemService,
+    private grupoService: GrupoService
     
   ) { }
 
@@ -69,6 +71,7 @@ export class HomeComponent implements OnInit {
   findAllPostagem() {
     this.postagemService.getAllPostagem().subscribe((resp: Postagem[]) => {
       this.listaPostagens = resp
+      console.log("Postagem "+JSON.stringify( this.listaPostagens))
     })
   }
 

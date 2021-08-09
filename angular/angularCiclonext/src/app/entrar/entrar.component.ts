@@ -39,7 +39,7 @@ export class EntrarComponent implements OnInit {
       environment.urlImagemPerfil = this.userLogin.urlImagemPerfil
       environment.idUsuario = this.userLogin.idUsuario
      
-      
+      localStorage.setItem('token',this.userLogin.token)
       console.log('ao entrar : ' + environment.token)
       console.log(environment.nome)
 
