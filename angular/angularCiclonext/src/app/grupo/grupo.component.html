@@ -147,8 +147,8 @@
                     </div>
                      -->
 
-                  <a class="text-info" href="">Editar</a>
-                  <a class="text-danger" href="">Apagar</a>
+                     <a [routerLink] = "['/grupo-edit', item.idGrupo]" class="text-info" href="">Editar</a>
+                     <a [routerLink] = "['/grupo-delete', item.idGrupo]" class="text-danger" href="">Apagar</a>
 
                 </div>
               </div>

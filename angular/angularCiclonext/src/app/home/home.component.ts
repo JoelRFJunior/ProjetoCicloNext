@@ -30,9 +30,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    
     private authService: AuthService,
-    private postagemService: PostagemService,
+    private postagemService: PostagemService
     
   ) { }
 

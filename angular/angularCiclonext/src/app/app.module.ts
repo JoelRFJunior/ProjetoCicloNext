@@ -15,6 +15,9 @@ import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { HomeComponent } from './home/home.component';
 import { GrupoComponent } from './grupo/grupo.component';
 import { PostagemComponent } from './postagem/postagem.component';
+import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.component';
+import { GrupoEditComponent } from './edit/grupo-edit/grupo-edit.component';
+import { GrupoDeleteComponent } from './delete/grupo-delete/grupo-delete.component';
 
 
 
@@ -29,7 +32,10 @@ import { PostagemComponent } from './postagem/postagem.component';
     CadastrarComponent,
     HomeComponent,
     GrupoComponent,
-    PostagemComponent
+    PostagemComponent,
+    PostagemEditComponent,
+    GrupoEditComponent,
+    GrupoDeleteComponent
   ],
   imports: [
     BrowserModule,
