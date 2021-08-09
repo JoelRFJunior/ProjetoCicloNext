@@ -8,6 +8,7 @@ import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.compon
 import { EntrarComponent } from './entrar/entrar.component';
 import { GrupoComponent } from './grupo/grupo.component';
 import { HomeComponent } from './home/home.component';
+import { PostagemComponent } from './postagem/postagem.component';
 import { SobreNosComponent } from './sobre-nos/sobre-nos.component';
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'sobre-nos', component: SobreNosComponent },
   { path: 'home', component: HomeComponent },
   { path: 'grupo', component: GrupoComponent },
+  { path: 'postagem', component: PostagemComponent },
   { path: 'grupo-edit/:id', component: GrupoEditComponent },
   { path: 'grupo-delete/:id', component: GrupoDeleteComponent },
   { path: 'postagem-edit/:id', component: PostagemEditComponent },

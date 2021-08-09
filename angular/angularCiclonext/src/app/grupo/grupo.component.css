@@ -1,0 +1,35 @@
+.fs-16{
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.modalsize{
+width: 200px;
+height: 500px;
+
+}
+
+.bg-color-voltar{
+    background-color: #E59347;
+    color: white;
+    border-radius: 40px;
+    
+}
+
+.bg-color-cadastrar{
+    background-color: #34878B;
+    color: white;
+    border-radius: 40px;
+}
+
+.bg-color-criargrupo{
+    background-color: #414F72;
+    color: white;
+    border-radius: 30px;
+}

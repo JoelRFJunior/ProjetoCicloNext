@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
 
     }
     this.findAllPostagem()
-    this.findUsuarioById()
+   // this.findUsuarioById()
 
   }
   findUsuarioById() {
