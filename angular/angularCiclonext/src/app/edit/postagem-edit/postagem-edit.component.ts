@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Grupo } from 'src/app/model/Grupo';
 import { Postagem } from 'src/app/model/Postagem';
+import { Usuario } from 'src/app/model/Usuario';
 import { GrupoService } from 'src/app/service/grupo.service';
 import { PostagemService } from 'src/app/service/postagem.service';
 import { environment } from 'src/environments/environment.prod';
@@ -12,12 +13,19 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./postagem-edit.component.css']
 })
 export class PostagemEditComponent implements OnInit {
+
+  usuario: Usuario = new Usuario()
+  idUsuario = environment.idUsuario
+
   postagem: Postagem = new Postagem()
+  listaPostagens: Postagem[]
+  tipoPostagem: string
+  idPostagem: number
+
 
   grupo: Grupo = new Grupo()
   listaGrupos: Grupo[]
   idGrupo: number
-  tipoPostagem: string 
 
   constructor(
     private router: Router,
@@ -26,32 +34,36 @@ export class PostagemEditComponent implements OnInit {
     private grupoService: GrupoService
   ) { }
 
-  ngOnInit(){
+  ngOnInit() {
 
-    window.scroll(0,0)
+    window.scroll(0, 0)
 
     if (environment.token == '') {
       alert('Sua sessão expirou, faça o login novamente.')
       this.router.navigate(['/entrar'])
     }
     let id = this.route.snapshot.params['id']
-    this.findByIdPostagem(id)
-    this.findAllGrupos()
+    this.idPostagem = id
+    this.findByIdPostagem(this.idPostagem)
+    // this.findAllGrupos()
+
+    console.log(this.idPostagem)
+
   }
 
-  findByIdPostagem(id: number){
+  findByIdPostagem(id: number) {
     this.postagemService.getByIdPostagem(id).subscribe((resp: Postagem) => {
       this.postagem = resp
     })
   }
 
-  findByIdGrupo(){
+  findByIdGrupo() {
     this.grupoService.getByIdGrupo(this.idGrupo).subscribe((resp: Grupo) => {
       this.grupo = resp
     })
   }
 
-  findAllGrupos(){
+  findAllGrupos() {
     this.grupoService.getAllGrupo().subscribe((resp: Grupo[]) => {
       this.listaGrupos = resp
     })
@@ -63,18 +75,24 @@ export class PostagemEditComponent implements OnInit {
 
   }
 
-atualizar(){
-  this.grupo.idGrupo = this.idGrupo
-  this.postagem.grupo = this.grupo
-  this.postagem.tipoPostagem = this.tipoPostagem
+  atualizar() {
+    // this.postagem.idPostagem = this.idPostagem
+    //  this.postagem.grupo = this.grupo
+    this.postagem.tipoPostagem = this.tipoPostagem
+    // this.usuario.idUsuario = this.idUsuario
+    //   this.postagem.autor = this.usuario
 
-  this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem) => {
-    this.postagem = resp
-    alert('Postagem atualizada com sucesso.')
-    this.router.navigate(['/home'])
-  })
 
-}
+
+    // console.log(this.postagem.autor.idUsuario)
+
+    this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem) => {
+      this.postagem = resp
+      alert('Postagem atualizada com sucesso.')
+      this.router.navigate(['/postagem'])
+    })
+
+  }
 
 
 }
