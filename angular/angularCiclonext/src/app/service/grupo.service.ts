@@ -17,7 +17,7 @@ export class GrupoService {
 
     
   token = {
-    headers: new HttpHeaders().set('Authorization', 'Basic b2RpbkBjaWNsb25leHQuY29tOm9kaW4xMjM0')
+    headers: new HttpHeaders().set('Authorization', 'Basic amFtaWx5bWVsbzc4N0BnbWFpbC5jb206MTIz')
   }
 
     //  token = {
@@ -25,39 +25,7 @@ export class GrupoService {
     // }
 
   getAllGrupo(): Observable<Grupo[]>{
-
-
-       return this.http.get<Grupo[]>('https://ciclonext.herokuapp.com/api/v1/grupo/getAll', this.token)
-
-  //      return this.http.get<Grupo[]>('https://ciclonext.herokuapp.com/api/v1/grupo/getAll', this.token)
-  // }
-
-  // getByIdGrupo(id: number): Observable<Grupo>{
-  //   return this.http.get<Grupo>(`https://ciclonext.herokuapp.com/api/v1/grupo/${id}`, this.token)
-
-  // }
-
-  // postGrupo(grupo: Grupo): Observable<Grupo>{
-  //   return this.http.post<Grupo>('https://ciclonext.herokuapp.com/api/v1/grupo', grupo, this.token)
-  // }
-
-  // putGrupo(grupo: Grupo): Observable<Grupo>{
-  //   return this.http.put<Grupo>('https://ciclonext.herokuapp.com/api/v1/grupo', grupo, this.token)
-  // }
-
-  // deleteGrupo(id: number){
-  //   return this.http.delete(`https://ciclonext.herokuapp.com/api/v1/grupo/${id}`, this.token)
-  // }
-
-  // getAllPostagem(): Observable<Postagem[]> {
-   
-  //   return this.http.get<Postagem[]>('https://ciclonext.herokuapp.com/api/v1/postagem/getAll', this.token)
-    
-  // }
-
- getAllGrupo(): Observable<Grupo[]>{
-
-       return this.http.get<Grupo[]>('http://localhost:8080/api/v1/grupo/getAll', this.token)
+    return this.http.get<Grupo[]>('https://ciclonext.herokuapp.com/api/v1/grupo/getAll', this.token)
 
   }
 

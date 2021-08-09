@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { GrupoDeleteComponent } from './delete/grupo-delete/grupo-delete.component';
+import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delete.component';
 import { GrupoEditComponent } from './edit/grupo-edit/grupo-edit.component';
+import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { GrupoComponent } from './grupo/grupo.component';
 import { HomeComponent } from './home/home.component';
@@ -18,7 +20,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'grupo', component: GrupoComponent },
   { path: 'grupo-edit/:id', component: GrupoEditComponent },
-  { path: 'grupo-delete/:id', component: GrupoDeleteComponent }
+  { path: 'grupo-delete/:id', component: GrupoDeleteComponent },
+  { path: 'postagem-edit/:id', component: PostagemEditComponent },
+  { path: 'postagem-delete/:id', component: PostagemDeleteComponent }
  
 
 ];
