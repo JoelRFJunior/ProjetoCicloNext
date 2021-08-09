@@ -27,7 +27,7 @@ public class Postagem {
 	private Long idPostagem;
 
 	@NotEmpty(message = "Escreva aqui o texto da sua postagem.")
-	@Size(min = 10, max = 500)
+	@Size(max = 500)
 	private String corpo;
 
 	@Size(max = 500)
@@ -40,7 +40,7 @@ public class Postagem {
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
 	@ManyToOne
-	@JsonIgnoreProperties({"grupo","autor", " postagens"," gruposCriados", "publicacoes" })
+	@JsonIgnoreProperties({"grupo", "postagens"," gruposCriados", "publicacoes" })
 	private Grupo grupo;
 
 	@ManyToOne

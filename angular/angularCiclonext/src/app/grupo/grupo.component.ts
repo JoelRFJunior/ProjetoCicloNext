@@ -72,6 +72,7 @@ export class GrupoComponent implements OnInit {
   getAllPostagens() {
     this.postagemService.getAllPostagem().subscribe((resp: Postagem[]) => {
       this.listaPostagens = resp
+      console.log("Postagem"+ JSON.stringify( this.listaPostagens))
     })
   }
 
