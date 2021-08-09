@@ -25,107 +25,216 @@
         <h1 class="fs-54 text-center">Grupos</h1>
         <h5 class="fs-18 text-center">Grupos Criados:</h5>
 
-        <!-- Cards de grupos que você criou participa -->
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-          <div class="col mt-5" *ngFor='let item of usuario.gruposCriados'>
-            <div class="card text-center">
-              <img src="{{item.urlImagemGrupo}}" class="card-img-top" alt="">
-              <div class="card-body">
-                <h5 class="card-title m-0">{{item.nomeGrupo}}</h5>
-                <small class="text-muted">Tema: {{item.descricao}}</small>
-                <!-- <p class="card-text mt-3">{{item.criador.nome}}</p> -->
-              </div>
+        <!-- div class="container mb-5 mt-5" id="postagens"> -->
 
-              <!--
-                <div class="card-footer">
-                  <small class="text-muted">{{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date: 'HH:mm'}}</small>
+        <!-- <nav>
+          <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+            <button class="nav-link active text-secondary fw-bold" id="nav-todasPostagens-tab" data-bs-toggle="tab"
+              data-bs-target="#todasPostagens" type="button" role="tab" aria-controls="nav-todasPostagens"
+              aria-selected="true">Todas as Postagens</button>
+            <button class="nav-link text-secondary fw-bold" id="nav-minhasPostagens-tab"
+              data-bs-toggle="tab" data-bs-target="#minhasPostagens" type="button" role="tab"
+              aria-controls="nav-minhasPostagens" aria-selected="false">Minhas Postagens</button>
+            <button class="nav-link text-secondary fw-bold" id="nav-postagemTema-tab" data-bs-toggle="tab"
+              data-bs-target="#postagemTema" type="button" role="tab" aria-controls="nav-postagemTema"
+              aria-selected="false">Postagens por tema</button>
+          </div>
+        </nav>
+      
+        <div class="tab-content mt-5 mb-5" id="nav-tabContent">
+      
+          <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-todasPostagens-tab">
+      
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              <div class="col" *ngFor='let item of listaPostagens'>
+                <div class="card text-center">
+                  <img src="" class="card-img-top" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title m-0">{{item.titulo}}</h5>
+                    <small class="text-muted">Tema: {{item.tema.descricao}}</small>
+                    <p class="card-text mt-3">{{item.texto}}</p>
+                    <p class="card-text"><small class="text-muted">by: {{item.usuario.nome}}</small></p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted">{{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date: 'HH:mm'}}</small>
+                  </div>
                 </div>
-                 -->
+              </div>
+            </div>
+      
+          </div>
+      
+          <div class="tab-pane fade" id="minhasPostagens" role="tabpanel" aria-labelledby="nav-minhasPostagens-tab">
+      
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              <div class="col mt-2" *ngFor='let item of user.postagem'>
+                <div class="card text-center">
+                  <img src="" class="card-img-top" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title m-0">{{item.titulo}}</h5>
+                    <small class="text-muted">Tema: {{item.tema.descricao}}</small>
+                    <p class="card-text mt-3">{{item.texto}}</p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted">{{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date: 'HH:mm'}}</small>
+                  </div>
+      
+                  <a [routerLink] = "['/postagem-edit', item.id]" class="text-info" href="">Editar</a>
+                  <a [routerLink] = "['/postagem-delete', item.id]" class="text-danger" href="">Apagar</a>
+      
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="tab-pane fade" id="postagemTema" role="tabpanel" aria-labelledby="nav-postagemTema-tab">
+            
+            <div class="row row-cols-1 row-cols-md-3 g-4" *ngFor='let tema of listaTemas'>
+              <div class="col" *ngFor='let item of tema.postagem'>
+                <div class="card text-center mb-3">
+                  <div class="card-body">
+                    <h5 class="card-title m-0">{{item.titulo}}</h5>
+                    <p class="card-text mt-3">{{item.texto}}</p>
+                    <p class="card-text"><small class="text-muted">by: {{item.usuario.nome}}</small></p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted">{{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date: 'HH:mm'}}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        
+        </div>
+      
+      </div> -->
 
-              <!-- <a [routerLink] = "['/postagem-edit', item.id]" class="text-info" href="">Editar</a> -->
-              <!-- <a [routerLink] = "['/postagem-delete', item.id]" class="text-danger" href="">Apagar</a> -->
 
+        <nav>
+          <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+            <button class="nav-link active text-secondary fw-bold" id="nav-meusGrupos-tab" data-bs-toggle="tab"
+              data-bs-target="#meusGrupos" type="button" role="tab" aria-controls="nav-meusGrupos"
+              aria-selected="true">Meus Grupos</button>
+            <button class="nav-link text-secondary fw-bold" id="nav-todosGrupos-tab" data-bs-toggle="tab"
+              data-bs-target="#todosGrupos" type="button" role="tab" aria-controls="nav-todosGrupos"
+              aria-selected="false">Todos os Grupos</button>
+            <button class="nav-link text-secondary fw-bold" id="nav-postagemTema-tab" data-bs-toggle="tab"
+              data-bs-target="#postagemTema" type="button" role="tab" aria-controls="nav-postagemTema"
+              aria-selected="false">Postagem grupo</button>
+          </div>
+        </nav>
+
+
+        <div class="tab-content mt-5 mb-5" id="nav-tabContent">
+
+          <div class="tab-pane fade show active" id="meusGrupos" role="tabpanel"
+            aria-labelledby="nav-meusGrupos-tab">
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              <div class="col mt-5" *ngFor='let item of usuario.gruposCriados'>
+                <div class="card text-center">
+                  <img src="{{item.urlImagemGrupo}}" class="card-img-top" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title m-0">{{item.nomeGrupo}}</h5>
+                    <small class="text-muted">Tema: {{item.descricao}}</small>
+                    <!-- <p class="card-text mt-3">{{item.criador.nome}}</p> -->
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">{{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date: 'HH:mm'}}</small>
+                    </div>
+                     -->
+
+                  <a class="text-info" href="">Editar</a>
+                  <a class="text-danger" href="">Apagar</a>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- Cards de grupos que você criou participa -->
+
+        </div>
+
+        <div class="tab-pane fade" id="todosGrupos" role="tabpanel" aria-labelledby="nav-todosGrupos-tab">
+          <div class="container">
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
+              <div class="col mt-5" *ngFor='let item of listaGrupo'>
+                <div class="card text-center">
+                  <img src="{{item.urlImagemGrupo}}" class="card-img-top" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title m-0">{{item.nomeGrupo}}</h5>
+                    <small class="text-muted">Tema: {{item.descricao}}</small>
+                    <p class="card-text mt-3">criado por: {{item.criador.nome}}</p>
+                  </div>
+
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <h1 class="fs-54 text-center mt-5">Todos os Grupos</h1>
-        <h5 class="fs-18 text-center mt-3">todos os grupos</h5>
-        <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
-          <div class="col mt-5" *ngFor='let item of listaGrupo'>
-            <div class="card text-center">
-              <img src="{{item.urlImagemGrupo}}" class="card-img-top" alt="">
+
+
+        <div class="col-md-2 bg-cinza-claro">
+
+          <div class="container mt-5">
+
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+              <div class="card-header">Mensagens Privadas</div>
               <div class="card-body">
-                <h5 class="card-title m-0">{{item.nomeGrupo}}</h5>
-                <small class="text-muted">Tema: {{item.descricao}}</small>
-                <p class="card-text mt-3">criado por: {{item.criador.nome}}</p>
+                <span
+                  class="position-absolute top-0 start-100 translate-middle p-lg-2 bg-danger border border-light rounded-circle">
+                  <span class="visually-hidden">New alerts</span>
+                </span>
+                <h5 class="card-title">Bruno</h5>
+                <p class="card-text">Não briga com o Joel Jamily!!!!!</p>
               </div>
-
             </div>
+
+
           </div>
-        </div>
-      </div>
-
-
-
-      <div class="col-md-2 bg-cinza-claro">
-
-        <div class="container mt-5">
-
-          <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-            <div class="card-header">Mensagens Privadas</div>
-            <div class="card-body">
-              <span
-                class="position-absolute top-0 start-100 translate-middle p-lg-2 bg-danger border border-light rounded-circle">
-                <span class="visually-hidden">New alerts</span>
-              </span>
-              <h5 class="card-title">Bruno</h5>
-              <p class="card-text">Não briga com o Joel Jamily!!!!!</p>
-            </div>
-          </div>
-
 
         </div>
 
-      </div>
 
 
-
-      <!-- Modal -->
-      <div class="modal fade" id="novoGrupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Criar grupo</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="form-group">
-                <label for="nomeGrupo">Nome do Grupo</label>
-                <input [(ngModel)]='grupo.nomeGrupo' type="text" class="form-control" id="nomeGrupo"
-                  placeholder="Digite o nome">
+        <!-- Modal -->
+        <div class="modal fade" id="novoGrupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Criar grupo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="form-group">
-                <label for="descricao">Descrição</label>
-                <input [(ngModel)]='grupo.descricao' type="text" class="form-control" id="descricao"
-                  placeholder="Digite o descrição">
-              </div>
-              <div class="form-group">
-                <label for="urlImagemGrupo">Imagem do grupo</label>
-                <input [(ngModel)]='grupo.urlImagemGrupo' type="text" class="form-control" id="urlImagemGrupo"
-                  placeholder="Digite a url da imagem do grupo">
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)='cadastrar()'>Criar</button>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="nomeGrupo">Nome do Grupo</label>
+                  <input [(ngModel)]='grupo.nomeGrupo' type="text" class="form-control" id="nomeGrupo"
+                    placeholder="Digite o nome">
+                </div>
+                <div class="form-group">
+                  <label for="descricao">Descrição</label>
+                  <input [(ngModel)]='grupo.descricao' type="text" class="form-control" id="descricao"
+                    placeholder="Digite o descrição">
+                </div>
+                <div class="form-group">
+                  <label for="urlImagemGrupo">Imagem do grupo</label>
+                  <input [(ngModel)]='grupo.urlImagemGrupo' type="text" class="form-control" id="urlImagemGrupo"
+                    placeholder="Digite a url da imagem do grupo">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary" (click)='cadastrar()'>Criar</button>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
 
+
       </div>
-
-
-    </div>
