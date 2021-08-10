@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'grupo-delete/:id', component: GrupoDeleteComponent },
   { path: 'postagem-edit/:id', component: PostagemEditComponent },
   { path: 'postagem-delete/:id', component: PostagemDeleteComponent }
- 
+  
 
 ];
 

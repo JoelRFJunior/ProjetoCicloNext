@@ -1,48 +1,24 @@
 <div class="container-fluid">
     <div class="row justify-content-md-center">
 
-        <div class="col-md-2 bg-cinza-claro">
+        
 
-            <div class="d-flex justify-content-center p-3">
-                <img src="{{foto}}" alt="foto perfil do usuario" height="250px" width="250px">
-            </div>
+            <div class="col-md-2 bg-cinza-claro">
 
-            <h3 class="text-center mb-5">{{nome}}</h3>
-            <h5 class="text-center">Grupos criados</h5>
+                <div class="d-flex justify-content-center p-3">
+                    <img src="{{foto}}" alt="foto perfil do usuario" height="200px" width="200px" class="rounded-circle">
+                </div>
+    
+                <h3 class="text-center mb-5">{{nome}}</h3>
+                <h5 class="text-center">Grupos criados</h5>
+    
+          
+    
 
         </div>
 
         <div class="col-md-8 mt-5">
-            <!-- <div class="form-group mb-3 px-lg-5">
-                <label for="urlImagem">URLImagem</label>
-                <input class="form-control" type="text" name="urlImagem" id="urlImagem"
-                    placeholder="Insira o link da sua foto" [(ngModel)]='postagem.urlImagemVideo'>
-            </div>
-            <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="textoDaMensagem"
-                    [(ngModel)]='postagem.corpo'></textarea>
-                <label for="textoDaMensagem">Escreva aqui..</label>
-            </div>
-            <div class="COLOCAR A IMAGEM AQUI"></div>
 
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end p-3">
-                <div class="form-group mb-3">
-                    <label for="tipoDaPostagem">Tipo de postagem</label>
-                    <select class="form-control" name="tipoDaPostagem" id="tipoDaPostagem"
-                        (change)='tipoDaPostagem($event)'>
-                        <option>Selecione um tipo de mensagem</option>
-                        <option value="TEXTO">Texto</option>
-                        <option value="DOACAO">Doação</option>
-                        <option value="AGRADECIMENTO">Agradecimento</option>
-                        <option value="OUTROS">Outros</option>
-                    </select>
-                </div>
-                <button class="btn fw-bold bg-color-cancelar my-3" type="submit"
-                    (click)='cancelarPost()'>cancelar</button>
-
-                <button class="btn fw-bold bg-color-publicar my-3" type="submit"
-                    (click)='postarNoFeed()'>Publicar</button>
-            </div> -->
             <div class="container" style="background-color: #E8E8E8;">
                 <div class="form-group mb-3 px-lg-5">
                     <select class="form-select" name="tipoPostagem" id="tipoPostagem">
@@ -60,7 +36,8 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="me-2 ">
-                                    <img class="rounded-circle " width="60" height="60" src= '{{post.autor.urlImagemPerfil}}' alt="">
+                                    <img class="rounded-circle " width="60" height="60"
+                                        src='{{post.autor.urlImagemPerfil}}' alt="">
                                 </div>
                                 <div class="ms-3">
                                     <!-- <div class="h5 m-0">{{post.autor.nome}}</div> -->
@@ -86,7 +63,8 @@
 
 
                     <div class="card-body">
-                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{post.data | date: 'dd/MM/yyyy'}} às {{post.data | date: 'HH:mm'}}</div>
+                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{post.data | date: 'dd/MM/yyyy'}}
+                            às {{post.data | date: 'HH:mm'}}</div>
 
                         <img src="{{post.urlImagemVideo}}" alt=""
                             class="max-width-height-numero d-flex justify-content-center">
@@ -107,13 +85,13 @@
 
             </div>
 
+        </div>
 
+        <div class="col-md-2 bg-cinza-claro">
 
-            <div class="col-md-2 bg-cinza-claro">
+            <!-- <div class="container mt-5"> -->
 
-                <div class="container mt-5">
-
-                    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+            <!-- <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                         <div class="card-header">Mensagens Privadas</div>
                         <div class="card-body">
                             <span
@@ -123,12 +101,12 @@
                             <h5 class="card-title">Bruno</h5>
                             <p class="card-text">Não briga com o Joel Jamily!!!!!</p>
                         </div>
-                    </div>
+                    </div> -->
 
 
-                </div>
-
-            </div>
+            <!-- </div> -->
 
         </div>
+
     </div>
+</div>
