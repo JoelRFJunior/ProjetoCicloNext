@@ -31,7 +31,7 @@
                 </div>
 
                 <!--- \\\\\\\Post-->
-                <div class="card gedf-card" *ngFor='let post of user.publicacoes'>
+                <div class="card gedf-card" *ngFor='let post of user.publicacoes | orderBy : key : reverse'>
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
