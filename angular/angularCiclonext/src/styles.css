@@ -12,3 +12,10 @@
     background-color: #E59347;
     
 }
+
+a { cursor: pointer; }
+
+.pagination {
+    justify-content: center;
+    flex-wrap: wrap;
+}

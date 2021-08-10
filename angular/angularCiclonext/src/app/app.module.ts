@@ -20,6 +20,7 @@ import { GrupoEditComponent } from './edit/grupo-edit/grupo-edit.component';
 import { GrupoDeleteComponent } from './delete/grupo-delete/grupo-delete.component';
 import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delete.component';
 import { UserEditComponent } from './edit/user-edit/user-edit.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 
@@ -39,13 +40,16 @@ import { UserEditComponent } from './edit/user-edit/user-edit.component';
     GrupoEditComponent,
     GrupoDeleteComponent,
     PostagemDeleteComponent,
-    UserEditComponent
+    UserEditComponent,
+    PerfilComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    
   ],
   providers: [{
     provide: LocationStrategy,

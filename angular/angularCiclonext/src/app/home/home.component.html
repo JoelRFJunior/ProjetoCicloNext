@@ -1,21 +1,23 @@
 <div class="container-fluid">
     <div class="row justify-content-md-center">
-
-        <div class="col-md-2 bg-cinza-claro">
+        
+       <div class="col-md-2 bg-cinza-claro">
 
             <div class="d-flex justify-content-center p-3">
-                <img src="{{foto}}" alt="foto perfil do usuario" height="250px" width="250px">
+                <img src="{{foto}}" alt="foto perfil do usuario" height="200px" width="200px" class="rounded-circle">
             </div>
 
             <h3 class="text-center mb-5">{{nome}}</h3>
             <h5 class="text-center">Grupos criados</h5>
 
-        </div>
+        </div> 
 
         <div class="col-md-8 mt-5">
+            
             <div class="form-group mb-3 px-lg-5">
+                
                 <label for="urlImagem">URLImagem</label>
-                <input class="form-control" type="text" name="urlImagem" id="urlImagem"
+                <input  class="form-control" type="text" name="urlImagem" id="urlImagem"
                     placeholder="Insira o link da sua foto" [(ngModel)]='postagem.urlImagemVideo'>
             </div>
             <div class="form-floating">
@@ -36,10 +38,13 @@
                         <option value="OUTROS">Outros</option>
                     </select>
                 </div>
-                <button class="btn btn-primary me-md-2" type="button" (click)='cancelarPost()'>cancelar</button>
+                <button class="btn fw-bold bg-color-cancelar my-3" type="submit"
+                (click)='cancelarPost()'>cancelar</button>
 
-                <button class="btn btn-outline-success" type="button" (click)='postarNoFeed()'>Publicar</button>
+            <button class="btn fw-bold bg-color-publicar my-3" type="submit"
+                (click)='postarNoFeed()'>Publicar</button>
             </div>
+            <img src="{{postagem.urlImagemVideo}}" alt="" class="img-front">
             <div class="container" style="background-color: #E8E8E8;">
                 <div class="form-group mb-3 px-lg-5">
                     <select class="form-select" name="tipoPostagem" id="tipoPostagem">
@@ -55,39 +60,33 @@
                 <div class="card gedf-card" *ngFor='let post of listaPostagens'>
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="mr-2">
-                                    <img class="rounded-circle" width="45" src= '' alt="">
+                            <div class="d-flex justify-content-between align-items-center ">
+                                <div class="me-2 ">
+                                    <img class="rounded-circle " width="60" height="60" src= '{{post.autor.urlImagemPerfil}}' alt="">
                                 </div>
-                                <div class="ml-2">
-                                    <div class="h5 m-0">{{post.autor.nome}}</div>
+                                <div class="ms-2">
+                                    <div class="h5 m-0 text-end">{{post.autor.nome}}</div>
                                     <div class="h7 text-muted">{{post.tipoPostagem}}</div>
                                 </div>
                             </div>
                             <div>
 
-                               <!-- <div class="dropdown">
-                                    <button class="btn-group btn-secondary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                      
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                      <li><a class="dropdown-item" [routerLink] = "['/postagem-edit', post.idPostagem]" href="#">Editar</a></li>
-                                      <li><a class="dropdown-item" [routerLink] = "['/postagem-delete', post.idPostagem]" href="#">Apagar</a></li>
-                                    </ul>
-                                  </div> -->
+                         
                             </div>
                         </div>
 
                     </div>
                     <div class="card-body">
-                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{post.data}}</div>
-                        <a class="card-link" href="#">
-                            <h5 class="card-title">{{post.urlImagemVideo}}</h5>
-                        </a>
+                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{post.data | date: 'dd/MM/yyyy'}} às {{post.data | date: 'HH:mm'}}</div>
+                       
+                            <img src="{{post.urlImagemVideo}}" alt="" class="max-width-height-numero d-flex justify-content-center">
+                       
 
                         <p class="card-text">{{post.corpo}}</p>
                     </div>
                 </div>
+
+                
                 <!-- Post /////-->
 
 
@@ -120,4 +119,4 @@
         </div>
 
     </div>
-</div>
+<!-- </div> -->
