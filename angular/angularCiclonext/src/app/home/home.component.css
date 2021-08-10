@@ -27,3 +27,31 @@ body {
     content: none;
     display: none;
 }
+
+.max-width-height-numero{
+    /* max-width: 250px;  */
+     max-height: 500px;  
+    display: block;
+    width: 100%;
+    object-fit: scale-down;
+}
+.bg-color-cancelar{
+    background-color: #E59347;
+    color: white;
+    border-radius: 25px;
+    
+}
+
+.bg-color-publicar{
+    background-color: #34878B;
+    color: white;
+    border-radius: 25px;
+}
+
+.img-front{
+    max-height: 300px;  
+    display: block;
+    width: 100%;
+    object-fit: scale-down;
+}
+

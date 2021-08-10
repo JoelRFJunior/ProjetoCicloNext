@@ -22,7 +22,8 @@ export class HomeComponent implements OnInit {
   foto = environment.urlImagemPerfil
   token = environment.token
   idUser = environment.idUsuario
-  
+  recebeImagem: string
+
   tipoPostagem: string
   user: Usuario = new Usuario
   postagem: Postagem = new Postagem()
@@ -62,6 +63,9 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  recebeUmaImagem(event: any){
+    this.recebeImagem = event.target.value
+  }
 
   tipoDaPostagem(event: any) {
     this.tipoPostagem = event.target.value
