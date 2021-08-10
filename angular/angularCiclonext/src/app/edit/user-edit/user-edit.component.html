@@ -1,0 +1,116 @@
+<div class="container-fluid">
+    <div class="row justify-content-md-center">
+
+        <div class="col-md-2 bg-cinza-claro">
+
+            <div class="d-flex justify-content-center p-3">
+                <img src="{{foto}}" class=" rounded-circle" alt="foto perfil do usuario" height="250px" width="250px">
+            </div>
+
+            <h3 class="text-center mb-5">{{nome}}</h3>
+
+        </div>
+
+        <div class="col-md-8 mt-5">
+            <div class="row d-flex justify-content-center w-100 mb-5">
+                <h3 class="text-center fw-bold">Atualizar meus Dados</h3>
+
+                <div class="col-md-10">
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <div class="form-group mb-3">
+                                <label class="mb-2" for="nome">Nome</label>
+                                <input [(ngModel)]='user.nome' class="form-control" type="text" name="nome" id="nome"
+                                    placeholder="Seu nome">
+                            </div>
+
+                            <form>
+                                <fieldset disabled>
+
+                                    <div class="form-group mb-3">
+                                        <label class="mb-2" for="email">Email</label>
+                                        <input [(ngModel)]='user.email' class="disabledTextInput form-control"
+                                            type="text" name="email" id="email" placeholder="Seu email">
+                                    </div>
+
+                                </fieldset>
+                            </form>
+
+                            <div class="form-group mb-3">
+                                <label class="mb-2" for="urlImagemPerfil">Link da sua Foto</label>
+                                <input [(ngModel)]='user.urlImagemPerfil' class="form-control" type="text"
+                                    name="urlImagemPerfil" id="urlImagemPerfil" placeholder="Link da sua foto">
+
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="mb-2" for="senha">Senha</label>
+                                <input (input)='confirmSenha($event)' class="form-control" type="password" name="senha"
+                                    id="senha" placeholder="Sua senha">
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="mb-2" for="confirmSenha">Confirmar Senha</label>
+                                <input [(ngModel)]='user.senha' class="form-control" type="password" name="confirmSenha"
+                                    id="confirmSenha" placeholder="Confirme sua senha">
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="mb-2" for="tipo">Tipo de Usuário</label>
+                                <select class="form-select" name="tipo" id="tipo" (change)='tipoUser($event)'>
+                                    <option>Selecione um tipo de usuário</option>
+                                    <option value="EMPRESA">Empresa</option>
+                                    <option value="ONG">ONG</option>
+                                    <option value="USUARIO">Pessoa Física</option>
+                                </select>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn bg-color-voltar me-4 fw-bold temporizadorCancelar"
+                                    routerLink='/home'>Cancelar</button>
+                                <button type="submit" class="btn bg-color-atualizar fw-bold temporizadorCadastrar"
+                                    (click)='atualizar()'>Atualizar</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center justify-content-center">
+                            <img src="{{user.urlImagemPerfil}}" class="rounded-circle sizefoto" alt="">
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="col-md-2 bg-cinza-claro">
+
+            <div class="container mt-5">
+
+                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Mensagens Privadas</div>
+                    <div class="card-body">
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle p-lg-2 bg-danger border border-light rounded-circle">
+                            <span class="visually-hidden">New alerts</span>
+                        </span>
+                        <h5 class="card-title">Bruno</h5>
+                        <p class="card-text">Não briga com o Joel Jamily!!!!!</p>
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

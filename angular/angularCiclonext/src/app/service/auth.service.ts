@@ -25,6 +25,12 @@ cadastrar(usuario: Usuario): Observable<Usuario>{
 
 }
 
+alterar(usuario: Usuario): Observable<Usuario>{
+  return this.http.put<Usuario>('https://ciclonext.herokuapp.com/api/v1/usuario/alterar', usuario)
+
+
+}
+
 getByIdUser(id: number): Observable<Usuario>{
   return this.http.get<Usuario>(`http://ciclonext.herokuapp.com/api/v1/usuario/${id}`)
 }

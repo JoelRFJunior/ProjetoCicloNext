@@ -41,8 +41,17 @@
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0 d-flex align-items-center">
 
                 <li class="nav-item p-lg-3">
+                    <a [routerLink] = "['/user-edit', idUser]">
+                        <p class="m-0 fw-bold text-white fs-16"><i class="fa fa-cog" aria-hidden="true"></i>
+
+                        </p>
+                    </a>
+                </li>
+
+
+                <li class="nav-item p-lg-3">
                     <a routerLink='/entrar'>
-                        <p class="m-0 fw-bold text-white fs-16" (click)='sair()'> SAIR <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        <p class="m-0 fw-bold text-white fs-16" (click)='sair()' ><i class="fa fa-sign-out" aria-hidden="true"></i>
                         </p>
                     </a>
                 </li>
