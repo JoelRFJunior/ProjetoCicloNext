@@ -19,6 +19,7 @@ import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.compon
 import { GrupoEditComponent } from './edit/grupo-edit/grupo-edit.component';
 import { GrupoDeleteComponent } from './delete/grupo-delete/grupo-delete.component';
 import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delete.component';
+import { UserEditComponent } from './edit/user-edit/user-edit.component';
 
 
 
@@ -37,7 +38,8 @@ import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delet
     PostagemEditComponent,
     GrupoEditComponent,
     GrupoDeleteComponent,
-    PostagemDeleteComponent
+    PostagemDeleteComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

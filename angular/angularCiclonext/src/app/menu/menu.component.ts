@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class MenuComponent implements OnInit {
    
+  idUser = environment.idUsuario
 
 
   constructor(
