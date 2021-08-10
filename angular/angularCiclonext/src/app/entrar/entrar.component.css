@@ -1,11 +1,17 @@
 #img-bg{
-    background-image: url('https://imgur.com/VReb3qh.jpg');
-
+    background-image: url('https://i.imgur.com/5V7094J.png');
+    
     min-height: 1100px;
 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    animation: myfirst 10s 1;
+    animation-direction: alternate;
+} 
+ @keyframes myfirst {
+    0% {background-image: url('https://imgur.com/VReb3qh.jpg'); left: 0px; top: 0px;}
+    60% {background-image: url('https://i.imgur.com/5V7094J.png'); left: 0px; top: 0px;}
 }
 
 .bg-color-entrar{
