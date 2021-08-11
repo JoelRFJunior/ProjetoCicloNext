@@ -21,8 +21,8 @@ import { GrupoDeleteComponent } from './delete/grupo-delete/grupo-delete.compone
 import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delete.component';
 import { UserEditComponent } from './edit/user-edit/user-edit.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { AlertasComponent } from './alertas/alertas.component';
 import { OrderModule } from 'ngx-order-pipe';
-
 
 
 
@@ -44,7 +44,8 @@ import { OrderModule } from 'ngx-order-pipe';
     PostagemDeleteComponent,
     UserEditComponent,
     PerfilComponent,
-    
+    AlertasComponent
+
 
   ],
   imports: [
@@ -54,7 +55,7 @@ import { OrderModule } from 'ngx-order-pipe';
     FormsModule,
     OrderModule,
     
-   
+
     
   ],
   providers: [{

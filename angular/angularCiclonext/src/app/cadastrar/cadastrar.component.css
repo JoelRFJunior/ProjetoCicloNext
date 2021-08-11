@@ -28,4 +28,15 @@
     border-radius: 40px;
 }
 
+.temporizadorCadastrar:hover{
+    color: black;
+    background-color: #69D8D8;
+    transition-duration: 1s;
+    
+}
+.temporizadorVoltar:hover{
+    color: black;
+    background-color: #F1EB8D;
+    transition-duration: 1s;
+}
 

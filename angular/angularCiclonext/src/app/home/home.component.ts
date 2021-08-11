@@ -38,20 +38,20 @@ export class HomeComponent implements OnInit {
     private authService: AuthService,
     private postagemService: PostagemService,
     private grupoService: GrupoService
-    
+
   ) { }
 
   ngOnInit() {
     window.scroll(0, 0)
     console.log(this.token)
-    console.log("token "+environment.token)
-      if (environment.token == '') {
+    console.log("token " + environment.token)
+    if (environment.token == '') {
       //alert('Sua sessão expirou, faça o login novamente!')
       this.router.navigate(['/entrar'])
 
     }
     this.findAllPostagem()
-   // this.findUsuarioById()
+    // this.findUsuarioById()
 
   }
   findUsuarioById() {
@@ -60,13 +60,13 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  findByIdUser(){
+  findByIdUser() {
     this.authService.getByIdUser(this.idUser).subscribe((resp: Usuario) => {
       this.user2 = resp
     })
   }
 
-  recebeUmaImagem(event: any){
+  recebeUmaImagem(event: any) {
     this.recebeImagem = event.target.value
   }
 
@@ -78,20 +78,20 @@ export class HomeComponent implements OnInit {
   findAllPostagem() {
     this.postagemService.getAllPostagem().subscribe((resp: Postagem[]) => {
       this.listaPostagens = resp
-      console.log("Postagem "+JSON.stringify( this.listaPostagens))
+      console.log("Postagem " + JSON.stringify(this.listaPostagens))
     })
   }
 
   postarNoFeed() {
-    
+
 
     this.user.idUsuario = this.idUser
     this.postagem.autor = this.user
-    
 
-  //  this.user.idUsuario = Number(this.idUsuario)
-  //  this.postagem.autor = this.user
-     this.postagem.tipoPostagem = this.tipoPostagem
+
+    //  this.user.idUsuario = Number(this.idUsuario)
+    //  this.postagem.autor = this.user
+    this.postagem.tipoPostagem = this.tipoPostagem
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
       alert('Postagem criada com sucesso')
@@ -107,6 +107,13 @@ export class HomeComponent implements OnInit {
   }
 
 
-
-
+  filtrar() {
+    if (this.tipoPostagem == '') {
+      this.findAllPostagem()
+    } else {
+      this.postagemService.getByTipoPostagem(this.tipoPostagem).subscribe((resp: Postagem[]) => {
+        this.listaPostagens = resp
+      })
+    } 
+  }
 }

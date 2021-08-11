@@ -11,7 +11,10 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class GrupoEditComponent implements OnInit {
 
-grupo: Grupo = new Grupo()
+  nome = environment.nome
+  foto = environment.urlImagemPerfil
+
+  grupo: Grupo = new Grupo()
 
   constructor(
     private grupoService: GrupoService,
@@ -19,8 +22,8 @@ grupo: Grupo = new Grupo()
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit(){
-    if(environment.token == ''){
+  ngOnInit() {
+    if (environment.token == '') {
       this.router.navigate(['/entrar'])
     }
 
@@ -28,13 +31,13 @@ grupo: Grupo = new Grupo()
     this.findByIdGrupo(id)
   }
 
-  findByIdGrupo(id: number){
+  findByIdGrupo(id: number) {
     this.grupoService.getByIdGrupo(id).subscribe((resp: Grupo) => {
       this.grupo = resp
     })
   }
 
-  atualizar(){
+  atualizar() {
     this.grupoService.putGrupo(this.grupo).subscribe((resp: Grupo) => {
       this.grupo = resp
       alert('Grupo atualizado com sucesso.')

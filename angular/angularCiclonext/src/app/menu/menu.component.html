@@ -11,17 +11,17 @@
                     <a routerLink='/home'>
                         <img src="../../assets/img/Ciclonext-preto-completo.svg" alt="Logo Ciclonext" width="300px" height="100px"
 
-                            class="img-fluid p-3">
+                            class="img-fluid p-1 logo">
                     </a>
                 </li>
                 <li class="nav-item p-lg-3">
-                    <a routerLink='/home'>
-                        <p class="m-0 fw-bold text-white fs-16"> Home </p>
-                    </a>
+                    
+                    <p class="m-0 fw-bold text-white fs-16"><a class="text-white text-decoration-none opacity50 opacity100" routerLink='/home'> Home </a></p>
+                    
                 </li>
 
                 <li class="nav-item p-lg-3">
-                    <p class="m-0 fw-bold text-white fs-16"><a class="text-white" routerLink="/grupo">Grupo</a></p>
+                    <p class="m-0 fw-bold text-white fs-16"><a class="text-white text-decoration-none opacity50 opacity100" routerLink="/grupo">Grupo</a></p>
                 </li>
 
                 <li class="nav-item p-lg-3">
@@ -30,11 +30,7 @@
 
                 <li class="nav-item p-lg-3">
                     
-                    <p class="m-0 fw-bold text-white fs-16"><a class="text-white" routerLink="/postagem"> Minhas Postagens</a></p>
-                </li>
-
-                <li class="nav-item p-lg-3">
-                    <p class="m-0 fw-bold text-white fs-16"> Meu Perfil </p>
+                    <p class="m-0 fw-bold text-white fs-16"><a class="text-white text-decoration-none opacity50 opacity100" routerLink="/postagem"> Meu Perfil</a></p>
                 </li>
 
             </ul>
@@ -42,7 +38,7 @@
 
                 <li class="nav-item p-lg-3">
                     <a [routerLink] = "['/user-edit', idUser]">
-                        <p class="m-0 fw-bold text-white fs-16"><i class="fa fa-cog" aria-hidden="true"></i>
+                        <p class="m-0 fw-bold text-white fs-18"><i class="fa fa-cog opacity50 opacity100" aria-hidden="true"></i>
 
                         </p>
                     </a>
@@ -51,7 +47,7 @@
 
                 <li class="nav-item p-lg-3">
                     <a routerLink='/entrar'>
-                        <p class="m-0 fw-bold text-white fs-16" (click)='sair()' ><i class="fa fa-sign-out" aria-hidden="true"></i>
+                        <p class="m-0 fw-bold text-white fs-18" (click)='sair()' ><i class="fa fa-sign-out opacity50 opacity100" aria-hidden="true"></i>
                         </p>
                     </a>
                 </li>

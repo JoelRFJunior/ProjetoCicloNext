@@ -1,0 +1,35 @@
+.max-width-height-numero{
+    /* max-width: 250px;  */
+     max-height: 500px;  
+    display: block;
+    width: 100%;
+    object-fit: scale-down;
+}
+.h7 {
+    font-size: 0.8rem;
+}
+
+.temporizadorOk:hover{
+    color: white;
+    background-color: red;
+    transition-duration: 1s;
+    
+}
+.temporizadorNo:hover{
+    color: black;
+    background-color: #F1EB8D;
+    transition-duration: 1s;
+}
+
+.bg-color-no{
+    background-color: #E59347;
+    color: white;
+    border-radius: 25px;
+    
+}
+
+.bg-color-ok{
+    background-color: #34878B;
+    color: white;
+    border-radius: 25px;
+}
