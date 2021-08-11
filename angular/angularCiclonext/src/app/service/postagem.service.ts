@@ -50,6 +50,10 @@ export class PostagemService {
     return this.http.delete(`https://ciclonext.herokuapp.com/api/v1/postagem/${id}`, this.token)
   }
 
+  getByTipoPostagem(tipoPostagem: string): Observable<Postagem[]> {
+    return this.http.get<Postagem[]>(`https://ciclonext.herokuapp.com/api/v1/postagem/tipoPostagem/${tipoPostagem}`, this.token)
+  }
+
   // getAllPostagem(): Observable<Postagem[]> {
    
   //   return this.http.get<Postagem[]>('http://localhost:8080/api/v1/postagem/getAll', this.token)

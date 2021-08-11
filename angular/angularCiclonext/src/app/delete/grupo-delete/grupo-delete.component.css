@@ -1,0 +1,24 @@
+.bg-color-voltar{
+    background-color: #E59347;
+    color: white;
+    border-radius: 30px;
+    
+}
+
+.bg-color-cadastrar{
+    background-color: #34878B;
+    color: white;
+    border-radius: 30px;
+}
+
+.temporizadorCadastrar:hover{
+    color: white;
+    background-color: red;
+    transition-duration: 1s;
+    
+}
+.temporizadorVoltar:hover{
+    color: black;
+    background-color: #F1EB8D;
+    transition-duration: 1s;
+}

@@ -55,3 +55,16 @@ body {
     object-fit: scale-down;
 }
 
+
+
+.temporizadorCancel:hover{
+    color: black;
+    background-color: #69D8D8;
+    transition-duration: 1s;
+    
+}
+.temporizadorGo:hover{
+    color: black;
+    background-color: #F1EB8D;
+    transition-duration: 1s;
+}

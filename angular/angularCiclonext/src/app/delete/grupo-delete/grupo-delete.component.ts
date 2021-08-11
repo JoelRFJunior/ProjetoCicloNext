@@ -11,6 +11,9 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class GrupoDeleteComponent implements OnInit {
 
+  nome = environment.nome
+  foto = environment.urlImagemPerfil
+
   grupo: Grupo = new Grupo()
   idGrupo: number
 

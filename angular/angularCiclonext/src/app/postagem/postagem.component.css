@@ -18,3 +18,17 @@
     width: 100%;
     object-fit: scale-down;
 }
+
+.bg-color-editarDados{
+    background-color: #414F72;
+    color: white;
+    border-radius: 30px;
+}
+
+
+.temporizadorEditarDados:hover{
+    color: black;
+    background-color: #5dc0ee;
+    transition-duration: 1s;
+}
+

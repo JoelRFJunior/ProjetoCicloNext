@@ -18,6 +18,7 @@ export class PostagemComponent implements OnInit {
   foto = environment.urlImagemPerfil
   token = environment.token
   idUser = environment.idUsuario
+   
   
   tipoPostagem: string
   user: Usuario = new Usuario

@@ -48,18 +48,20 @@ export class GrupoComponent implements OnInit {
     //console.log(this.usuario)
     //console.log(this.usuario.gruposCriados)
     this.findAllGrupo()
-    this.getAllPostagens()
+    // this.getAllPostagens()
     this.findByIdUsuario()
 
 
 
 
-    this.findAllGrupo()
+    // this.findAllGrupo()
     }
 
   findAllGrupo() {
+      // this.grupo = new Grupo()
     this.grupoService.getAllGrupo().subscribe((resp: Grupo[]) => {
       this.listaGrupo = resp
+      
     })
   }
 
@@ -77,6 +79,7 @@ export class GrupoComponent implements OnInit {
   }
 
   findByIdUsuario() {
+    
     this.postagemService.procurarUsuario(this.idUsuario).subscribe((resp: Usuario) => {
       this.usuario = resp
 
