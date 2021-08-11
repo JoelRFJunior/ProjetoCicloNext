@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Grupo } from 'src/app/model/Grupo';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { GrupoService } from 'src/app/service/grupo.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -11,13 +12,17 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class GrupoDeleteComponent implements OnInit {
 
+  nome = environment.nome
+  foto = environment.urlImagemPerfil
+
   grupo: Grupo = new Grupo()
   idGrupo: number
 
   constructor(
     private grupoService: GrupoService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit() {
@@ -37,7 +42,7 @@ export class GrupoDeleteComponent implements OnInit {
 
   apagar(){
     this.grupoService.deleteGrupo(this.idGrupo).subscribe(() => {
-      alert('Grupo apagado com sucesso.')
+      this.alertas.showAlertSuccess('Grupo apagado com sucesso.')
       this.router.navigate(['/grupo'])
     })
   }

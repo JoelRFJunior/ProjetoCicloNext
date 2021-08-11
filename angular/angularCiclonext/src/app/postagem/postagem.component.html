@@ -1,23 +1,70 @@
 <div class="container-fluid">
     <div class="row justify-content-md-center">
 
-        
 
-            <div class="col-md-2 bg-cinza-claro">
 
-                <div class="d-flex justify-content-center p-3">
-                    <img src="{{foto}}" alt="foto perfil do usuario" height="200px" width="200px" class="rounded-circle">
-                </div>
-    
-                <h3 class="text-center mb-5">{{nome}}</h3>
-                <h5 class="text-center">Grupos criados</h5>
-    
-          
-    
+        <div class="col-md-2 bg-cinza-claro">
+
+            <div class="d-flex justify-content-center p-3">
+                <img src="{{foto}}" alt="foto perfil do usuario" height="200px" width="200px" class="rounded-circle">
+            </div>
+
+            <h3 class="text-center mb-5">{{nome}}</h3>
 
         </div>
 
-        <div class="col-md-8 mt-5">
+        <div class="col-md-8 mt-2">
+
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 d-flex justify-content-center">
+
+                    <div class="d-flex justify-content-center">
+                        <img src="https://i.imgur.com/se62aUR.png" alt="imagem perfil" height="500px" width="500px"
+                            class="rounded mx-auto d-block">
+                    </div>
+
+                </div>
+                <div class="col-md-6 d-flex justify-content-start align-items-center">
+
+                    <form class="w-75 justify-content-start">
+                        <fieldset disabled>
+
+                            <div class="form-group mb-3">
+                                <div class="mb-2" for="nome">Nome</div>
+                                <input  class="disabledTextInput form-control w-100" type="text"
+                                    name="nome.teste" id="nome.teste"placeholder= "{{nome}}">
+                            </div>
+
+                            <div class=" mb-3">
+                                <label class="mb-2" for="email">Email</label>
+                                <input class="disabledTextInput form-control" type="text"
+                                    name="email.teste" id="email.teste" placeholder="{{user.email}}">
+                            </div>
+
+
+                            <div class=" mb-3">
+                                <label class="mb-2" for="categoria">Tipo de Usuário</label>
+                                <input class="disabledTextInput form-control" type="text"
+                                    name="categoria" id="categoria" placeholder="{{user.categoria}}">
+                                
+                            </div>
+
+                        </fieldset>
+                        <div class="d-flex justify-content-end">
+                            <a><button
+                                    class="btn bg-color-editarDados temporizadorEditarDados fw-bold p-3 mb-3 "
+                                    [routerLink]="['/user-edit', idUser]">Editar meus Dados</button></a>
+                        </div>
+                    </form>
+
+                    <!-- <h3 class="text-center mb-5">{{nome}}</h3> -->
+
+                </div>
+
+            </div>
+
+
 
             <div class="container" style="background-color: #E8E8E8;">
                 <div class="form-group mb-3 px-lg-5">
@@ -74,15 +121,8 @@
                     </div>
 
 
-
-
-
-                    <!-- Post /////-->
-
-
-
                 </div>
-
+                <!-- Post /////-->
             </div>
 
         </div>

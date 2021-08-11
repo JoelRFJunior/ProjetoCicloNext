@@ -21,8 +21,13 @@ import { GrupoDeleteComponent } from './delete/grupo-delete/grupo-delete.compone
 import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delete.component';
 import { UserEditComponent } from './edit/user-edit/user-edit.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { AlertasComponent } from './alertas/alertas.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { GrupoPageComponent } from './grupo-page/grupo-page.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDropdownModule,BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+
+
 
 
 @NgModule({
@@ -43,7 +48,8 @@ import { GrupoPageComponent } from './grupo-page/grupo-page.component';
     UserEditComponent,
     PerfilComponent,
     GrupoPageComponent,
-    
+    AlertasComponent
+
 
   ],
   imports: [
@@ -52,11 +58,13 @@ import { GrupoPageComponent } from './grupo-page/grupo-page.component';
     HttpClientModule,
     FormsModule,
     OrderModule,
-
+    ModalModule.forRoot(),
+    BsDropdownModule.forRoot( )
   ],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
+    
   }],
   bootstrap: [AppComponent]
 })

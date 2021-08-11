@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Grupo } from '../model/Grupo';
 import { Postagem } from '../model/Postagem';
 import { Usuario } from '../model/Usuario';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 import { GrupoService } from '../service/grupo.service';
 import { PostagemService } from '../service/postagem.service';
@@ -34,13 +35,14 @@ export class GrupoComponent implements OnInit {
     private router: Router,
     private grupoService: GrupoService,
     private postagemService: PostagemService,
-    private authService: AuthService
+    private authService: AuthService,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit() {
 
     if (environment.token == '') {
-      alert('Sua sessão expirou, faça seu login novamente!')
+      this.alertas.showAlertInfo('Sua sessão expirou, faça seu login novamente!')
       this.router.navigate(['/entrar'])
     }
     //this.grupo.criador = this.usuario
@@ -48,18 +50,20 @@ export class GrupoComponent implements OnInit {
     //console.log(this.usuario)
     //console.log(this.usuario.gruposCriados)
     this.findAllGrupo()
-    this.getAllPostagens()
+    // this.getAllPostagens()
     this.findByIdUsuario()
 
 
 
 
-    this.findAllGrupo()
+    // this.findAllGrupo()
     }
 
   findAllGrupo() {
+      // this.grupo = new Grupo()
     this.grupoService.getAllGrupo().subscribe((resp: Grupo[]) => {
       this.listaGrupo = resp
+      
     })
   }
 
@@ -77,6 +81,7 @@ export class GrupoComponent implements OnInit {
   }
 
   findByIdUsuario() {
+    
     this.postagemService.procurarUsuario(this.idUsuario).subscribe((resp: Usuario) => {
       this.usuario = resp
 
@@ -98,7 +103,7 @@ export class GrupoComponent implements OnInit {
       //this.grupo.criador = this.usuario
       //this.usuario.gruposCriados = this.listaGrupo
       this.grupo = new Grupo()
-      alert("Grupo cadastrado com sucesso!")
+      this.alertas.showAlertSuccess("Grupo cadastrado com sucesso!")
       this.findAllGrupo()
       this.getAllPostagens()
       this.findByIdUsuario()

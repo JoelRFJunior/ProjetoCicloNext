@@ -21,6 +21,16 @@ a { cursor: pointer; }
 }
 
 
+
+.opacity50 {
+    opacity: 0.9;
+}
+
+.opacity100:hover {
+    opacity: 1;
+}
+
+
 h1{
     font-family: Roboto, Segoe UI, sans-serif;
 }

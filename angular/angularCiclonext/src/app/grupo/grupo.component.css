@@ -33,3 +33,43 @@ height: 500px;
     color: white;
     border-radius: 30px;
 }
+
+
+.foto{
+	object-fit: cover;
+	display: block;
+}
+
+.temporizadorCriarGrupo:hover{
+    color: black;
+    background-color: #5dc0ee;
+    transition-duration: 1s;
+}
+
+.temporizadorCadastrar:hover{
+    color: black;
+    background-color: #69D8D8;
+    transition-duration: 1s;
+    
+}
+.temporizadorVoltar:hover{
+    color: black;
+    background-color: #F1EB8D;
+    transition-duration: 1s;
+}
+
+.sizeFotoCard {
+    max-width: 300px;
+    max-height: 250px;
+    min-width: 250px;
+    min-height: 250px;
+    /* object-fit: contain; */
+    /* display: block; */
+    
+}
+.fotoPerfil{
+	object-fit: cover;
+	display: flex;
+	height: 100px;
+	width: 100px;
+}

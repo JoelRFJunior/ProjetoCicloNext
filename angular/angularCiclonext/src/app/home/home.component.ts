@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Usuario } from '../model/Usuario';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 import { GrupoService } from '../service/grupo.service';
 import { PostagemService } from '../service/postagem.service';
@@ -37,21 +38,22 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private postagemService: PostagemService,
-    private grupoService: GrupoService
-    
+    private grupoService: GrupoService,
+    private alertas: AlertasService
+
   ) { }
 
   ngOnInit() {
     window.scroll(0, 0)
     console.log(this.token)
-    console.log("token "+environment.token)
-      if (environment.token == '') {
+    console.log("token " + environment.token)
+    if (environment.token == '') {
       //alert('Sua sessão expirou, faça o login novamente!')
       this.router.navigate(['/entrar'])
 
     }
     this.findAllPostagem()
-   // this.findUsuarioById()
+    // this.findUsuarioById()
 
   }
   findUsuarioById() {
@@ -60,13 +62,13 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  findByIdUser(){
+  findByIdUser() {
     this.authService.getByIdUser(this.idUser).subscribe((resp: Usuario) => {
       this.user2 = resp
     })
   }
 
-  recebeUmaImagem(event: any){
+  recebeUmaImagem(event: any) {
     this.recebeImagem = event.target.value
   }
 
@@ -78,23 +80,23 @@ export class HomeComponent implements OnInit {
   findAllPostagem() {
     this.postagemService.getAllPostagem().subscribe((resp: Postagem[]) => {
       this.listaPostagens = resp
-      console.log("Postagem "+JSON.stringify( this.listaPostagens))
+      //console.log("Postagem " + JSON.stringify(this.listaPostagens))
     })
   }
 
   postarNoFeed() {
-    
+
 
     this.user.idUsuario = this.idUser
     this.postagem.autor = this.user
-    
 
-  //  this.user.idUsuario = Number(this.idUsuario)
-  //  this.postagem.autor = this.user
-     this.postagem.tipoPostagem = this.tipoPostagem
+
+    //  this.user.idUsuario = Number(this.idUsuario)
+    //  this.postagem.autor = this.user
+    this.postagem.tipoPostagem = this.tipoPostagem
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
-      alert('Postagem criada com sucesso')
+      this.alertas.showAlertSuccess('Postagem criada com sucesso')
       this.findAllPostagem()
       this.postagem = new Postagem()
 
@@ -106,7 +108,26 @@ export class HomeComponent implements OnInit {
     this.postagem = new Postagem()
   }
 
+  tipoDeFiltro(event: any) {
+    
+    if (event.target.value == '') {
+      this.findAllPostagem()
+    } else {
+      this.postagemService.getByTipoPostagem(event.target.value).subscribe((resp: Postagem[]) => {
+        this.listaPostagens = resp
 
+      })
+    }
+  }
 
-
+  // filtrar() {
+  //   if (this.tipoPostagem == '') {
+  //     this.findAllPostagem()
+  //   } else {
+  //     this.postagemService.getByTipoPostagem(this.tipoPostagem).subscribe((resp: Postagem[]) => {
+  //       this.listaPostagens = resp
+  //     })
+  //   } 
+  // }
 }
+

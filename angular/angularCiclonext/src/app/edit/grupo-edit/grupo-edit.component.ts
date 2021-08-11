@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Grupo } from 'src/app/model/Grupo';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { GrupoService } from 'src/app/service/grupo.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -11,16 +12,20 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class GrupoEditComponent implements OnInit {
 
-grupo: Grupo = new Grupo()
+  nome = environment.nome
+  foto = environment.urlImagemPerfil
+
+  grupo: Grupo = new Grupo()
 
   constructor(
     private grupoService: GrupoService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertas: AlertasService
   ) { }
 
-  ngOnInit(){
-    if(environment.token == ''){
+  ngOnInit() {
+    if (environment.token == '') {
       this.router.navigate(['/entrar'])
     }
 
@@ -28,16 +33,16 @@ grupo: Grupo = new Grupo()
     this.findByIdGrupo(id)
   }
 
-  findByIdGrupo(id: number){
+  findByIdGrupo(id: number) {
     this.grupoService.getByIdGrupo(id).subscribe((resp: Grupo) => {
       this.grupo = resp
     })
   }
 
-  atualizar(){
+  atualizar() {
     this.grupoService.putGrupo(this.grupo).subscribe((resp: Grupo) => {
       this.grupo = resp
-      alert('Grupo atualizado com sucesso.')
+      this.alertas.showAlertSuccess('Grupo atualizado com sucesso.')
       this.router.navigate(['/grupo'])
     })
   }

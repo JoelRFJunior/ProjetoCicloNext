@@ -1,0 +1,44 @@
+.bg-color-voltar{
+    background-color: #E59347;
+    color: white;
+    border-radius: 40px;
+    
+}
+
+.bg-color-cadastrar{
+    background-color: #34878B;
+    color: white;
+    border-radius: 40px;
+}
+
+.temporizadorCadastrar:hover{
+    color: black;
+    background-color: #69D8D8;
+    transition-duration: 1s;
+    
+}
+.temporizadorVoltar:hover{
+    color: black;
+    background-color: #F1EB8D;
+    transition-duration: 1s;
+}
+
+.sizefoto {
+    max-width: 500px;
+    max-height: 500px;
+    min-width: 250px;
+    min-height: 250px;
+    object-fit: contain;
+    display: block;
+    
+}
+
+.sizeFotoCard {
+    max-width: 250px;
+    max-height: 250px;
+    min-width: 250px;
+    min-height: 250px;
+    /* object-fit: contain; */
+    display: block;
+    
+}
