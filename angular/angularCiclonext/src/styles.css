@@ -19,3 +19,14 @@ a { cursor: pointer; }
     justify-content: center;
     flex-wrap: wrap;
 }
+
+
+.opacity50 {
+    opacity: 0.9;
+  }
+  
+.opacity100:hover {
+    opacity: 1;
+  }
+
+

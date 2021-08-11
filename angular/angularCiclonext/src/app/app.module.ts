@@ -21,6 +21,7 @@ import { GrupoDeleteComponent } from './delete/grupo-delete/grupo-delete.compone
 import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delete.component';
 import { UserEditComponent } from './edit/user-edit/user-edit.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { AlertasComponent } from './alertas/alertas.component';
 
 
 
@@ -41,7 +42,8 @@ import { PerfilComponent } from './perfil/perfil.component';
     GrupoDeleteComponent,
     PostagemDeleteComponent,
     UserEditComponent,
-    PerfilComponent
+    PerfilComponent,
+    AlertasComponent
 
   ],
   imports: [
