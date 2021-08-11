@@ -67,4 +67,9 @@ height: 500px;
     /* display: block; */
     
 }
-
+.fotoPerfil{
+	object-fit: cover;
+	display: flex;
+	height: 100px;
+	width: 100px;
+}

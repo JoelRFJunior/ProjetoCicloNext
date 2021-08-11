@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import { AlertasService } from '../service/alertas.service';
 
 @Component({
   selector: 'app-menu',
@@ -13,7 +14,8 @@ export class MenuComponent implements OnInit {
 
 
   constructor(
-    private router: Router
+    private router: Router,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit(){
@@ -22,7 +24,7 @@ export class MenuComponent implements OnInit {
 
   sair(){
     
-    alert('Usuario deslogado')
+    this.alertas.showAlertInfo('Usuario deslogado')
 
     environment.token = ''
     environment.idUsuario=0

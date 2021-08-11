@@ -23,6 +23,8 @@ import { UserEditComponent } from './edit/user-edit/user-edit.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AlertasComponent } from './alertas/alertas.component';
 import { OrderModule } from 'ngx-order-pipe';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDropdownModule,BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
 
 
@@ -54,6 +56,9 @@ import { OrderModule } from 'ngx-order-pipe';
     HttpClientModule,
     FormsModule,
     OrderModule,
+    ModalModule.forRoot(),
+    BsDropdownModule.forRoot( )
+
     
 
     
@@ -61,6 +66,7 @@ import { OrderModule } from 'ngx-order-pipe';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
+    
   }],
   bootstrap: [AppComponent]
 })
