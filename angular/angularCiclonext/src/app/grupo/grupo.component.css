@@ -35,6 +35,11 @@ height: 500px;
 }
 
 
+.foto{
+	object-fit: cover;
+	display: block;
+}
+
 .temporizadorCriarGrupo:hover{
     color: black;
     background-color: #5dc0ee;
@@ -61,4 +66,10 @@ height: 500px;
     /* object-fit: contain; */
     /* display: block; */
     
+}
+.fotoPerfil{
+	object-fit: cover;
+	display: flex;
+	height: 100px;
+	width: 100px;
 }
