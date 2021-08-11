@@ -13,18 +13,10 @@ ul.social-network{
     color: white;
     padding: 5px;
   }
-  .fa-facebook-square:hover{
+  .fa:hover{
     color: lightgrey;
   }
   
-  .fa-instagram:hover{
-    color: lightgrey;
-  }
-  
-  .fa-linkedin-square:hover{
-    color:lightgrey;
-  }
-
   a{
       text-decoration: none;
       color: white;
