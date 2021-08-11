@@ -29,11 +29,11 @@ body {
 }
 
 .max-width-height-numero{
-    /* max-width: 250px;  */
-     max-height: 500px;  
-    display: block;
+	size: 600px;
+    display: flex;
     width: 100%;
-    object-fit: scale-down;
+	object-fit: cover;
+    
 }
 .bg-color-cancelar{
     background-color: #E59347;
@@ -54,4 +54,21 @@ body {
     width: 100%;
     object-fit: scale-down;
 }
+
+.fotoPubli{
+	object-fit: cover;
+	display: flex;
+}
+
+.fotoPerfil{
+	object-fit: cover;
+	display: flex;
+	height: 100px;
+	width: 100px;
+}
+
+.select{
+	width: 815px;
+}
+
 
