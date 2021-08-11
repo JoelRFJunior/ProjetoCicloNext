@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Grupo } from 'src/app/model/Grupo';
 import { Postagem } from 'src/app/model/Postagem';
 import { Usuario } from 'src/app/model/Usuario';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { GrupoService } from 'src/app/service/grupo.service';
 import { PostagemService } from 'src/app/service/postagem.service';
 import { environment } from 'src/environments/environment.prod';
@@ -31,7 +32,8 @@ export class PostagemEditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private postagemService: PostagemService,
-    private grupoService: GrupoService
+    private grupoService: GrupoService,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit() {
@@ -39,7 +41,7 @@ export class PostagemEditComponent implements OnInit {
     window.scroll(0, 0)
 
     if (environment.token == '') {
-      alert('Sua sessão expirou, faça o login novamente.')
+      this.alertas.showAlertInfo('Sua sessão expirou, faça o login novamente.')
       this.router.navigate(['/entrar'])
     }
     let id = this.route.snapshot.params['id']
@@ -88,7 +90,7 @@ export class PostagemEditComponent implements OnInit {
 
     this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
-      alert('Postagem atualizada com sucesso.')
+      this.alertas.showAlertSuccess('Postagem atualizada com sucesso.')
       this.router.navigate(['/postagem'])
     })
 

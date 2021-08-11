@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { Usuario } from '../model/Usuario';
+import { UsuarioAtualizar } from '../model/UsuarioAtualizar';
 import { UsuarioLoginDTO } from '../model/UsuarioLoginDTO';
 
 @Injectable({
@@ -25,8 +26,8 @@ cadastrar(usuario: Usuario): Observable<Usuario>{
 
 }
 
-alterar(usuario: Usuario): Observable<Usuario>{
-  return this.http.put<Usuario>('https://ciclonext.herokuapp.com/api/v1/usuario/alterar', usuario)
+alterar(usuario: UsuarioAtualizar): Observable<UsuarioAtualizar>{
+  return this.http.put<UsuarioAtualizar>('https://ciclonext.herokuapp.com/api/v1/usuario/alterar', usuario)
 
 
 }

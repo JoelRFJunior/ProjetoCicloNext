@@ -30,24 +30,24 @@
                     <form class="w-75 justify-content-start">
                         <fieldset disabled>
 
-                            <div class=" mb-3">
+                            <div class="form-group mb-3">
                                 <div class="mb-2" for="nome">Nome</div>
-                                <div [(ngModel)]='user.nome' class="disabledTextInput form-control w-100" type="text"
-                                    name="nome" id="nome" placeholder="Seu nome">{{nome}}</div>
+                                <input  class="disabledTextInput form-control w-100" type="text"
+                                    name="nome.teste" id="nome.teste"placeholder= "{{nome}}">
                             </div>
 
                             <div class=" mb-3">
                                 <label class="mb-2" for="email">Email</label>
-                                <div [(ngModel)]='user.email' class="disabledTextInput form-control" type="text"
-                                    name="email" id="email" placeholder="Seu email">{{user.email}}</div>
+                                <input class="disabledTextInput form-control" type="text"
+                                    name="email.teste" id="email.teste" placeholder="{{user.email}}">
                             </div>
 
 
                             <div class=" mb-3">
                                 <label class="mb-2" for="categoria">Tipo de Usuário</label>
-                                <div [(ngModel)]='user.categoria' class="disabledTextInput form-control" type="text"
-                                    name="categoria" id="categoria" placeholder="Sua categoria">{{user.categoria}}
-                                </div>
+                                <input class="disabledTextInput form-control" type="text"
+                                    name="categoria" id="categoria" placeholder="{{user.categoria}}">
+                                
                             </div>
 
                         </fieldset>

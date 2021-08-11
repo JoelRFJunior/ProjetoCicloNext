@@ -62,15 +62,16 @@
             </div>
             <!--<div class="COLOCAR A IMAGEM AQUI"></div>-->
 
-            <div class="container" style="background-color: #E8E8E8;">
-                <div class="form-group mb-3 px-lg-5">
-                    <select class="form-select" name="tipoPostagem" id="tipoPostagem">
-                        <option>Filtrar tipo de postagens</option>
-                        <option [(ngModel)]='postagem.tipoPostagem' value="TEXTO" click='filtrar()' >Texto</option>
+            <div class="container p-3" style="background-color: #E8E8E8;">
+                <div class="form-group mb-3 mt-3" style="padding-right: 900px;">
+                    <select class="form-select" name="filtroPostagem" id="filtroPostagem" (change)='tipoDeFiltro($event)'>
+                        <option value="">Filtrar tipo de postagens</option>
+                        <option value="TEXTO">Texto</option>
                         <option value="DOACAO">Doação</option>
                         <option value="AGRADECIMENTO">Agradecimento</option>
                         <option value="OUTROS">Outros</option>
                     </select>
+
                 </div>
 
                 <!--- \\\\\\\Post-->

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Usuario } from '../model/Usuario';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 import { GrupoService } from '../service/grupo.service';
 import { PostagemService } from '../service/postagem.service';
@@ -37,7 +38,8 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private postagemService: PostagemService,
-    private grupoService: GrupoService
+    private grupoService: GrupoService,
+    private alertas: AlertasService
 
   ) { }
 
@@ -78,7 +80,7 @@ export class HomeComponent implements OnInit {
   findAllPostagem() {
     this.postagemService.getAllPostagem().subscribe((resp: Postagem[]) => {
       this.listaPostagens = resp
-      console.log("Postagem " + JSON.stringify(this.listaPostagens))
+      //console.log("Postagem " + JSON.stringify(this.listaPostagens))
     })
   }
 
@@ -94,7 +96,7 @@ export class HomeComponent implements OnInit {
     this.postagem.tipoPostagem = this.tipoPostagem
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
-      alert('Postagem criada com sucesso')
+      this.alertas.showAlertSuccess('Postagem criada com sucesso')
       this.findAllPostagem()
       this.postagem = new Postagem()
 
@@ -106,14 +108,26 @@ export class HomeComponent implements OnInit {
     this.postagem = new Postagem()
   }
 
-
-  filtrar() {
-    if (this.tipoPostagem == '') {
+  tipoDeFiltro(event: any) {
+    
+    if (event.target.value == '') {
       this.findAllPostagem()
     } else {
-      this.postagemService.getByTipoPostagem(this.tipoPostagem).subscribe((resp: Postagem[]) => {
+      this.postagemService.getByTipoPostagem(event.target.value).subscribe((resp: Postagem[]) => {
         this.listaPostagens = resp
+
       })
-    } 
+    }
   }
+
+  // filtrar() {
+  //   if (this.tipoPostagem == '') {
+  //     this.findAllPostagem()
+  //   } else {
+  //     this.postagemService.getByTipoPostagem(this.tipoPostagem).subscribe((resp: Postagem[]) => {
+  //       this.listaPostagens = resp
+  //     })
+  //   } 
+  // }
 }
+

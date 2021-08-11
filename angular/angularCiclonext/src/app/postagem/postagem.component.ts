@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Usuario } from '../model/Usuario';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 import { GrupoService } from '../service/grupo.service';
 import { PostagemService } from '../service/postagem.service';
@@ -33,7 +34,8 @@ export class PostagemComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private postagemService: PostagemService,
-    private grupoService: GrupoService
+    private grupoService: GrupoService,
+    private alertas: AlertasService
     
   ) { }
 
@@ -42,7 +44,7 @@ export class PostagemComponent implements OnInit {
     console.log(this.token)
     console.log("token "+environment.token)
       if (environment.token == '') {
-      //alert('Sua sessão expirou, faça o login novamente!')
+      this.alertas.showAlertInfo('Sua sessão expirou, faça o login novamente!')
       this.router.navigate(['/entrar'])
 
     }
@@ -86,7 +88,7 @@ export class PostagemComponent implements OnInit {
      this.postagem.tipoPostagem = this.tipoPostagem
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
-      alert('Postagem criada com sucesso')
+      this.alertas.showAlertSuccess('Postagem criada com sucesso')
       this.findAllPostagem()
       this.postagem = new Postagem()
 
