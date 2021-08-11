@@ -19,3 +19,16 @@ a { cursor: pointer; }
     justify-content: center;
     flex-wrap: wrap;
 }
+
+
+h1{
+    font-family: Roboto, Segoe UI, sans-serif;
+}
+
+h2{
+    font-family: Roboto, Segoe UI, sans-serif;
+}
+
+p{
+    font-family: Roboto, Segoe UI, sans-serif;
+}
