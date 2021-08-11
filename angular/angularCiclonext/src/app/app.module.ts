@@ -22,6 +22,7 @@ import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delet
 import { UserEditComponent } from './edit/user-edit/user-edit.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AlertasComponent } from './alertas/alertas.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 
 
@@ -45,12 +46,16 @@ import { AlertasComponent } from './alertas/alertas.component';
     PerfilComponent,
     AlertasComponent
 
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    OrderModule,
+    
+
     
   ],
   providers: [{

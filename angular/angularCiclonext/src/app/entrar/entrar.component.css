@@ -7,7 +7,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     animation: myfirst 10s 1;
-    animation-direction: alternate;
+    animation-direction: normal;
 } 
  @keyframes myfirst {
     0% {background-image: url('https://imgur.com/VReb3qh.jpg'); left: 0px; top: 0px;}

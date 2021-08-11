@@ -26,6 +26,9 @@ export class PostagemComponent implements OnInit {
   listaPostagens: Postagem[]
   user2: Usuario = new Usuario
 
+  key = 'data'
+  reverse = true
+
   constructor(
     private router: Router,
     private authService: AuthService,
