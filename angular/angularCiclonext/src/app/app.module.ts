@@ -22,9 +22,7 @@ import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delet
 import { UserEditComponent } from './edit/user-edit/user-edit.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { OrderModule } from 'ngx-order-pipe';
-
-
-
+import { GrupoPageComponent } from './grupo-page/grupo-page.component';
 
 
 @NgModule({
@@ -44,6 +42,7 @@ import { OrderModule } from 'ngx-order-pipe';
     PostagemDeleteComponent,
     UserEditComponent,
     PerfilComponent,
+    GrupoPageComponent,
     
 
   ],
@@ -53,9 +52,7 @@ import { OrderModule } from 'ngx-order-pipe';
     HttpClientModule,
     FormsModule,
     OrderModule,
-    
-   
-    
+
   ],
   providers: [{
     provide: LocationStrategy,

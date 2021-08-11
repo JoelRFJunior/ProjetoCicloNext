@@ -141,10 +141,11 @@
 
           <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col mt-5" *ngFor='let item of usuario.gruposCriados'>
+              
               <div class="card text-center">
-                <img src="{{item.urlImagemGrupo}}" class="card-img-top" alt="">
+                <a [routerLink]="['/grupo-page', item.idGrupo]" ><img src="{{item.urlImagemGrupo}}" class="card-img-top" alt=""></a>
                 <div class="card-body">
-                  <h5 class="card-title m-0">{{item.nomeGrupo}}</h5>
+                  <a routerLink="/grupo-page/{{item.idGrupo}}"><h5 class="card-title m-0">{{item.nomeGrupo}}</h5></a>
                   <small class="text-muted">Descrição: {{item.descricao}}</small>
                   <!-- <p class="card-text mt-3">{{item.criador.nome}}</p> -->
                 </div>
@@ -172,9 +173,9 @@
           <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
             <div class="col mt-5" *ngFor='let item of listaGrupo'>
               <div class="card h-100 text-center">
-                <img src="{{item.urlImagemGrupo}}" class="card-img-top" height="200" width="250" alt="">
+                <a [routerLink]="['/grupo-page', item.idGrupo]" ><img src="{{item.urlImagemGrupo}}" class="card-img-top" alt=""></a>
                 <div class="card-body">
-                  <h5 class="card-title m-0">{{item.nomeGrupo}}</h5>
+                  <a routerLink="/grupo-page/{{item.idGrupo}}"><h5 class="card-title m-0">{{item.nomeGrupo}}</h5></a>
                   <small class="text-muted">Descrição: {{item.descricao}}</small>
                   <p class="card-text mt-3">criado por: {{item.criador.nome}}</p>
                 </div>
