@@ -73,3 +73,10 @@ height: 500px;
 	height: 100px;
 	width: 100px;
 }
+
+.img-front{
+    max-height: 300px;  
+    display: block;
+    width: 100%;
+    object-fit: scale-down;
+}
