@@ -32,3 +32,9 @@
     transition-duration: 1s;
 }
 
+.fotoPerfil{
+	object-fit: cover;
+	display: flex;
+	height: 100px;
+	width: 100px;
+}

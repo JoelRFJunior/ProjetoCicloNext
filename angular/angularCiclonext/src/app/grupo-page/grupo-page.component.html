@@ -13,6 +13,15 @@
         </div>
 
         <div class="col-md-8 mt-2">
+
+            <div class="container">
+
+                <img class="capaGrupo" src="{{grupo.urlImagemGrupo}}" alt="img grupo">
+                <h1>{{grupo.nomeGrupo}}</h1>
+                <tr>
+            
+            </div>
+
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-md-8">
 
@@ -44,7 +53,7 @@
                             (click)='cancelarPost()'>Cancelar</button>
 
                         <button class="btn fw-bold temporizadorCancel bg-color-publicar my-3" type="submit"
-                            (click)='postarNoFeed()'>Publicar</button>
+                            (click)='postarNoFeedGrupo()'>Publicar</button>
                     </div>
 
 
@@ -81,7 +90,7 @@
 
                 <!--- \\\\\\\Post-->
                 <div class="card gedf-card" style="background-color: #f8f8f8;"
-                    *ngFor='let post of listaPostagens | orderBy : key : reverse'>
+                    *ngFor='let post of grupo.postagens | orderBy : key : reverse'>
                     <div class="card-header">
                         <div class="row">
 <div class="col-md-5 d-flex justify-content-start">

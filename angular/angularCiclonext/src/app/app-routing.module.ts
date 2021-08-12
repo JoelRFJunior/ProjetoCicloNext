@@ -7,6 +7,7 @@ import { GrupoEditComponent } from './edit/grupo-edit/grupo-edit.component';
 import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.component';
 import { UserEditComponent } from './edit/user-edit/user-edit.component';
 import { EntrarComponent } from './entrar/entrar.component';
+import { GrupoPageComponent } from './grupo-page/grupo-page.component';
 import { GrupoComponent } from './grupo/grupo.component';
 import { HomeComponent } from './home/home.component';
 import { PostagemComponent } from './postagem/postagem.component';
@@ -26,8 +27,8 @@ const routes: Routes = [
   { path: 'grupo-delete/:id', component: GrupoDeleteComponent },
   { path: 'postagem-edit/:id', component: PostagemEditComponent },
   { path: 'postagem-delete/:id', component: PostagemDeleteComponent },
-  { path: 'user-edit/:id', component: UserEditComponent}
-
+  { path: 'user-edit/:id', component: UserEditComponent},
+  { path: 'grupo-page/:id', component: GrupoPageComponent}
 
 ];
 

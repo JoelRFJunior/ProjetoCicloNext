@@ -1,0 +1,92 @@
+.capaGrupo{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}   
+
+body {
+    background-color: #eeeeee;
+}
+
+.h7 {
+    font-size: 0.8rem;
+}
+
+.gedf-wrapper {
+    margin-top: 0.97rem;
+}
+
+@media (min-width: 992px) {
+    .gedf-main {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+    .gedf-card {
+        margin-bottom: 2.77rem;
+    }
+}
+
+
+
+/**Reset Bootstrap*/
+.dropdown-toggle::after {
+    content: none;
+    display: none;
+}
+
+.max-width-height-numero{
+	size: 600px;
+    display: flex;
+    width: 100%;
+	object-fit: cover;
+    
+}
+.bg-color-cancelar{
+    background-color: #E59347;
+    color: white;
+    border-radius: 25px;
+    
+}
+
+.bg-color-publicar{
+    background-color: #34878B;
+    color: white;
+    border-radius: 25px;
+}
+
+.img-front{
+    max-height: 300px;  
+    display: block;
+    width: 100%;
+    object-fit: scale-down;
+}
+
+.fotoPubli{
+	object-fit: cover;
+	display: flex;
+}
+
+.fotoPerfil{
+	object-fit: cover;
+	display: flex;
+	height: 100px;
+	width: 100px;
+}
+
+.select{
+	width: 230px;
+    
+}
+
+.temporizadorCancel:hover{
+    color: black;
+    background-color: #69D8D8;
+    transition-duration: 1s;
+    
+}
+.temporizadorGo:hover{
+    color: black;
+    background-color: #F1EB8D;
+    transition-duration: 1s;
+}
+

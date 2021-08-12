@@ -23,6 +23,7 @@ import { UserEditComponent } from './edit/user-edit/user-edit.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AlertasComponent } from './alertas/alertas.component';
 import { OrderModule } from 'ngx-order-pipe';
+import { GrupoPageComponent } from './grupo-page/grupo-page.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule,BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
@@ -46,6 +47,7 @@ import { BsDropdownModule,BsDropdownConfig } from 'ngx-bootstrap/dropdown';
     PostagemDeleteComponent,
     UserEditComponent,
     PerfilComponent,
+    GrupoPageComponent,
     AlertasComponent
 
 
@@ -58,10 +60,6 @@ import { BsDropdownModule,BsDropdownConfig } from 'ngx-bootstrap/dropdown';
     OrderModule,
     ModalModule.forRoot(),
     BsDropdownModule.forRoot( )
-
-    
-
-    
   ],
   providers: [{
     provide: LocationStrategy,
