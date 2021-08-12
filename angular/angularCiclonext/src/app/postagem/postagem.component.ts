@@ -100,7 +100,17 @@ export class PostagemComponent implements OnInit {
     this.postagem = new Postagem()
   }
 
+  tipoDeFiltro(event: any) {
+    
+    if (event.target.value == '') {
+      this.findAllPostagem()
+    } else {
+      this.postagemService.getByTipoPostagem(event.target.value).subscribe((resp: Postagem[]) => {
+        this.listaPostagens = resp
 
+      })
+    }
+  }
 
 
 

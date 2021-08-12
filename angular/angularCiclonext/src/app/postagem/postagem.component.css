@@ -1,3 +1,7 @@
+body {
+    background-color: #eeeeee;
+}
+
 .bg-color-cancelar{
     background-color: #E59347;
     color: white;
@@ -37,4 +41,52 @@
 	display: flex;
 	height: 100px;
 	width: 100px;
+}
+.fotoPubli{
+	object-fit: cover;
+	display: flex;
+}
+
+
+.select{
+	width: 230px;
+    
+}
+
+.h7 {
+    font-size: 0.8rem;
+}
+
+.gedf-wrapper {
+    margin-top: 0.97rem;
+}
+
+@media (min-width: 992px) {
+    .gedf-main {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+    .gedf-card {
+        margin-bottom: 2.77rem;
+    }
+}
+
+.dropdown-toggle::after {
+    content: none;
+    display: none;
+}
+
+.max-width-height-numero{
+	size: 600px;
+    display: flex;
+    width: 100%;
+	object-fit: cover;
+    
+}
+
+.img-front{
+    max-height: 300px;  
+    display: block;
+    width: 100%;
+    object-fit: scale-down;
 }
