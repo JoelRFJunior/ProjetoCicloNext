@@ -52,7 +52,7 @@ idAux: number
   let id = this.route.snapshot.params['id']
   this.idAux = id
   this.findByIdGrupo(id)
-  this.findAllPostagemGrupo()
+  //this.findAllPostagemGrupo()
   }
 
   findByIdGrupo(id: number){
@@ -90,9 +90,9 @@ idAux: number
     })
   }
 
-findAllPostagemGrupo(){
+//findAllPostagemGrupo(){
 
-}
+//}
 
   postarNoFeedGrupo() {
     this.user.idUsuario = this.idUser
