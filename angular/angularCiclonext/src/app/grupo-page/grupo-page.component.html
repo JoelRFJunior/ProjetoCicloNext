@@ -1,116 +1,169 @@
 <div class="container-fluid">
     <div class="row justify-content-md-center">
-        
-       <div class="col-md-2 bg-cinza-claro">
+
+        <div class="col-md-2 bg-cinza-claro">
+
 
             <div class="d-flex justify-content-center p-3">
-                <img src="{{foto}}" alt="foto perfil do usuario" height="200px" width="200px" class="rounded-circle">
+                <img src="{{foto}}" alt="foto perfil do usuario" class="rounded-circle fotoPerfil">
             </div>
 
             <h3 class="text-center mb-5">{{nome}}</h3>
-            <h5 class="text-center">Grupos criados</h5>
 
-        </div> 
+        </div>
 
-        <div class="col-md-8 mt-5">
+        <div class="col-md-8 mt-2">
+
+            <div class="container">
+
+                <img class="capaGrupo" src="{{grupo.urlImagemGrupo}}" alt="img grupo">
+                <h1>{{grupo.nomeGrupo}}</h1>
+                <tr>
             
-<div class="container">
+            </div>
 
-    <img class= "capaGrupo" src="{{grupo.urlImagemGrupo}}" alt="img grupo">
-    <h1>{{grupo.nomeGrupo}}</h1>
-    <tr>
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-md-8">
+
+                    <div class="form-group mt-3 px-lg-5">
+                        <textarea class="form-control"  id="textoDaMensagem" rows="4"
+                            [(ngModel)]='postagem.corpo' placeholder="Escreva sua postagem aqui.." ></textarea>
+                    </div>
+
+                    <div class="form-group mb-3 mt-3 px-lg-5">
+
+                        <label for="urlImagem">Link da Imagem</label>
+                        <input class="form-control" type="text" name="urlImagem" id="urlImagem"
+                            placeholder="Insira o link da sua foto" [(ngModel)]='postagem.urlImagemVideo'>
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end p-3 px-lg-5">
+                        <div class="form-group mb-1">
+                            <label for="tipoDaPostagem">Tipo de postagem</label>
+                            <select class="form-control" name="tipoDaPostagem" id="tipoDaPostagem"
+                                (change)='tipoDaPostagem($event)'>
+                                <option>Selecione um tipo de postagem</option>
+                                <option value="TEXTO">Texto</option>
+                                <option value="DOACAO">Doação</option>
+                                <option value="AGRADECIMENTO">Agradecimento</option>
+                                <option value="OUTROS">Outros</option>
+                            </select>
+                        </div>
+                        <button class="btn fw-bold temporizadorGo bg-color-cancelar my-3" type="submit"
+                            (click)='cancelarPost()'>Cancelar</button>
+
+                        <button class="btn fw-bold temporizadorCancel bg-color-publicar my-3" type="submit"
+                            (click)='postarNoFeedGrupo()'>Publicar</button>
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <img src="{{postagem.urlImagemVideo}}" alt="" class="img-front"
+                        placeholder="https://i.imgur.com/bypj39b.png">
+                    <img src="https://i.imgur.com/bypj39b.png" width="350px" height="350px"
+                        *ngIf="postagem.urlImagemVideo == null" />
+
+
+                </div>
+            </div>
+            
+            <!-- <hr class="d-flex justify-content-end " style="padding-right: -1000px;"> -->
+           
+            <!-- <img src="{{postagem.urlImagemVideo}}" alt="" class="img-front"> -->
+            <div class="container px-lg-5" style="background-color: #ffffff; padding-right: 1500px;">
+                <div class="form-group justify-content-end mb-3">
+                    
+                    <div class="d-flex justify-content-end">
+                    <select class="form-select select" name="filtroPostagem" id="filtroPostagem"
+                        (change)='tipoDeFiltro($event)'>
+                        <option value="">Filtrar tipo de postagens</option>
+                        <option value="TEXTO">Texto</option>
+                        <option value="DOACAO">Doação</option>
+                        <option value="AGRADECIMENTO">Agradecimento</option>
+                        <option value="OUTROS">Outros</option>
+                    </select>
+                </div>
+                </div>
+
+                <!--- \\\\\\\Post-->
+                <div class="card gedf-card" style="background-color: #f8f8f8;"
+                    *ngFor='let post of grupo.postagens | orderBy : key : reverse'>
+                    <div class="card-header">
+                        <div class="row">
+<div class="col-md-5 d-flex justify-content-start">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="me-2 ">
+
+                <img class="rounded-circle fotoPubli" width="60" height="60"
+                    src='{{post.autor.urlImagemPerfil}}' alt="">
+            </div>
+            <div class="ms-2">
+                <div class="h5 m-0">{{post.autor.nome}}</div>
+                <div class="h7 text-muted">{{post.tipoPostagem}}</div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="col-md-5"></div>
+
+
+<div *ngIf='post.grupo!=null' class="col-md-2 d-flex justify-content-center">
+
+    <div class="d-flex justify-content-center">
+        <div class="">
+            <div class="">
+
+                <img class="mt-3 rounded-circle fotoPublic" width="60" height="60"
+                    src='{{post.grupo.urlImagemGrupo}}' alt="">
+            </div>
+            <div class="">
+                <div class="h7 m-0 mt-2 text-muted text-center">{{post.grupo.nomeGrupo}}</div>
+            </div>
+        </div>
+    </div>
 
 </div>
 
-
-
-            <!-- Form de postagem -->
-            <div class="form-group mb-3 px-lg-5">
-                
-                <label for="urlImagem">URLImagem</label>
-                <input  class="form-control" type="text" name="urlImagem" id="urlImagem" placeholder="Insira o link da sua foto" 
-                [(ngModel)]='postagem.urlImagemVideo'>
-            </div>
-            <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="textoDaMensagem"
-                    [(ngModel)]= 'postagem.corpo'></textarea>
-                <label for="textoDaMensagem">Escreva aqui..</label>
-            </div>
-            <!--<div class="COLOCAR A IMAGEM AQUI"></div>-->
-
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end p-3">
-                <div class="form-group mb-3">
-                    <label for="tipoDaPostagem">Tipo de postagem</label>
-                    <select class="form-control" name="tipoDaPostagem" id="tipoDaPostagem" (change)='tipoDaPostagem($event)'>
-                        <option>Selecione um tipo de mensagem</option>
-                        <option value="TEXTO">Texto</option>
-                        <option value="DOACAO">Doação</option>
-                        <option value="AGRADECIMENTO">Agradecimento</option>
-                        <option value="OUTROS">Outros</option>
-                    </select>
-                </div>
-                <button class="btn fw-bold bg-color-cancelar my-3" type="submit"
-                (click)='cancelarPost()'>cancelar</button>
-
-            <button class="btn fw-bold bg-color-publicar my-3" type="submit"
-                (click)='postarNoFeed()'>Publicar</button>
-            </div>
-            <img src="{{postagem.urlImagemVideo}}" alt="" class="img-front">
-            <div class="container" style="background-color: #E8E8E8;">
-                <div class="form-group mb-3 px-lg-5">
-                    <select class="form-select" name="tipoPostagem" id="tipoPostagem">
-                        <option>Filtrar tipo de postagens</option>
-                        <option value="TEXTO">Texto</option>
-                        <option value="DOACAO">Doação</option>
-                        <option value="AGRADECIMENTO">Agradecimento</option>
-                        <option value="OUTROS">Outros</option>
-                    </select>
-                </div>
-
-                <!--- Feed de Postagens-->
-                <div class="card gedf-card" *ngFor='let post of listaPostagens | orderBy : key : reverse'>
-                    <div class="card-header">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex justify-content-between align-items-center ">
-                                <div class="me-2 ">
-                                    <img class="rounded-circle " width="60" height="60" src= '{{post.autor.urlImagemPerfil}}' alt="">
-                                </div>
-                                <div class="ms-2">
-                                    <div class="h5 m-0 text-end">{{post.autor.nome}}</div>
-                                    <div class="h7 text-muted">{{post.tipoPostagem}}</div>
-                                </div>
-                            </div>
-                            <div>
-
-                         
-                            </div>
                         </div>
+                        
 
-                    </div>
-                    <div class="card-body">
-                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{post.data | date: 'dd/MM/yyyy'}} às {{post.data | date: 'HH:mm'}}</div>
-                       
-                            <img src="{{post.urlImagemVideo}}" alt="" class="max-width-height-numero d-flex justify-content-center">
-                       
 
-                        <p class="card-text">{{post.corpo}}</p>
+
+                        <div class="card-body">
+                            <div class="text-muted h7"> <i class="fa fa-clock-o"></i>{{post.data | date:
+                                'dd/MM/yyyy'}} às {{post.data | date: 'HH:mm'}}
+                            </div>
+
+                            <img src="{{post.urlImagemVideo}}" alt="" decoding="auto"
+                                class="max-width-height-numero mt-2 ">
+
+
+                            <p class="card-text mt-3">{{post.corpo}}</p>
+                        </div>
                     </div>
+
                 </div>
-
-                
-                <!-- Post /////-->
-
 
 
             </div>
+
+            <!-- Post /////-->
+
+
 
         </div>
 
 
-
         <div class="col-md-2 bg-cinza-claro">
 
-            <div class="container mt-5">
+            <!--Mensagens privadas-->
+            <!-- <div class="container mt-5">
 
                 <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                     <div class="card-header">Mensagens Privadas</div>
@@ -125,9 +178,9 @@
                 </div>
 
 
-            </div>
+            </div> -->
 
         </div>
-
+        
     </div>
 </div>

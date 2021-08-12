@@ -31,7 +31,7 @@ export class GrupoPageComponent implements OnInit {
   reverse = true
   postagensGrupo: Postagem[];
 
-
+idAux: number
 
   constructor(
     private router: Router,
@@ -41,7 +41,7 @@ export class GrupoPageComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
     window.scroll(0, 0)
       if (environment.token == '') {
       //alert('Sua sessão expirou, faça o login novamente!')
@@ -50,6 +50,7 @@ export class GrupoPageComponent implements OnInit {
   }
 
   let id = this.route.snapshot.params['id']
+  this.idAux = id
   this.findByIdGrupo(id)
   this.findAllPostagemGrupo()
   }
@@ -93,7 +94,7 @@ findAllPostagemGrupo(){
 
 }
 
-  postarNoFeed() {
+  postarNoFeedGrupo() {
     this.user.idUsuario = this.idUser
     this.postagem.autor = this.user
     this.postagem.grupo = this.grupo
@@ -101,8 +102,12 @@ findAllPostagemGrupo(){
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
       alert('Postagem criada com sucesso')
+
       this.findAllPostagem()
       this.postagem = new Postagem()
+
+      this.grupo = new Grupo()
+      this.findByIdGrupo(this.idAux)
 
     })
 
@@ -112,6 +117,17 @@ findAllPostagemGrupo(){
     this.postagem = new Postagem()
   }
 
+  tipoDeFiltro(event: any) {
+    
+    if (event.target.value == '') {
+      this.findAllPostagem()
+    } else {
+      this.postagemService.getByTipoPostagem(event.target.value).subscribe((resp: Postagem[]) => {
+        this.listaPostagens = resp
+
+      })
+    }
+  }
 
 }
 
