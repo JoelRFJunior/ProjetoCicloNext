@@ -17,8 +17,9 @@
                 <div class="col-md-8">
 
                     <div class="form-group mt-3 px-lg-5">
-                        <textarea class="form-control" id="textoDaMensagem" rows="4" [(ngModel)]='postagem.corpo'
+                        <textarea class="form-control" id="assunto" rows="4" (keyup)='validaAssunto($event)' [(ngModel)]='postagem.corpo'
                             placeholder="Escreva sua postagem aqui.."></textarea>
+                            <div id="txtAssunto"></div>
                     </div>
 
                     <div class="form-group mb-3 mt-3 px-lg-5">
