@@ -42,10 +42,19 @@ export class CadastrarComponent implements OnInit {
     if (this.user.senha != this.confirmarSenha) {
       this.alertas.showAlertDanger('As senhas estão incorretas.')
     } else {
-      this.router.navigate(['/entrar'])
-      this.alertas.showAlertSuccess('Usuário cadastrado com sucesso.')
+     
       this.authService.cadastrar(this.user).subscribe((resp: Usuario) => {
           this.user = resp
+
+          this.router.navigate(['/entrar'])
+          this.alertas.showAlertSuccess('Usuário cadastrado com sucesso.')
+      }, erro => {
+        if (erro.status == 400) {
+          this.alertas.showAlertDanger('Email ja cadastrado!')
+          }
+          if(erro.status == 500){
+            this.alertas.showAlertDanger('Preencha E-mail, Nome e Senha corretamente')
+          }
       })
     }
   }

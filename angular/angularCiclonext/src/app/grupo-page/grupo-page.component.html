@@ -18,6 +18,7 @@
 
                 <img class="capaGrupo" src="{{grupo.urlImagemGrupo}}" alt="img grupo">
                 <h1>{{grupo.nomeGrupo}}</h1>
+                <h4 class="text-muted">{{grupo.descricao}}</h4>
                 <tr>
             
             </div>
@@ -117,6 +118,8 @@
 
     <div class="d-flex justify-content-center">
         <div class="">
+           
+           
             <div class="">
 
                 <img class="mt-3 rounded-circle fotoPublic" width="60" height="60"
@@ -139,12 +142,12 @@
                             <div class="text-muted h7"> <i class="fa fa-clock-o"></i>{{post.data | date:
                                 'dd/MM/yyyy'}} às {{post.data | date: 'HH:mm'}}
                             </div>
-
+                            <p class="card-text mt-3">{{post.corpo}}</p>
                             <img src="{{post.urlImagemVideo}}" alt="" decoding="auto"
                                 class="max-width-height-numero mt-2 ">
 
 
-                            <p class="card-text mt-3">{{post.corpo}}</p>
+                           
                         </div>
                     </div>
 

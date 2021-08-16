@@ -159,49 +159,49 @@
 
 
 <!-- Modal -->
+<div class="">
+  <div class="modal fade container-fluid" id="novoGrupo" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex ">
+      <div class="modal-content">
+        <div class="container d-flex  ">
+          <div class="modal-header ">
+            <!-- <img class="" src="https://i.imgur.com/YyFqV0d.png" height="400px" width="400px" alt=""> -->
+            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+          </div>
+        </div>
+        <h2 class="modal-title text-center fw-bold" style="color:#69D8D8;" id="exampleModalLabel">Criar
+          grupo</h2>
 
-<div class="modal fade container-fluid" id="novoGrupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered d-flex">
-    <div class="modal-content">
-      <div class="container d-flex">
-        <div class="modal-header">
-          <img class="" src="https://i.imgur.com/YyFqV0d.png" height="400px" width="400px" alt="">
-          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
-        </div>
-      </div>
-      <h2 class="modal-title text-center fw-bold" style="color:#69D8D8;" id="exampleModalLabel">Criar
-        grupo</h2>
-
-      <div class="modal-body">
-        <div class="form-group px-lg-5 my-3">
-          <label for="nomeGrupo">Nome do Grupo</label>
-          <input [(ngModel)]='grupo.nomeGrupo' type="text" class="form-control" id="nomeGrupo"
-            placeholder="Digite o nome">
-        </div>
-        <div class="form-group px-lg-5 my-3">
-          <label for="descricao">Descrição</label>
-          <textarea [(ngModel)]='grupo.descricao' type="text" class="form-control" id="descricao"
-            placeholder="Digite o descrição"></textarea>
-        </div>
-        <div class="form-group px-lg-5 my-3">
-          <label for="urlImagemGrupo">Imagem do grupo</label>
-          <input [(ngModel)]='grupo.urlImagemGrupo' type="text" class="form-control" id="urlImagemGrupo"
-            placeholder="Digite a url da imagem do grupo">
+        <div class="modal-body">
+          <div class="form-group px-lg-5 my-3">
+            <label for="nomeGrupo">Nome do Grupo</label>
+            <input [(ngModel)]='grupo.nomeGrupo' type="text" class="form-control" id="nomeGrupo"
+              placeholder="Digite o nome">
+          </div>
+          <div class="form-group px-lg-5 my-3">
+            <label for="descricao">Descrição</label>
+            <textarea [(ngModel)]='grupo.descricao' type="text" class="form-control" id="descricao"
+              placeholder="Digite o descrição"></textarea>
+          </div>
+          <div class="form-group px-lg-5 my-3">
+            <label for="urlImagemGrupo">Imagem do grupo</label>
+            <input [(ngModel)]='grupo.urlImagemGrupo' type="text" class="form-control" id="urlImagemGrupo"
+              placeholder="Digite a url da imagem do grupo">
 
 
-        </div>
-        <div>
-          <img src="{{grupo.urlImagemGrupo}}" alt="" class="img-front" placeholder="https://i.imgur.com/bypj39b.png">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn bg-color-voltar fw-bold temporizadorVoltar"
-            data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn bg-color-cadastrar fw-bold temporizadorCadastrar" data-bs-dismiss="modal"
-            (click)='cadastrar()'>Criar</button>
+          </div>
+          <div>
+            <img src="{{grupo.urlImagemGrupo}}" alt="" class="img-front" placeholder="https://i.imgur.com/bypj39b.png">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn bg-color-voltar fw-bold temporizadorVoltar"
+              data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn bg-color-cadastrar fw-bold temporizadorCadastrar" data-bs-dismiss="modal"
+              (click)='cadastrar()'>Criar</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
 </div>

@@ -80,3 +80,8 @@ height: 500px;
     width: 100%;
     object-fit: scale-down;
 }
+
+.modalTamanho{
+    width: 1000px;
+    height: 1000px;
+}

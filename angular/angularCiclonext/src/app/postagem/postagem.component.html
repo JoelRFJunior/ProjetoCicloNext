@@ -83,7 +83,8 @@
 
 
                 <!--- \\\\\\\Post-->
-                <div class="card gedf-card" style="background-color: #f8f8f8;" *ngFor='let post of user.publicacoes | orderBy : key : reverse'>
+                <div class="card gedf-card" style="background-color: #f8f8f8;"
+                    *ngFor='let post of user.publicacoes | orderBy : key : reverse'>
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-5 d-flex justify-content-start">
@@ -145,12 +146,13 @@
                                 'dd/MM/yyyy'}}
                                 às {{post.data | date: 'HH:mm'}}</div>
 
-                            <img src="{{post.urlImagemVideo}}" alt=""
-                            decoding="auto"
-                            class="max-width-height-numero mt-2">
-
 
                             <p class="card-text mt-3">{{post.corpo}}</p>
+                            <img src="{{post.urlImagemVideo}}" alt="" decoding="auto"
+                                class="max-width-height-numero mt-2">
+
+
+
                         </div>
 
 
