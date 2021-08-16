@@ -1,5 +1,6 @@
 
 
+import { style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
@@ -106,6 +107,10 @@ export class HomeComponent implements OnInit {
 
   'cancelarPost'() {
     this.postagem = new Postagem()
+    let txtAssunto= document.querySelector('#txtAssunto') as HTMLInputElement;
+    txtAssunto.innerHTML = 500 +'/500'   
+    txtAssunto.style.color = 'black'
+      
   }
 
   tipoDeFiltro(event: any) {
@@ -119,6 +124,27 @@ export class HomeComponent implements OnInit {
       })
     }
   }
+
+  validaAssunto(event: any) {
+    let txtAssunto= document.querySelector('#txtAssunto') as HTMLInputElement;
+    let valor: Number;
+
+    valor = 500 - event.target.value.length
+         
+
+    if (event.target.value.length >=500) {
+      
+        txtAssunto.style.color = 'red'
+        txtAssunto.innerHTML = valor +'/500 Cuidado! sua mensagem está acima do max de caracteres.' 
+
+    } else {
+      txtAssunto.innerHTML = valor +'/500'
+      txtAssunto.style.color = 'black'
+
+    }
+
+}
+
 
   // filtrar() {
   //   if (this.tipoPostagem == '') {
