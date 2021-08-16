@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { Grupo } from '../model/Grupo';
+import { GrupoParaAtualizar } from '../model/GrupoParaAtualizar';
 import { Postagem } from '../model/Postagem';
 
 
@@ -44,8 +45,8 @@ export class GrupoService {
     )
   }
 
-  putGrupo(grupo: Grupo): Observable<Grupo>{
-    return this.http.put<Grupo>('https://ciclonext.herokuapp.com/api/v1/grupo', grupo
+  putGrupo(grupo: GrupoParaAtualizar): Observable<GrupoParaAtualizar>{
+    return this.http.put<GrupoParaAtualizar>('https://ciclonext.herokuapp.com/api/v1/grupo', grupo
     // , this.token
     )
   }
