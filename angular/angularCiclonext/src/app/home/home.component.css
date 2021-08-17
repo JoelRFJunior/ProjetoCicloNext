@@ -28,13 +28,11 @@ body {
     display: none;
 }
 
-.max-width-height-numero{
-	size: 600px;
-    display: flex;
-    width: 100%;
-	object-fit: cover;
-    
+
+.h8 {
+    font-size: 1.2rem;
 }
+
 .bg-color-cancelar{
     background-color: #E59347;
     color: white;
@@ -60,11 +58,8 @@ body {
 	display: flex;
 }
 
-.fotoPerfil{
-	object-fit: cover;
-	display: flex;
-	height: 100px;
-	width: 100px;
+.margin-font-foto{
+    margin-right: 500px;
 }
 
 .select{
@@ -84,3 +79,8 @@ body {
     transition-duration: 1s;
 }
 
+.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

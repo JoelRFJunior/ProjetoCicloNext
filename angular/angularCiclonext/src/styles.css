@@ -42,3 +42,55 @@ h2{
 p{
     font-family: Roboto, Segoe UI, sans-serif;
 }
+
+
+#img-bg{
+    background-image: url('../../angularCiclonext/src/assets/img/fundo.svg');
+    
+    min-height: 500px;
+
+    /* background-position: center; */
+    background-repeat: repeat-y;
+    background-size: contain;
+    /* animation: myfirst 10s 1; */
+    /* animation-direction: normal; */
+} 
+#img-bg-invertido{
+    background-image: url('../../angularCiclonext/src/assets/img/fundo.svg');
+    
+    min-height: 500px;
+
+    /* background-position: center; */
+    background-repeat: repeat-y;
+    background-size: contain;
+    transform: rotateY(180deg)
+    /* animation: myfirst 10s 1; */
+    /* animation-direction: normal; */
+} 
+
+.sticky{
+    position: fixed;
+  /* bottom: 0;
+  right: 0; */
+
+
+}
+
+.fotoPerfil{
+	object-fit: cover;
+	display: flex;
+	height: 150px;
+	width: 150px;
+}
+
+.margin-footer{
+    margin-bottom: 280px;
+}
+
+.max-width-height-numero{
+	/* size: 100px; */
+    display: flex;
+    width: 100%;
+	object-fit: cover;
+    
+}

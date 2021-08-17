@@ -3,18 +3,21 @@
 
 
 
-        <div class="col-md-2 bg-cinza-claro">
+        <div class="col-md-3" id="img-bg">
 
 
-            <div class="d-flex justify-content-center p-3">
-                <img src="{{foto}}" alt="foto perfil do usuario" class="rounded-circle fotoPerfil">
+            <div class="col-md-3 sticky">
+
+                <div class="d-flex justify-content-center p-3 ">
+                    <img src="{{foto}}" alt="foto perfil do usuario" class="rounded-circle fotoPerfil">
+                </div>
+
+                <h3 class="text-center mb-5 p-3" style="background-color: #ffffff;">{{nome}}</h3>
             </div>
-
-            <h3 class="text-center mb-5">{{nome}}</h3>
 
         </div>
 
-        <div class="col-md-8 mt-2">
+        <div class="col-md-6 mt-2 px-lg-5">
 
 
             <div class="row d-flex justify-content-center">
@@ -67,19 +70,6 @@
 
 
             <div class="container px-lg-5" style="background-color: #ffffff; padding-right: 1500px;">
-                <!-- <div class="form-group justify-content-end mb-3">
-
-                    <div class="d-flex justify-content-end">
-                        <select class="form-select select" name="filtroPostagem" id="filtroPostagem"
-                            (change)='tipoDeFiltro($event)'>
-                            <option value="">Filtrar tipo de postagens</option>
-                            <option value="TEXTO">Texto</option>
-                            <option value="DOACAO">Doação</option>
-                            <option value="AGRADECIMENTO">Agradecimento</option>
-                            <option value="OUTROS">Outros</option>
-                        </select>
-                    </div>
-                </div> -->
 
 
                 <!--- \\\\\\\Post-->
@@ -105,24 +95,7 @@
 
                             </div>
 
-                            <!-- <div *ngIf='post.grupo!=null' class="col-md-1 d-flex justify-content-center">
-
-                                <div class="d-flex justify-content-center">
-                                    <div class="">
-                                        <div class="">
-
-                                            <img class="mt-3 rounded-circle fotoPublic" width="60" height="60"
-                                                src='{{post.grupo.urlImagemGrupo}}' alt="AAA">
-                                        </div>
-                                        <div class="">
-                                            <div class="h7 m-0 mt-2 text-muted text-center">{{post.grupo.nomeGrupo}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div> -->
-
+                            
                             <div class="col-md-2 d-flex justify-content-center">
 
                                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -143,18 +116,16 @@
 
                         <div class="card-body">
                             <div class="text-muted h7"> <i class="fa fa-clock-o"></i>{{post.data | date:
-                                'dd/MM/yyyy'}}
-                                às {{post.data | date: 'HH:mm'}}</div>
+                                'dd/MM/yyyy'}} às {{post.data | date: 'HH:mm'}}
+                            </div>
+                            <p class="card-text mt-3 h8">{{post.corpo}}</p>
 
-
-                            <p class="card-text mt-3">{{post.corpo}}</p>
                             <img src="{{post.urlImagemVideo}}" alt="" decoding="auto"
-                                class="max-width-height-numero mt-2">
+                                class="max-width-height-numero displayed mt-2">
 
 
 
                         </div>
-
 
                     </div>
                     <!-- Post /////-->
@@ -163,7 +134,7 @@
             </div>
         </div>
 
-        <div class="col-md-2 bg-cinza-claro">
+        <div class="col-md-3" id="img-bg-invertido">
 
             <!-- <div class="container mt-5"> -->
 

@@ -20,7 +20,13 @@ export class GrupoEditComponent implements OnInit {
 
   user: Usuario = new Usuario()
   grupo: Grupo = new Grupo()
-  grupoAtualizar: GrupoParaAtualizar =  new GrupoParaAtualizar()
+  grupoAtualizar: GrupoParaAtualizar = new GrupoParaAtualizar()
+
+  validaMensagem: boolean
+  validaFoto: boolean
+  validaTipo: boolean
+
+
   constructor(
     private grupoService: GrupoService,
     private router: Router,
@@ -47,16 +53,40 @@ export class GrupoEditComponent implements OnInit {
     console.log(JSON.stringify(this.grupo))
     this.user.idUsuario = this.iduser
     this.grupoAtualizar.criador = this.user
-   
-    this.grupoAtualizar.idGrupo  = this.grupo.idGrupo
+
+    this.grupoAtualizar.idGrupo = this.grupo.idGrupo
     this.grupoAtualizar.nomeGrupo = this.grupo.nomeGrupo
     this.grupoAtualizar.urlImagemGrupo = this.grupo.urlImagemGrupo
     this.grupoAtualizar.descricao = this.grupo.descricao
-      this.grupoService.putGrupo(this.grupoAtualizar).subscribe((resp: GrupoParaAtualizar) => {
+    this.grupoService.putGrupo(this.grupoAtualizar).subscribe((resp: GrupoParaAtualizar) => {
       this.grupoAtualizar = resp
       this.alertas.showAlertSuccess('Grupo atualizado com sucesso.')
       this.router.navigate(['/grupo'])
     })
   }
+
+
+  validaImagem(event: any) {
+    let txtImagem = document.querySelector('#txtImagem') as HTMLInputElement;
+
+    let emailOk = false
+
+    //if (event.target.value.includes('.jpg') || event.target.value.includes('.jpeg') || event.target.value.includes('.png') ||  ) {
+
+    if (event.target.value.length <= 500) {
+
+      this.validaFoto = true
+      txtImagem.innerHTML = ''
+      txtImagem.style.color = 'black'
+
+    } else {
+      this.validaFoto = false
+      txtImagem.style.color = 'red'
+      txtImagem.innerHTML = 'Cuidado! link da imagem acima de 500 caracteres.'
+
+    }
+
+  }
+
 
 }

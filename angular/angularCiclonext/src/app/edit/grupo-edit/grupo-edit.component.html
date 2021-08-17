@@ -1,19 +1,21 @@
 <div class="container-fluid">
   <div class="row justify-content-md-center">
 
-    <div class="col-md-2 bg-cinza-claro">
+    <div class="col-md-3 " id="img-bg" style="background-color: #ffffff;">
 
-      <div class="d-flex justify-content-center p-3">
-        <img src="{{foto}}" alt="foto perfil do usuario" height="200px" width="200px" class="rounded-circle">
+      <div class="col-md-3 sticky">
+
+              <div class="d-flex justify-content-center p-3 " >
+                  <img src="{{foto}}" alt="foto perfil do usuario" class="rounded-circle fotoPerfil">
+              </div>
+
+              <h3 class="text-center mb-5 p-3" style="background-color: #ffffff;">{{nome}}</h3>
       </div>
-
-      <h3 class="text-center mb-5">{{nome}}</h3>
-
-    </div>
+  </div>
 
 
 
-    <div class="col-md-8 mt-5">
+    <div class="col-md-6 mt-5 margin-footer">
       <h1 class="text-center fw-bold text-secondary">Atualizar Dados do Grupo</h1>
       <div class="row justify-content-md-center">
 
@@ -32,8 +34,9 @@
           </div>
           <div class="form-group my-2">
             <label for="urlImagemGrupo">Imagem do grupo</label>
-            <input [(ngModel)]='grupo.urlImagemGrupo' type="text" class="form-control" id="urlImagemGrupo"
+            <input [(ngModel)]='grupo.urlImagemGrupo' type="text" class="form-control" id="urlImagemGrupo" (keyup)='validaImagem($event)'
               placeholder="Digite a url da imagem do grupo">
+              <div id="txtImagem"></div>
           </div>
 
 
@@ -53,14 +56,20 @@
       </div>
 
 
-      <div class="col-md-6 d-flex align-items-center justify-content-center mb-5 mt-3">
+      <div class="col-md-6 d-flex align-items-center justify-content-center mt-3">
         <img src="{{grupo.urlImagemGrupo}}" class="sizefoto" alt="">
       </div>
     </div>
 
-    </div>
+    <!-- <div class="row mt-5 mb-5">
+    <hr>
+    </div> -->
+    <!-- <div class="mt-5">
+      <br><br><br><br><br><br><br><br><br>
+    </div> -->
+  </div>
 
-    <div class="col-md-2 bg-cinza-claro">
+    <div class="col-md-3"  id="img-bg-invertido" style="background-color: #ffffff;">
 <!-- 
       <div class="container mt-5">
 
