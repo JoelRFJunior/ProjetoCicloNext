@@ -52,6 +52,8 @@ p{
     /* background-position: center; */
     background-repeat: repeat-y;
     background-size: contain;
+    animation: myfi 3s 1;
+    animation-timing-function: linear;
     /* animation: myfirst 10s 1; */
     /* animation-direction: normal; */
 } 
@@ -63,10 +65,15 @@ p{
     /* background-position: center; */
     background-repeat: repeat-y;
     background-size: contain;
-    transform: rotateY(180deg)
-    /* animation: myfirst 10s 1; */
-    /* animation-direction: normal; */
+    transform: rotateY(180deg);
+    animation: myfi 2s 1;
+    animation-timing-function: linear;
 } 
+@keyframes myfi {
+    0% {background-image: url('https://www.rudegon.com.br/11636/mdf-branco-artico-fosco.jpg'); left: 0%; top: 0%;}
+    100% {background-image: url('../../angularCiclonext/src/assets/img/fundo.svg'); left: 100%; top: 100%;}
+
+}
 
 .sticky{
     position: fixed;
