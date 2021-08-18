@@ -21,6 +21,8 @@ export class UserEditComponent implements OnInit {
 
   nome = environment.nome
   foto = environment.urlImagemPerfil
+  categoria = environment.categoria
+
   // token = environment.token
   // idUser = environment.idUsuario
   

@@ -17,6 +17,8 @@ export class GrupoEditComponent implements OnInit {
   nome = environment.nome
   foto = environment.urlImagemPerfil
   iduser = environment.idUsuario
+  categoria = environment.categoria
+
 
   user: Usuario = new Usuario()
   grupo: Grupo = new Grupo()
