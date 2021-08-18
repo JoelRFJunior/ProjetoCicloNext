@@ -1,0 +1,205 @@
+<div class="container-fluid">
+    <div class="row justify-content-md-center">
+
+        <div class="col-md-3 " id="img-bg" style="background-color: #ffffff;">
+
+            <div class="col-md-3 sticky">
+
+                <div class="d-flex justify-content-center p-3 ">
+                    <img src="{{foto}}" alt="foto perfil do usuario" class="rounded-circle fotoPerfil">
+                </div>
+
+                <h3 class="text-center mb-5 p-3" style="background-color: #ffffff;">{{nome}}
+                
+                <img *ngIf= "categoria == 'USUARIO'" src="../../assets/img/pessoaFisica.svg" alt="" height="25px" width="25px">
+                <img *ngIf= "categoria == 'ONG'" src="../../assets/img/ong.svg" alt="" height="25px" width="25px">
+                <img *ngIf= "categoria == 'EMPRESA'" src="../../assets/img/empresa.svg" alt="" height="25px" width="25px">
+                
+                </h3>
+            </div>
+        </div>
+
+        <div class="col-md-6 mt-2 px-lg-5">
+
+            <div class="container">
+
+                <img class="capaGrupo" src="{{grupo.urlImagemGrupo}}" style="border-radius: 10px;" alt="img grupo">
+                <h1 class="fw-bold mt-3">{{grupo.nomeGrupo}}</h1>
+                <h4 class="text-muted">{{grupo.descricao}}</h4>
+                <tr>
+
+            </div>
+
+            <div class="row d-flex justify-content-center align-items-center mb-3 mt-3"
+                style="border: solid 1px; border-color: #F0F0F0; border-radius: 15px;">
+                <div class="col-md-7">
+
+                    <div class="form-group mt-3 px-lg-5">
+                        <textarea class="form-control" id="assunto" rows="4" (keyup)='validaAssunto($event)'
+                            [(ngModel)]='postagem.corpo' placeholder="Escreva sua postagem aqui..."></textarea>
+                        <div id="txtAssunto"></div>
+                    </div>
+
+                    <div class="form-group mb-3 mt-3 px-lg-5">
+
+                        <label for="urlImagem">Link da Imagem</label>
+                        <input class="form-control" type="text" name="urlImagem" id="urlImagem"
+                            (keyup)='validaImagem($event)' placeholder="Insira o link da sua foto"
+                            [(ngModel)]='postagem.urlImagemVideo'>
+                        <div id="txtImagem"></div>
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end p-3 px-lg-5">
+                        <div class="form-group mb-1">
+                            <label for="tipoDaPostagem">Tipo de postagem</label>
+                            <select class="form-control" name="tipoDaPostagem" id="tipoDaPostagem"
+                                (change)='tipoDaPostagem($event)'>
+                                <option value="">Escolha aqui: </option>
+                                <option value="TEXTO">Texto</option>
+                                <option value="DOACAO">Doação</option>
+                                <option value="AGRADECIMENTO">Agradecimento</option>
+                                <option value="OUTROS">Outros</option>
+                            </select>
+                        </div>
+                        <button class="btn fw-bold temporizadorGo bg-color-cancelar my-3" type="submit"
+                            (click)='cancelarPost()'>Cancelar</button>
+
+                        <button class="btn fw-bold temporizadorCancel bg-color-publicar my-3" type="submit"
+                            (click)='postarNoFeedGrupo()'>Publicar</button>
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-5">
+
+                    <img src="{{postagem.urlImagemVideo}}" alt="" class="img-front"
+                        placeholder="https://i.imgur.com/bypj39b.png">
+                    <img src="https://i.imgur.com/bypj39b.png" width="350px" height="350px"
+                        *ngIf="postagem.urlImagemVideo == null" />
+
+
+                </div>
+            </div>
+
+            <!-- <hr class="d-flex justify-content-end " style="padding-right: -1000px;"> -->
+
+            <!-- <img src="{{postagem.urlImagemVideo}}" alt="" class="img-front"> -->
+            <div class="container px-lg-5" style="background-color: #ffffff; padding-right: 1500px;">
+                <!-- <div class="form-group justify-content-end mb-3">
+                    
+                    <div class="d-flex justify-content-end">
+                    <select class="form-select select" name="filtroPostagem" id="filtroPostagem"
+                        (change)='tipoDeFiltro($event)'>
+                        <option value="">Filtrar tipo de postagens</option>
+                        <option value="TEXTO">Texto</option>
+                        <option value="DOACAO">Doação</option>
+                        <option value="AGRADECIMENTO">Agradecimento</option>
+                        <option value="OUTROS">Outros</option>
+                    </select>
+                </div>
+                </div> -->
+
+                <!--- \\\\\\\Post-->
+                <div class="card gedf-card" style="background-color: #f8f8f8;"
+                    *ngFor='let post of grupo.postagens | orderBy : key : reverse'>
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-5 d-flex justify-content-start">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="me-2 ">
+
+                                            <img class="rounded-circle fotoPubli" width="60" height="60"
+                                                src='{{post.autor.urlImagemPerfil}}' alt="">
+                                        </div>
+                                        <div class="ms-2">
+                                            <div class="h5 m-0">{{post.autor.nome}}</div>
+                                            <div class="h7 mt-1 text-muted">{{post.tipoPostagem}}</div>
+                                            <img *ngIf= "post.autor.categoria == 'USUARIO'" src="../../assets/img/pessoaFisica.svg" class="mt-2" alt="" height="25px" width="25px">
+                                            <img *ngIf= "post.autor.categoria == 'ONG'" src="../../assets/img/ong.svg" class="mt-2" alt="" height="25px" width="25px">
+                                            <img *ngIf= "post.autor.categoria == 'EMPRESA'" src="../../assets/img/empresa.svg" class="mt-2" alt="" height="25px" width="25px">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-5"></div>
+
+
+                            <div *ngIf='post.grupo!=null' class="col-md-2">
+
+                                <div class="">
+                                    <div class="">
+
+
+                                        <div class="d-flex justify-content-center">
+
+                                            <!-- <img class="mt-3 rounded-circle fotoPublic" width="60" height="60"
+                                                src='{{post.grupo.urlImagemGrupo}}' alt=""> -->
+                                        </div>
+                                        <div class="">
+                                            <!-- <div class="h7 m-0 mt-2 text-muted text-center">{{post.grupo.nomeGrupo}}
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+
+                        <div class="card-body">
+                            <div class="text-muted h7"> <i class="fa fa-clock-o"></i>{{post.data | date:
+                                'dd/MM/yyyy'}} às {{post.data | date: 'HH:mm'}}
+                            </div>
+                            <p class="card-text mt-3 h8">{{post.corpo}}</p>
+                            <img src="{{post.urlImagemVideo}}" alt="" decoding="auto"
+                                class="max-width-height-numero mt-2 ">
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <!-- Post /////-->
+
+
+
+        </div>
+
+
+        <div class="col-md-3" id="img-bg-invertido" style="background-color: #ffffff;">
+
+            <!--Mensagens privadas-->
+            <!-- <div class="container mt-5">
+
+                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Mensagens Privadas</div>
+                    <div class="card-body">
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle p-lg-2 bg-danger border border-light rounded-circle">
+                            <span class="visually-hidden">New alerts</span>
+                        </span>
+                        <h5 class="card-title">Bruno</h5>
+                        <p class="card-text">Não briga com o Joel Jamily!!!!!</p>
+                    </div>
+                </div>
+
+
+            </div> -->
+
+        </div>
+
+    </div>
+</div>

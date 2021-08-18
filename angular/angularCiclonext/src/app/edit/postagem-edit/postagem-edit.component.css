@@ -1,0 +1,31 @@
+.bg-color-cancelar{
+    background-color: #E59347;
+    color: white;
+    border-radius: 25px;
+    
+}
+
+.bg-color-publicar{
+    background-color: #34878B;
+    color: white;
+    border-radius: 25px;
+}
+
+.img-front{
+    max-height: 300px;  
+    display: block;
+    width: 100%;
+    object-fit: scale-down;
+}
+
+.temporizadorOk:hover{
+    color: black;
+    background-color: #69D8D8;
+    transition-duration: 1s;
+    
+}
+.temporizadorNo:hover{
+    color: black;
+    background-color: #F1EB8D;
+    transition-duration: 1s;
+}

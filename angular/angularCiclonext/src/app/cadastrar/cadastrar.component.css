@@ -1,0 +1,52 @@
+#img-bg2{
+    background-image: url('https://imgur.com/ah5dHfa.jpg');
+    
+    min-height: 1100px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: myfirst2 10s 1;
+    animation-direction: alternate;
+}
+
+@keyframes myfirst2 {
+   0% {background-image: url('https://i.imgur.com/FOvYWcH.jpg'); left: 0px; top: 0px;}
+   60% {background-image: url('https://imgur.com/ah5dHfa.jpg'); left: 0px; top: 0px;}
+}
+
+.bg-color-voltar{
+    background-color: #E59347;
+    color: white;
+    border-radius: 40px;
+    
+}
+
+.bg-color-cadastrar{
+    background-color: #34878B;
+    color: white;
+    border-radius: 40px;
+}
+
+.temporizadorCadastrar:hover{
+    color: black;
+    background-color: #69D8D8;
+    transition-duration: 1s;
+    
+}
+.temporizadorVoltar:hover{
+    color: black;
+    background-color: #F1EB8D;
+    transition-duration: 1s;
+}
+
+#img-bg-cadastrar-direita{
+    background-image: url('../../assets/img/fundoEntrar.svg');
+
+    min-height: 500px;
+    /* background-position: center; */
+    background-repeat: repeat-y;
+    background-size: cover;
+    /* animation: myfirst 10s 1; */
+    /* animation-direction: normal; */   
+}

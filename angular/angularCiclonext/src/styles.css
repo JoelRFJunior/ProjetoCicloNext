@@ -1,0 +1,103 @@
+/* You can add global styles to this file, and also import other style files */
+.bg-cinza-claro{
+    background-color: #F0F0F0;
+}
+
+.bg-verde-escuro{
+    background-color: #34878B;
+
+}
+
+.bg-laranja{
+    background-color: #E59347;
+    
+}
+
+a { cursor: pointer; }
+
+.pagination {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+
+.opacity50 {
+    opacity: 0.9;
+}
+
+.opacity100:hover {
+    opacity: 1;
+}
+
+
+h1{
+    font-family: Roboto, Segoe UI, sans-serif;
+}
+
+h2{
+    font-family: Roboto, Segoe UI, sans-serif;
+}
+
+p{
+    font-family: Roboto, Segoe UI, sans-serif;
+}
+
+
+#img-bg{
+    background-image: url('../../angularCiclonext/src/assets/img/fundo.svg');
+    
+    min-height: 500px;
+
+    /* background-position: center; */
+    background-repeat: repeat-y;
+    background-size: contain;
+    animation: myfi 2s 1;
+    animation-timing-function: linear;
+    /* animation: myfirst 10s 1; */
+    /* animation-direction: normal; */
+} 
+#img-bg-invertido{
+    background-image: url('../../angularCiclonext/src/assets/img/fundo.svg');
+    
+    min-height: 500px;
+
+    /* background-position: center; */
+    background-repeat: repeat-y;
+    background-size: contain;
+    transform: rotateY(180deg);
+    animation: myfi 2s 1;
+    animation-timing-function: linear;
+} 
+@keyframes myfi {
+    0% {background-image: url('https://ak.picdn.net/shutterstock/videos/339694/thumb/1.jpg?ip=x480'); left: 0%; top: 0%;}
+    100% {background-image: url('../../angularCiclonext/src/assets/img/fundo.svg'); left: 100%; top: 100%;}
+
+}
+
+.sticky{
+    position: fixed;
+  /* bottom: 0;
+  right: 0; */
+
+
+}
+
+.fotoPerfil{
+	object-fit: cover;
+	display: flex;
+	height: 150px;
+	width: 150px;
+}
+
+.margin-footer{
+    margin-bottom: 280px;
+}
+
+.max-width-height-numero{
+	/* size: 100px; */
+    display: flex;
+    width: 100%;
+	object-fit: cover;
+    
+}

@@ -1,0 +1,178 @@
+<div class="container-fluid">
+    <div class="row justify-content-md-center">
+
+
+
+        <div class="col-md-3" id="img-bg">
+
+
+            <div class="col-md-3 sticky">
+
+                <div class="d-flex justify-content-center p-3 ">
+                    <img src="{{foto}}" alt="foto perfil do usuario" class="rounded-circle fotoPerfil">
+                </div>
+
+                <h3 class="text-center mb-5 p-3" style="background-color: #ffffff;">{{nome}}
+                
+                    <img *ngIf= "categoria == 'USUARIO'" src="../../assets/img/pessoaFisica.svg" alt="" height="25px" width="25px">
+                    <img *ngIf= "categoria == 'ONG'" src="../../assets/img/ong.svg" alt="" height="25px" width="25px">
+                    <img *ngIf= "categoria == 'EMPRESA'" src="../../assets/img/empresa.svg" alt="" height="25px" width="25px">
+                
+                </h3>
+            </div>
+
+        </div>
+
+        <div class="col-md-6 mt-2 px-lg-5">
+
+            <h1 class="fw-bold text-secondary mt-2 p-3">Meu Perfil</h1>
+
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 d-flex justify-content-center">
+
+                    <div class="d-flex justify-content-center">
+                        <img src="https://i.imgur.com/qAJ4jET.png" alt="imagem perfil" height="500px" width="500px"
+                            class="rounded mx-auto d-block me-5 mb-3">
+                    </div>
+
+                </div>
+                <div class="col-md-6 d-flex justify-content-start align-items-center">
+
+                    <form class="w-75 justify-content-start">
+                        <fieldset disabled>
+
+                            <div class="form-group mb-3">
+                                <div class="mb-2" for="nome">Nome</div>
+                                <input class="disabledTextInput form-control w-100" type="text" name="nome.teste"
+                                    id="nome.teste" placeholder="{{nome}}">
+                            </div>
+
+                            <div class=" mb-3">
+                                <label class="mb-2" for="email">Email</label>
+                                <input class="disabledTextInput form-control" type="text" name="email.teste"
+                                    id="email.teste" placeholder="{{user.email}}">
+                            </div>
+
+
+                            <div class=" mb-3">
+                                <label class="mb-2" for="categoria">Tipo de Usuário</label>
+                                <input class="disabledTextInput form-control" type="text" name="categoria"
+                                    id="categoria" placeholder="{{user.categoria}}">
+
+                            </div>
+
+                        </fieldset>
+                        <div class="d-flex justify-content-end">
+                            <a><button class="btn bg-color-editarDados temporizadorEditarDados fw-bold p-3 mb-3 "
+                                    [routerLink]="['/user-edit', idUser]">Editar meus Dados</button></a>
+                        </div>
+                    </form>
+
+                    <!-- <h3 class="text-center mb-5">{{nome}}</h3> -->
+
+                </div>
+
+            </div>
+
+
+
+            <div class="container px-lg-5" style="background-color: #ffffff; padding-right: 1500px;">
+
+
+                <!--- \\\\\\\Post-->
+                <div class="card gedf-card" style="background-color: #f8f8f8;"
+                    *ngFor='let post of user.publicacoes | orderBy : key : reverse'>
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-5 d-flex justify-content-start">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="me-2 ">
+                                            <img class="rounded-circle fotoPubli " width="60" height="60"
+                                                src='{{post.autor.urlImagemPerfil}}' alt="">
+                                        </div>
+                                        <div class="ms-2">
+                                            <!-- <div class="h5 m-0">{{post.autor.nome}}</div> -->
+                                            <div class="h7 mt-1 text-muted">{{post.tipoPostagem}}</div>
+                                            <img *ngIf= "post.autor.categoria == 'USUARIO'" src="../../assets/img/pessoaFisica.svg" class="mt-2" alt="" height="25px" width="25px">
+                                            <img *ngIf= "post.autor.categoria == 'ONG'" src="../../assets/img/ong.svg" class="mt-2" alt="" height="25px" width="25px">
+                                            <img *ngIf= "post.autor.categoria == 'EMPRESA'" src="../../assets/img/empresa.svg" class="mt-2" alt="" height="25px" width="25px">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+
+                            </div>
+
+                            
+                            <div class="col-md-2 d-flex justify-content-center">
+
+                                <div class="btn-group" role="group" aria-label="Basic example" >
+                                    <div id="edit">                                    
+                                        <button type="button" class="btn" [routerLink]="['/postagem-edit', post.idPostagem]" 
+                                        href="#"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                        <div class="text-center" id="popup"> Editar </div>
+
+                                    </div>
+
+                                        <div id="apagar">                                    
+                                        <button type="button" class="btn" [routerLink]="['/postagem-delete', post.idPostagem]" 
+                                        href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        <div class="text-center" id="popup"> Apagar </div>
+                                        </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="card-body">
+                            <div class="text-muted h7"> <i class="fa fa-clock-o"></i>{{post.data | date:
+                                'dd/MM/yyyy'}} às {{post.data | date: 'HH:mm'}}
+                            </div>
+                            <p class="card-text mt-3 h8">{{post.corpo}}</p>
+
+                            <img src="{{post.urlImagemVideo}}" alt="" decoding="auto"
+                                class="max-width-height-numero displayed mt-2">
+
+
+
+                        </div>
+
+                    </div>
+                    <!-- Post /////-->
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3" id="img-bg-invertido">
+
+            <!-- <div class="container mt-5"> -->
+
+            <!-- <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Mensagens Privadas</div>
+                        <div class="card-body">
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle p-lg-2 bg-danger border border-light rounded-circle">
+                                <span class="visually-hidden">New alerts</span>
+                            </span>
+                            <h5 class="card-title">Bruno</h5>
+                            <p class="card-text">Não briga com o Joel Jamily!!!!!</p>
+                        </div>
+                    </div> -->
+
+
+            <!-- </div> -->
+
+        </div>
+
+    </div>
+</div>

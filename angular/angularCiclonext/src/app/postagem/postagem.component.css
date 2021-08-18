@@ -1,0 +1,112 @@
+body {
+    background-color: #eeeeee;
+}
+
+.bg-color-cancelar{
+    background-color: #E59347;
+    color: white;
+    border-radius: 25px;
+    
+}
+
+.bg-color-publicar{
+    background-color: #34878B;
+    color: white;
+    border-radius: 25px;
+}
+
+
+
+.bg-color-editarDados{
+    background-color: #414F72;
+    color: white;
+    border-radius: 30px;
+}
+
+
+.temporizadorEditarDados:hover{
+    color: black;
+    background-color: #5dc0ee;
+    transition-duration: 1s;
+}
+
+.fotoPubli{
+	object-fit: cover;
+	display: flex;
+}
+
+
+.select{
+	width: 230px;
+    
+}
+
+.h7 {
+    font-size: 0.8rem;
+}
+
+.gedf-wrapper {
+    margin-top: 0.97rem;
+}
+
+@media (min-width: 992px) {
+    .gedf-main {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+    .gedf-card {
+        margin-bottom: 2.77rem;
+    }
+}
+
+.dropdown-toggle::after {
+    content: none;
+    display: none;
+}
+
+
+
+.img-front{
+    max-height: 300px;  
+    display: block;
+    width: 100%;
+    object-fit: scale-down;
+}
+
+.h8 {
+    font-size: 1.2rem;
+}
+
+
+.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+
+#edit #popup {
+    display: none;
+}
+#edit:hover #popup {
+    display: block;
+    box-shadow: 2px 5px #888888;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    position: absolute;    
+    color: #6c757d;
+
+}
+
+#apagar #popup {
+    display: none;
+}
+#apagar:hover #popup {
+    display: block;
+    box-shadow: 2px 5px #888888;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    position: absolute;
+    color: #6c757d;
+}

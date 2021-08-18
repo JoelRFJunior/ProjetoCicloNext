@@ -1,0 +1,81 @@
+.fs-16{
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.modalsize{
+width: 200px;
+height: 500px;
+
+}
+
+.bg-color-voltar{
+    background-color: #E59347;
+    color: white;
+    border-radius: 40px;
+    
+}
+
+.bg-color-cadastrar{
+    background-color: #34878B;
+    color: white;
+    border-radius: 40px;
+}
+
+.bg-color-criargrupo{
+    background-color: #414F72;
+    color: white;
+    border-radius: 30px;
+}
+
+
+.foto{
+	object-fit: cover;
+	display: block;
+}
+
+.temporizadorCriarGrupo:hover{
+    color: black;
+    background-color: #5dc0ee;
+    transition-duration: 1s;
+}
+
+.temporizadorCadastrar:hover{
+    color: black;
+    background-color: #69D8D8;
+    transition-duration: 1s;
+    
+}
+.temporizadorVoltar:hover{
+    color: black;
+    background-color: #F1EB8D;
+    transition-duration: 1s;
+}
+
+.sizeFotoCard {
+    max-width: 300px;
+    max-height: 250px;
+    min-width: 250px;
+    min-height: 250px;
+    /* object-fit: contain; */
+    /* display: block; */
+    
+}
+
+.img-front{
+    max-height: 300px;  
+    display: block;
+    width: 100%;
+    object-fit: scale-down;
+}
+
+.modalTamanho{
+    width: 1000px;
+    height: 1000px;
+}

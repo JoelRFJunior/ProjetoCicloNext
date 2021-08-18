@@ -22,17 +22,18 @@ import com.ciclonext.ciclonext.model.Grupo;
 import com.ciclonext.ciclonext.model.util.Categoria;
 import com.ciclonext.ciclonext.repository.GrupoRepository;
 import com.ciclonext.ciclonext.services.GrupoService;
+import com.ciclonext.ciclonext.services.UsuarioService;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api/v1/grupo")
 public class GrupoController {
 
-	
 	private @Autowired GrupoRepository repositoryG;
 
-	
 	private @Autowired GrupoService service;
+
+	private @Autowired UsuarioService serviceU;
 
 	@GetMapping("/getAll") // Método para pegar tudo
 	public ResponseEntity<List<Grupo>> findAll() {
@@ -41,47 +42,48 @@ public class GrupoController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Grupo> findById(@PathVariable long id) {
+	public ResponseEntity<Grupo> findById(@PathVariable Long id) {
 
 		return repositoryG.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 
-	@PostMapping
-	public ResponseEntity<Object> postGrupo(@Valid @RequestBody Grupo novoGrupo) {
+	/*
+	 * @PostMapping("/{idUsuario}") public ResponseEntity<Object>
+	 * criarGrupo(@Valid @PathVariable (value = "idUsuario") Long
+	 * idUsuario, @RequestBody Grupo novoGrupo) {
+	 * 
+	 * Optional<Grupo> cadastrarGrupo = serviceU.criarGrupo(idUsuario, novoGrupo);
+	 * 
+	 * if (cadastrarGrupo.isEmpty()) { return
+	 * ResponseEntity.status(HttpStatus.BAD_REQUEST).
+	 * body("Grupo já existente, ou criador inválido. Tente novamente.");
+	 * 
+	 * } else { return
+	 * ResponseEntity.status(HttpStatus.CREATED).body("O grupo "+novoGrupo.
+	 * getNomeGrupo()+ " foi criado com sucesso.");
+	 * 
+	 * }
+	 * 
+	 * }
+	 */
 
-		Optional<Object> cadastrarGrupo = service.cadastrarGrupo(novoGrupo);
-
-		if (cadastrarGrupo.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Grupo já existente, tente outro nome.");
-
-		} else {
-			return ResponseEntity.status(HttpStatus.CREATED).body("Grupo criado.");
-
-		}
-
-	}
-
-	@PutMapping("/{id}/atualizar")
-	public ResponseEntity<Grupo> putGrupo(@Valid @PathVariable(value = "id") Long id,
-			@Valid @RequestBody Grupo grupoParaAtualizar) {
-
-		return service.atualizarGrupo(id, grupoParaAtualizar)
-				.map(grupoAtualizado -> ResponseEntity.ok().body(grupoAtualizado))
-				.orElse(ResponseEntity.badRequest().build());
-
-	}
+	/*
+	 * @PutMapping("/{id}/atualizar") public ResponseEntity<Grupo>
+	 * putGrupo(@Valid @PathVariable(value = "id") Long id,
+	 * 
+	 * @Valid @RequestBody Grupo grupoParaAtualizar) {
+	 * 
+	 * return service.atualizarGrupo(id, grupoParaAtualizar) .map(grupoAtualizado ->
+	 * ResponseEntity.ok().body(grupoAtualizado))
+	 * .orElse(ResponseEntity.badRequest().build());
+	 * 
+	 * }
+	 */
 
 	@DeleteMapping("/{id}")
-	public void deletarGrupo(@PathVariable long id) {
+	public void deletarGrupo(@PathVariable Long id) {
 
 		repositoryG.deleteById(id);
-
-	}
-
-	@GetMapping("/categoria/{categoria}")
-	public ResponseEntity<List<Grupo>> encontrarPorCategoria(@PathVariable Categoria categoria) {
-
-		return ResponseEntity.ok().body(repositoryG.findAllByCategoria(categoria));
 
 	}
 
@@ -89,5 +91,15 @@ public class GrupoController {
 	public ResponseEntity<List<Grupo>> encontrarPorNomeGrupo(@PathVariable String nomeGrupo) {
 		return ResponseEntity.ok().body(repositoryG.findAllByNomeGrupoContainingIgnoreCase(nomeGrupo));
 	}
+	
+	@PutMapping
+	public ResponseEntity<Grupo> alterarGrupo(@RequestBody Grupo grupoParaAtualizar){
+		return ResponseEntity.ok().body(repositoryG.save(grupoParaAtualizar));
+	}
 
+	@PostMapping
+	public ResponseEntity<Grupo> criarGrupo2(@RequestBody Grupo grupoCriado){
+		
+		return ResponseEntity.ok().body(repositoryG.save(grupoCriado));
+	}
 }

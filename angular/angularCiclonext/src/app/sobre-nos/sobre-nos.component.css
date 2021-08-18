@@ -1,0 +1,77 @@
+body {
+    background: url('../../assets/img/wallpaper.svg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.maintxt {
+    position: relative;
+}
+.maintxt > img, .overlay-text {
+    position: absolute;
+}
+.overlay-text {padding: 150px 50px;}
+
+
+.card{
+    width: 200px;
+    border-radius: 10px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border: none;
+    margin-inline: 5px;
+
+}
+
+.card img{
+      height: 150px;
+    }
+
+col{
+  width: 200px;
+  justify-content: center;
+  align-items: center;
+}
+
+.fotobg {
+    background-color: #F0F0F0;
+}
+
+ul.social-network{
+    padding: 0;
+  }
+  
+  ul.social-network li{
+    display: inline;
+    margin: 0;
+    padding: 2px;
+  }
+  
+  .fa{
+    font-size: 20pt;
+    color: #34878B;
+    padding: 5px;
+  }
+  .fa:hover{
+    color: #69D8D8;
+  }
+  
+  a{
+      text-decoration: none;
+      color: white;
+  }
+
+  ul{
+    list-style: none;
+  }
+
+  a:hover{
+      text-decoration: underline;
+      color: #F0F0F0;
+  }
+
+  .logo{
+    width: 180px;
+    padding: 10px;
+  }

@@ -1,0 +1,215 @@
+<div class="container-fluid">
+
+  <div class="row justify-content-md-center">
+
+    <!-- <h5 class="text-center">Grupos criados</h5>
+
+    <div class="col-md-2 bg-cinza-claro">
+
+      <div class="d-flex justify-content-center p-3">
+        <img src="{{foto}}" alt="foto perfil do usuario" height="200px" width="200px" class="rounded-circle">
+      </div>
+
+      <h3 class="text-center mb-5">{{nome}}</h3>
+
+      <h5 class="text-center">Grupos criados</h5>
+
+      <div class="mt-2 mb-2 d-flex justify-content-center">
+        <button class="btn btn-light" class="btn btn-light me-2" data-bs-toggle="modal"
+          data-bs-target="#novoGrupo">Cadastrar</button>
+      </div> -->
+
+    <!--COLUNA DA ESQUERDA-->
+    <div class="col-md-3" id="img-bg">
+
+      <div class="col-md-3 sticky">
+
+        <div class="d-flex justify-content-center p-3 ">
+          <img src="{{foto}}" alt="foto perfil do usuario" class="rounded-circle fotoPerfil">
+        </div>
+
+        <h3 class="text-center mb-5 p-3" style="background-color: #ffffff;">{{nome}}
+
+          <img *ngIf= "categoria == 'USUARIO'" src="../../assets/img/pessoaFisica.svg" alt="" height="25px" width="25px">
+          <img *ngIf= "categoria == 'ONG'" src="../../assets/img/ong.svg" alt="" height="25px" width="25px">
+          <img *ngIf= "categoria == 'EMPRESA'" src="../../assets/img/empresa.svg" alt="" height="25px" width="25px">
+        
+        </h3>
+      </div>
+
+    </div>
+
+    <!--COLUNA DO MEIO-->
+    <div class="col-md-6 mb-2">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 d-flex justify-content-start">
+
+            <h1 class="fs-54 fw-bold text-secondary mb-3 mt-3 p-3">Grupos</h1>
+
+          </div>
+
+          <div class="col-md-6 d-flex justify-content-end">
+            <div>
+              <button class="btn bg-color-criargrupo temporizadorCriarGrupo fw-bold p-3 mt-5" data-bs-toggle="modal"
+                data-bs-target="#novoGrupo">Criar Grupo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!--TESTE-->
+
+      <div class="container mb-5 mt-5" id="grupos">
+
+        <nav>
+          <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+
+            <button class="nav-link active text-secondary fw-bold" id="nav-todasGrupos-tab" data-bs-toggle="tab"
+              data-bs-target="#todosGrupos" type="button" role="tab" aria-controls="nav-todosGrupos"
+              aria-selected="true">Todos os Grupos</button>
+
+            <button class="nav-link text-secondary fw-bold" id="nav-meusGrupos-tab" data-bs-toggle="tab"
+              data-bs-target="#meusGrupos" type="button" role="tab" aria-controls="nav-meusGrupos"
+              aria-selected="false">Meus Grupos</button>
+
+
+          </div>
+        </nav>
+
+        <div class="tab-content mt-5 mb-5" id="nav-tabContent">
+
+          <div class="tab-pane fade show active" id="todosGrupos" role="tabpanel" aria-labelledby="nav-todosGrupos-tab">
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              <div class="col" *ngFor='let item of listaGrupo'>
+                <div class="card h-100 text-center ">
+                  <a [routerLink]="['/grupo-page', item.idGrupo]"><img src="{{item.urlImagemGrupo}}"
+                      class="card-img-top foto" height="200" width="250" alt="GRUPO SEM IMAGEM"></a>
+                  <div class="card-body">
+                    <a [routerLink]="['/grupo-page', item.idGrupo]">
+                      <h5 class="card-title m-0">{{item.nomeGrupo}}</h5>
+                    </a>
+                    <p class="text-muted">Descrição: {{item.descricao}}</p>
+                    <small class="card-text mt-3">{{item.criador.nome}}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="meusGrupos" role="tabpanel" aria-labelledby="nav-meusGrupos-tab">
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              <div class="col mt-2" *ngFor='let item of usuario.gruposCriados'>
+                <div class="card h-100 text-center">
+                  <a [routerLink]="['/grupo-page', item.idGrupo]"><img src="{{item.urlImagemGrupo}}"
+                      class="card-img-top foto" height="200" width="250" alt=""></a>
+                  <div class="card-body">
+                    <a [routerLink]="['/grupo-page', item.idGrupo]">
+                      <h5 class="card-title m-0">{{item.nomeGrupo}}</h5>
+                    </a>
+                    <p class="text-muted">Descrição: {{item.descricao}}</p>
+
+                  </div>
+
+                  <div class="mb-3">
+                    <a [routerLink]="['/grupo-delete', item.idGrupo]"
+                      class="btn me-2 bg-color-voltar fw-bold temporizadorVoltar" href="">Apagar</a>
+                    <a [routerLink]="['/grupo-edit', item.idGrupo]"
+                      class="btn ms-2 bg-color-cadastrar fw-bold temporizadorCadastrar" href="">Editar </a>
+
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!--COLUNA DA DIREITA-->
+    <div class="col-md-3" id="img-bg-invertido">
+
+      <!-- <div class="container mt-5">
+
+        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+          <div class="card-header">Mensagens Privadas</div>
+          <div class="card-body">
+            <span
+              class="position-absolute top-0 start-100 translate-middle p-lg-2 bg-danger border border-light rounded-circle">
+              <span class="visually-hidden">New alerts</span>
+            </span>
+            <h5 class="card-title">Bruno</h5>
+            <p class="card-text">Não briga com o Joel Jamily!!!!!</p>
+          </div>
+        </div>
+
+
+      </div> -->
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="">
+  <div class="modal fade container-fluid" id="novoGrupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex ">
+      <div class="modal-content">
+        <div class="container d-flex  ">
+          <div class="modal-header ">
+            <!-- <img class="" src="https://i.imgur.com/YyFqV0d.png" height="400px" width="400px" alt=""> -->
+            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+          </div>
+        </div>
+        <h2 class="modal-title text-center fw-bold" style="color:#69D8D8;" id="exampleModalLabel">Criar
+          grupo</h2>
+
+        <div class="modal-body">
+          <div class="form-group px-lg-5 my-3">
+            <label for="nomeGrupo">Nome do Grupo</label>
+            <input [(ngModel)]='grupo.nomeGrupo' type="text" class="form-control" id="nomeGrupo"
+              placeholder="Digite o nome">
+          </div>
+          <div class="form-group px-lg-5 my-3">
+            <label for="descricao">Descrição</label>
+            <textarea [(ngModel)]='grupo.descricao' type="text" class="form-control" id="descricao"
+              placeholder="Digite o descrição"></textarea>
+          </div>
+          <div class="form-group px-lg-5 my-3">
+            <label for="urlImagemGrupo">Imagem do grupo</label>
+            <input [(ngModel)]='grupo.urlImagemGrupo' type="text" class="form-control" id="urlImagemGrupo" (keyup)='validaImagem($event)'
+              placeholder="Digite a url da imagem do grupo">
+              <div id="txtImagem"></div>
+
+          </div>
+          <div>
+            <img src="{{grupo.urlImagemGrupo}}" alt="" class="img-front" placeholder="https://i.imgur.com/bypj39b.png">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn bg-color-voltar fw-bold temporizadorVoltar"
+              data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn bg-color-cadastrar fw-bold temporizadorCadastrar" data-bs-dismiss="modal"
+              (click)='cadastrar()'>Criar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
