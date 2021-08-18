@@ -1,4 +1,4 @@
-#img-bg{
+#img-bg-entrar{
     background-image: url('https://i.imgur.com/5V7094J.png');
     
     min-height: 1100px;
@@ -25,4 +25,16 @@
     background-color: #69D8D8;
     transition-duration: 1s;
     
+}
+
+
+#img-bg-entrar-esquerda{
+    background-image: url('../../assets/img/fundoEntrar.svg');
+    
+    min-height: 500px;
+    /* background-position: center; */
+    background-repeat: repeat-y;
+    background-size: cover;
+    /* animation: myfirst 10s 1; */
+    /* animation-direction: normal; */   
 }

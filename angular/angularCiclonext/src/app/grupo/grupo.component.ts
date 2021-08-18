@@ -31,6 +31,10 @@ export class GrupoComponent implements OnInit {
   listaGrupo: Grupo[]
   idGrupo: number
 
+  validaMensagem: boolean
+  validaFoto: boolean
+  validaTipo: boolean
+
   constructor(
     private router: Router,
     private grupoService: GrupoService,
@@ -110,6 +114,27 @@ export class GrupoComponent implements OnInit {
     })
   }
 
+  validaImagem(event: any) {
+    let txtImagem= document.querySelector('#txtImagem') as HTMLInputElement;
+           
+    let emailOk = false
+  
+    //if (event.target.value.includes('.jpg') || event.target.value.includes('.jpeg') || event.target.value.includes('.png') ||  ) {
+  
+    if (event.target.value.length<=500 ){
+  
+      this.validaFoto = true
+      txtImagem.innerHTML = ''
+      txtImagem.style.color = 'black'
+       
+    } else {
+      this.validaFoto = false
+      txtImagem.style.color = 'red'
+      txtImagem.innerHTML = 'Cuidado! link da imagem acima de 500 caracteres.' 
+  
+    }
+  
+  }
 
 
 

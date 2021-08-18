@@ -40,3 +40,13 @@
     transition-duration: 1s;
 }
 
+#img-bg-cadastrar-direita{
+    background-image: url('../../assets/img/fundoEntrar.svg');
+
+    min-height: 500px;
+    /* background-position: center; */
+    background-repeat: repeat-y;
+    background-size: cover;
+    /* animation: myfirst 10s 1; */
+    /* animation-direction: normal; */   
+}

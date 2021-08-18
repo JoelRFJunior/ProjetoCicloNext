@@ -1,3 +1,75 @@
+<div class="container-fluid">
+
+    <div class="row justify-content-md-center">
+
+        <div class="col-md-3" id="img-bg" style="background-color: #ffffff;">
+
+            <div class="col-md-3 sticky">
+
+                <div class="d-flex justify-content-center p-3 ">
+                    <img src="{{foto}}" alt="foto perfil do usuario" class="rounded-circle fotoPerfil">
+                </div>
+
+                <h3 class="text-center mb-5 p-3" style="background-color: #ffffff;">{{nome}}</h3>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-6 mt-3 mb-5">
+            <h1 class="text-center mb-3 text-secondary">Apagar postagem</h1>
+
+            <h4 class="text-center text-secondary mb-5">Você tem certeza que deseja apagar esta postagem?</h4>
+            <div class="card text-center mb-3">
+                <div class="card gedf-card">
+                    <div class="card-header d-flex justify-content-center">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <div class="ms-3 d-flex justify-content-center">
+                                    <div class="h7 text-muted d-flex justify-content-center">{{postagem.tipoPostagem}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="card-body">
+                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{postagem.data | date:
+                            'dd/MM/yyyy'}}
+                            às {{postagem.data | date: 'HH:mm'}}</div>
+
+                        <img src="{{postagem.urlImagemVideo}}" alt=""
+                            class="max-width-height-numero d-flex justify-content-center mb-3">
+
+
+                        <p class="card-text">{{postagem.corpo}}</p>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button class="btn bg-color-no fw-bold temporizadorNo me-4" routerLink='/postagem'> Não </button>
+                <button class="btn bg-color-ok fw-bold temporizadorOk" (click)='apagar()'> Sim </button>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3" id="img-bg-invertido" style="background-color: #ffffff;">
+
+        </div>
+    </div>
+
+</div>
+
+
+<!-- 
 <div class="container mb-3 mt-3 ">
 
     <div class="row mb-3">
@@ -16,41 +88,12 @@
 
         <div class="col-md-8">
 
-            <div class="card text-center mb-3">
+            
 
-                <div class="card gedf-card">
-                    <div class="card-header d-flex justify-content-center">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex justify-content-between align-items-center">
-                                
-                                <div class="ms-3 d-flex justify-content-center">
-                                    <!-- <div class="h5 m-0">{{post.autor.nome}}</div> -->
-                                    <div class="h7 text-muted d-flex justify-content-center">{{postagem.tipoPostagem}}</div>
-                                </div>
-                            </div>
-                            <div>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="card-body">
-                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{postagem.data | date: 'dd/MM/yyyy'}}
-                            às {{postagem.data | date: 'HH:mm'}}</div>
-
-                        <img src="{{postagem.urlImagemVideo}}" alt=""
-                            class="max-width-height-numero d-flex justify-content-center">
-
-
-                        <p class="card-text d-flex justify-content-start">{{postagem.corpo}}</p>
-                    </div>
-
-
-                </div>
+               
               
 
-            </div>
+            
 
         </div>
 
@@ -63,6 +106,4 @@
         </div>
     </div>
 
-</div>
-
-
+</div> -->

@@ -1,17 +1,19 @@
 <div class="container-fluid">
     <div class="row justify-content-md-center">
 
-        <div class="col-md-2 bg-cinza-claro">
+        <div class="col-md-3 " id="img-bg" style="background-color: #ffffff;">
 
-            <div class="d-flex justify-content-center p-3">
-                <img src="{{foto}}" class=" rounded-circle" alt="foto perfil do usuario" height="200px" width="200px">
+            <div class="col-md-3 sticky">
+
+                    <div class="d-flex justify-content-center p-3 " >
+                        <img src="{{foto}}" alt="foto perfil do usuario" class="rounded-circle fotoPerfil">
+                    </div>
+
+                    <h3 class="text-center mb-5 p-3" style="background-color: #ffffff;">{{nome}}</h3>
             </div>
-
-            <h3 class="text-center mb-5">{{nome}}</h3>
-
         </div>
 
-        <div class="col-md-8 mt-5">
+        <div class="col-md-6 mt-5 px-lg-5">
             <div class="row d-flex justify-content-center w-100 mb-5">
                 <h1 class="text-center text-secondary fw-bold">Atualizar meus Dados</h1>
 
@@ -22,7 +24,7 @@
 
                             <div class="form-group mb-3">
                                 <label class="mb-2" for="nome">Nome</label>
-                                <input [(ngModel)]='user.nome' class="form-control" type="text" name="nome" id="nome"
+                                <input [(ngModel)]='user2.nome' class="form-control" type="text" name="nome" id="nome"
                                     placeholder="Seu nome">
                             </div>
 
@@ -31,7 +33,7 @@
 
                                     <div class="form-group mb-3">
                                         <label class="mb-2" for="email">Email</label>
-                                        <input [(ngModel)]='user.email' class="disabledTextInput form-control"
+                                        <input [(ngModel)]='user2.email' class="disabledTextInput form-control"
                                             type="text" name="email" id="email" placeholder="Seu email">
                                     </div>
 
@@ -40,8 +42,9 @@
 
                             <div class="form-group mb-3">
                                 <label class="mb-2" for="urlImagemPerfil">Link da sua Foto</label>
-                                <input [(ngModel)]='user.urlImagemPerfil' class="form-control" type="text"
+                                <input [(ngModel)]='user2.urlImagemPerfil' class="form-control" type="text" (keyup)='validaImagem($event)'
                                     name="urlImagemPerfil" id="urlImagemPerfil" placeholder="Link da sua foto">
+                                    <div id="txtImagem"></div>
 
                             </div>
 
@@ -53,14 +56,14 @@
 
                             <div class="form-group mb-3">
                                 <label class="mb-2" for="confirmSenha">Confirmar Senha</label>
-                                <input [(ngModel)]='user.senha' class="form-control" type="password" name="confirmSenha"
+                                <input [(ngModel)]='user2.senha' class="form-control" type="password" name="confirmSenha"
                                     id="confirmSenha" placeholder="Confirme sua senha">
                             </div>
 
                             <div class="form-group mb-3">
                                 <label class="mb-2" for="tipo">Tipo de Usuário</label>
                                 <select class="form-select" name="tipo" id="tipo" (change)='tipoUser($event)'>
-                                    <option>Selecione um tipo de usuário</option>
+                                    <option value="">Selecione um tipo de usuário</option>
                                     <option value="EMPRESA">Empresa</option>
                                     <option value="ONG">ONG</option>
                                     <option value="USUARIO">Pessoa Física</option>
@@ -75,7 +78,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 d-flex align-items-center justify-content-center">
-                            <img src="{{user.urlImagemPerfil}}" class="rounded-circle sizefoto" alt="">
+                            <img src="{{user2.urlImagemPerfil}}" class="rounded-circle sizefoto" alt="">
 
 
                         </div>
@@ -88,7 +91,7 @@
 
 
 
-        <div class="col-md-2 bg-cinza-claro">
+        <div class="col-md-3" id="img-bg-invertido" style="background-color: #ffffff;">
 
             <!-- <div class="container mt-5">
 

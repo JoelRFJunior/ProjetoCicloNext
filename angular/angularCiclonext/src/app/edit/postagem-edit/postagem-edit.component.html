@@ -1,43 +1,59 @@
-<div class="container mt-5 mb-5">
+<div class="container-fluid">
 
-    <div class="row">
-        <div class="col-md-12">
-            <h1 class="text-center text-secondary">Atualizar postagem</h1>
-        </div>
-    </div>
+  <div class="row justify-content-md-center">
 
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-6">
+    <div class="col-md-3" id="img-bg" style="background-color: #ffffff;">
 
-              <div class="form-group mt-3">
-                <label for="corpo">Escreva abaixo sua postagem:</label>
-                <textarea [(ngModel)]='postagem.corpo' class="form-control" name="corpo" id="corpo" rows="3"></textarea>
-              </div>
+      <div class="col-md-3 sticky">
 
-              <div class="form-group mt-3">
-                <label for="urlImagemVideo">Url da Imagem</label>
-                <input [(ngModel)]='postagem.urlImagemVideo' class="form-control" name="urlImagemVideo" id="urlImagemVideo" rows="3">
-              </div>
-              <img src="{{postagem.urlImagemVideo}}" alt="" class="img-front mt-3">
-              <div class="form-group mt-3 mb-3">
-                <label for="tipoDaPostagem">Altere o tipo de postagem</label>
-                <select class="form-control" name="tipoDaPostagem" id="tipoDaPostagem" (change)='tipoDaPostagem($event)'>
-                    <option>Selecione um tipo de mensagem</option>
-                    <option value="TEXTO">Texto</option>
-                    <option value="DOACAO">Doação</option>
-                    <option value="AGRADECIMENTO">Agradecimento</option>
-                    <option value="OUTROS">Outros</option>
-                </select>
-            </div>
-
-              <div class="d-flex justify-content-center">
-                <button class="btn fw-bold bg-color-cancelar me-2 temporizadorNo my-3" routerLink='/postagem'>Cancelar</button>
-                <button class="btn fw-bold bg-color-publicar ms-2 temporizadorOk my-3" (click)='atualizar()'>Atualizar</button>
-               
-              </div>
-
+        <div class="d-flex justify-content-center p-3 ">
+          <img src="{{foto}}" alt="foto perfil do usuario" class="rounded-circle fotoPerfil">
         </div>
 
+        <h3 class="text-center mb-5 p-3" style="background-color: #ffffff;">{{nome}}</h3>
+      </div>
     </div>
+
+
+
+    <div class="col-md-6 mt-3 margin-footer">
+      <h1 class="text-center text-secondary">Atualizar postagem</h1>
+      <div class="form-group mt-3">
+        <label for="corpo">Escreva abaixo sua postagem:</label>
+        <textarea [(ngModel)]='postagem.corpo' class="form-control" name="corpo" id="corpo" rows="3"
+          (keyup)='validaAssunto($event)'></textarea>
+        <div id="txtAssunto"></div>
+      </div>
+
+      <div class="form-group mt-3">
+        <label for="urlImagemVideo">Url da Imagem</label>
+        <input [(ngModel)]='postagem.urlImagemVideo' class="form-control" name="urlImagemVideo" id="urlImagemVideo"
+          rows="3" (keyup)='validaImagem($event)'>
+        <div id="txtImagem"></div>
+      </div>
+      <img src="{{postagem.urlImagemVideo}}" alt="" class="img-front mt-3">
+      <div class="form-group mt-3 mb-3">
+        <label for="tipoDaPostagem">Altere o tipo de postagem</label>
+        <select class="form-control" name="tipoDaPostagem" id="tipoDaPostagem" (change)='tipoDaPostagem($event)'>
+          <option value="">Selecione um tipo de mensagem</option>
+          <option value="TEXTO">Texto</option>
+          <option value="DOACAO">Doação</option>
+          <option value="AGRADECIMENTO">Agradecimento</option>
+          <option value="OUTROS">Outros</option>
+        </select>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button class="btn fw-bold bg-color-cancelar me-2 temporizadorNo my-3" routerLink='/postagem'>Cancelar</button>
+        <button class="btn fw-bold bg-color-publicar ms-2 temporizadorOk my-3" (click)='atualizar()'>Atualizar</button>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-3" id="img-bg-invertido" style="background-color: #ffffff;">
+
+    </div>
+  </div>
 
 </div>

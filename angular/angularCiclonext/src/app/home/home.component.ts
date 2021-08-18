@@ -35,6 +35,11 @@ export class HomeComponent implements OnInit {
   key = 'data'
   reverse = true
 
+  validaMensagem: boolean
+  validaFoto: boolean
+  validaTipo: boolean
+
+
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -54,6 +59,7 @@ export class HomeComponent implements OnInit {
 
     }
     this.findAllPostagem()
+    this.validaFoto = true
     // this.findUsuarioById()
 
   }
@@ -75,6 +81,11 @@ export class HomeComponent implements OnInit {
 
   tipoDaPostagem(event: any) {
     this.tipoPostagem = event.target.value
+    if(event.target.value != ""){
+      this.validaTipo = true
+    } else {
+      this.validaTipo = false
+    }
 
   }
 
@@ -90,18 +101,30 @@ export class HomeComponent implements OnInit {
 
     this.user.idUsuario = this.idUser
     this.postagem.autor = this.user
-
-
+    this.postagem.tipoPostagem = this.tipoPostagem
     //  this.user.idUsuario = Number(this.idUsuario)
     //  this.postagem.autor = this.user
-    this.postagem.tipoPostagem = this.tipoPostagem
+  
+
+    if (this.validaFoto && this.validaMensagem && this.validaTipo) {
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
       this.alertas.showAlertSuccess('Postagem criada com sucesso')
       this.findAllPostagem()
       this.postagem = new Postagem()
-
+      this.validaTipo = false
+      this.validaMensagem = false
+      let txtAssunto= document.querySelector('#txtAssunto') as HTMLInputElement;
+      txtAssunto.innerHTML = ''
+      let selectTipoPostagem = document.querySelector('#tipoDaPostagem') as HTMLOptionElement;
+      selectTipoPostagem.value = ''
+      
     })
+  } else {
+    this.alertas.showAlertInfo('Por favor, preencha os campos corretamente.')
+
+  }
+
 
   }
 
@@ -132,18 +155,42 @@ export class HomeComponent implements OnInit {
     valor = 500 - event.target.value.length
          
 
-    if (event.target.value.length >=500) {
-      
+    if (event.target.value.length >=500 || event.target.value.length<1) {
+      this.validaMensagem = false
         txtAssunto.style.color = 'red'
-        txtAssunto.innerHTML = valor +'/500 Cuidado! sua mensagem está acima do max de caracteres.' 
+        txtAssunto.innerHTML = valor +'/500 Cuidado! verifique a quantidade de caracteres da sua mensagem.' 
 
     } else {
+      this.validaMensagem = true
       txtAssunto.innerHTML = valor +'/500'
       txtAssunto.style.color = 'black'
 
     }
 
 }
+
+validaImagem(event: any) {
+  let txtImagem= document.querySelector('#txtImagem') as HTMLInputElement;
+         
+  let emailOk = false
+
+  //if (event.target.value.includes('.jpg') || event.target.value.includes('.jpeg') || event.target.value.includes('.png') ||  ) {
+
+  if (event.target.value.length<=500 ){
+
+    this.validaFoto = true
+    txtImagem.innerHTML = ''
+    txtImagem.style.color = 'black'
+     
+  } else {
+    this.validaFoto = false
+    txtImagem.style.color = 'red'
+    txtImagem.innerHTML = 'Cuidado! link da imagem acima de 500 caracteres.' 
+
+  }
+
+}
+
 
 
   // filtrar() {
