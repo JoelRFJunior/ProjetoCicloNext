@@ -82,8 +82,6 @@ public class UsuarioController {
 	}
 	
 	
-	
-
 	@PostMapping("/logar")
 	public ResponseEntity<UsuarioLoginDTO> autentication(@RequestBody Optional<UsuarioLoginDTO> user) {
 		return service.logar(user).map(resp -> ResponseEntity.ok(resp))

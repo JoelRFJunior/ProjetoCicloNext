@@ -52,7 +52,7 @@ public class Usuario {
 	//private List<Usuario> amigos = new ArrayList<>();
 	
 	@OneToMany(mappedBy =  "autor", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties({"grupo"," postagens"," gruposCriados", "publicacoes"})
+	@JsonIgnoreProperties({"grupo","postagens","gruposCriados", "publicacoes"})
 	private List<Postagem> publicacoes = new ArrayList<>();
 	
 	public Long getIdUsuario() {

@@ -33,20 +33,20 @@ public class Postagem {
 	@Size(max = 500)
 	private String urlImagemVideo;
 
-	@Enumerated(EnumType.STRING)
-	private TipoPostagem tipoPostagem;
+//	@Enumerated(EnumType.STRING)
+	private String tipoPostagem;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
 	@ManyToOne
-	@JsonIgnoreProperties({"grupo", "postagens"," gruposCriados", "publicacoes" })
+	@JsonIgnoreProperties({"grupo","gruposCriados","postagens", "publicacoes" })
 	private Grupo grupo;
-
+	//
 	@ManyToOne
-	@JsonIgnoreProperties({"grupo", "criador"," postagens"," gruposCriados", "publicacoes"})
+	@JsonIgnoreProperties({"criador","gruposCriados", "publicacoes", "autor"})
 	private Usuario autor;
-
+//,"postagens", "grupo",
 	public Long getIdPostagem() {
 		return idPostagem;
 	}
@@ -71,16 +71,26 @@ public class Postagem {
 		this.urlImagemVideo = urlImagemVideo;
 	}
 
-	public TipoPostagem getTipoPostagem() {
-		return tipoPostagem;
-	}
-
-	public void setTipoPostagem(TipoPostagem tipoPostagem) {
-		this.tipoPostagem = tipoPostagem;
-	}
+//	public TipoPostagem getTipoPostagem() {
+//		return tipoPostagem;
+//	}
+//
+//	public void setTipoPostagem(TipoPostagem tipoPostagem) {
+//		this.tipoPostagem = tipoPostagem;
+//	}
+	
+	
 
 	public Date getData() {
 		return data;
+	}
+
+	public String getTipoPostagem() {
+		return tipoPostagem;
+	}
+
+	public void setTipoPostagem(String tipoPostagem) {
+		this.tipoPostagem = tipoPostagem;
 	}
 
 	public void setData(Date data) {

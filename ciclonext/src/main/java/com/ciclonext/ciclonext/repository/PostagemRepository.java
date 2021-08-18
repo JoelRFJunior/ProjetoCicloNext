@@ -10,7 +10,7 @@ import com.ciclonext.ciclonext.model.Postagem;
 @Repository
 public interface PostagemRepository extends JpaRepository<Postagem, Long> {
 
-	 List<Postagem> findAllByTipoPostagem(String tipoPostagem);
+	public List<Postagem> findAllByTipoPostagem(String tipoPostagem);
 	
 	
 
