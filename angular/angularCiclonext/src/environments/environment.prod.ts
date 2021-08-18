@@ -3,5 +3,6 @@ export const environment = {
   token: '',
   nome: '',
   idUsuario: 0,
-  urlImagemPerfil: ''
+  urlImagemPerfil: '',
+  categoria:''
 };

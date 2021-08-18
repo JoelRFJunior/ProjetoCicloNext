@@ -14,6 +14,8 @@ export class GrupoDeleteComponent implements OnInit {
 
   nome = environment.nome
   foto = environment.urlImagemPerfil
+  categoria = environment.categoria
+
 
   grupo: Grupo = new Grupo()
   idGrupo: number

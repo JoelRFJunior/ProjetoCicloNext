@@ -20,7 +20,8 @@ export class PostagemEditComponent implements OnInit {
   nome = environment.nome
   foto = environment.urlImagemPerfil
   token = environment.token
-  
+  categoria = environment.categoria
+
 
 
   postagem: Postagem = new Postagem()
