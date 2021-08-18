@@ -8,9 +8,14 @@
                     <div class="d-flex justify-content-center p-3 " >
                         <img src="{{foto}}" alt="foto perfil do usuario" class="rounded-circle fotoPerfil">
                     </div>
-                    <div class="d-flex justify-content-center">
-                        <h3 class="text-center mb-5 p-3" style="background-color: #ffffff;">{{nome}} 
-                        <img src="../../assets/img/pessoaFisica.svg" alt="" height="25px" width="25px"></h3>
+                    <div class="d-flex justify-content-center" >
+                        <h3 class="text-center mb-5 p-3" style="background-color: #ffffff;">{{nome}}
+
+                        <img *ngIf= "categoria == 'USUARIO'" src="../../assets/img/pessoaFisica.svg" alt="" height="25px" width="25px">
+                        <img *ngIf= "categoria == 'ONG'" src="../../assets/img/ong.svg" alt="" height="25px" width="25px">
+                        <img *ngIf= "categoria == 'EMPRESA'" src="../../assets/img/empresa.svg" alt="" height="25px" width="25px">
+                        
+                    </h3>
                     </div>
             </div>
         </div>
@@ -97,9 +102,9 @@
                     *ngFor='let post of listaPostagens | orderBy : key : reverse'>
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-md-5 d-flex justify-content-start">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="d-flex justify-content-between align-items-center">
+                            <div class="col-md-6 d-flex justify-content-start">
+                                <div class="d-flex justify-content-between mt-3 ">
+                                    <div class="d-flex justify-content-between">
                                         <div class="me-2 ">
 
                                             <img class="rounded-circle fotoPubli" width="60" height="60"
@@ -107,22 +112,27 @@
                                         </div>
                                         <div class="ms-2">
                                             <div class="h5 m-0">{{post.autor.nome}}</div>
-                                            <div class="h7 text-muted">{{post.tipoPostagem}}</div>
-                                            <img src="../../assets/img/pessoaFisica.svg" alt="" height="25px" width="25px">
+                                            <div class="h7 mt-1 text-muted">{{post.tipoPostagem}}</div>
+                                            <img *ngIf= "post.autor.categoria == 'USUARIO'" src="../../assets/img/pessoaFisica.svg" class="mt-2" alt="" height="25px" width="25px">
+                                            <img *ngIf= "post.autor.categoria == 'ONG'" src="../../assets/img/ong.svg" class="mt-2" alt="" height="25px" width="25px">
+                                            <img *ngIf= "post.autor.categoria == 'EMPRESA'" src="../../assets/img/empresa.svg" class="mt-2" alt="" height="25px" width="25px">
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-5"></div>
+                            <div class="col-md-3"></div>
 
 
-                            <div *ngIf='post.grupo!=null' class="col-md-2">
+                            <div *ngIf='post.grupo!=null' class="col-md-3">
 
                                 <div class="">
                                     <div class="">
+                                        <h6 class="text-center fw-bold text-secondary">Grupo</h6>
+
                                         <div class="d-flex justify-content-center">
 
-                                            <img class="mt-3 fotoPublic" width="60" height="60" style="border-radius: 10px;"
+                                            <img class="fotoPublic" width="60" height="60" style="border-radius: 10px;"
                                                 src='{{post.grupo.urlImagemGrupo}}' alt="">
                                         </div>
                                         <div class="">

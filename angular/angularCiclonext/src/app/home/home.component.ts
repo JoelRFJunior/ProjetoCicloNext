@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit {
   foto = environment.urlImagemPerfil
   token = environment.token
   idUser = environment.idUsuario
+  categoria = environment.categoria
+
   recebeImagem: string
 
   tipoPostagem: string
@@ -51,7 +53,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0, 0)
-    console.log(this.token)
+    console.log("categoria"+environment.categoria)
     console.log("token " + environment.token)
     if (environment.token == '') {
       //alert('Sua sessão expirou, faça o login novamente!')

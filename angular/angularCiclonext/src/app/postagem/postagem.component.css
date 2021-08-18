@@ -83,3 +83,30 @@ body {
     margin-left: auto;
     margin-right: auto 
 }
+
+#edit #popup {
+    display: none;
+}
+#edit:hover #popup {
+    display: block;
+    box-shadow: 2px 5px #888888;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    position: absolute;    
+    color: #6c757d;
+
+}
+
+#apagar #popup {
+    display: none;
+}
+#apagar:hover #popup {
+    display: block;
+    box-shadow: 2px 5px #888888;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    position: absolute;
+    color: #6c757d;
+}
