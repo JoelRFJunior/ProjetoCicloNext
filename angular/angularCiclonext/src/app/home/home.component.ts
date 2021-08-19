@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
   postagem: Postagem = new Postagem()
   listaPostagens: Postagem[]
   user2: Usuario = new Usuario
+  corpoPost: string
 
   key = 'data'
   reverse = true
@@ -193,7 +194,18 @@ validaImagem(event: any) {
 
 }
 
+findByCorpoPostagem(){
 
+  if(this.corpoPost == '') {
+    this.findAllPostagem()
+  }else{
+    this.postagemService.getByCorpoPostagem(this.corpoPost).subscribe((resp: Postagem[]) => {
+      this.listaPostagens = resp
+    })
+  }
+
+  
+}
 
   // filtrar() {
   //   if (this.tipoPostagem == '') {
