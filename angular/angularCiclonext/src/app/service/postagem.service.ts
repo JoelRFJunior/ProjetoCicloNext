@@ -68,6 +68,13 @@ export class PostagemService {
     )
   }
 
+  getByCorpoPostagem(corpo: string): Observable<Postagem[]> {
+    return this.http.get<Postagem[]>(`https://ciclonext.herokuapp.com/api/v1/postagem/corpo/${corpo}`
+    // , this.token
+    )
+  }
+
+
   // getAllPostagem(): Observable<Postagem[]> {
    
   //   return this.http.get<Postagem[]>('http://localhost:8080/api/v1/postagem/getAll', this.token)
