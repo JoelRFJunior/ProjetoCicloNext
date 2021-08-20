@@ -10,11 +10,13 @@
                 </div>
 
                 <h3 class="text-center mb-5 p-3" style="background-color: #ffffff;">{{nome}}
-                
-                <img *ngIf= "categoria == 'USUARIO'" src="../../assets/img/pessoaFisica.svg" alt="" height="25px" width="25px">
-                <img *ngIf= "categoria == 'ONG'" src="../../assets/img/ong.svg" alt="" height="25px" width="25px">
-                <img *ngIf= "categoria == 'EMPRESA'" src="../../assets/img/empresa.svg" alt="" height="25px" width="25px">
-                
+
+                    <img *ngIf="categoria == 'USUARIO'" src="../../assets/img/pessoaFisica.svg" alt="" height="25px"
+                        width="25px">
+                    <img *ngIf="categoria == 'ONG'" src="../../assets/img/ong.svg" alt="" height="25px" width="25px">
+                    <img *ngIf="categoria == 'EMPRESA'" src="../../assets/img/empresa.svg" alt="" height="25px"
+                        width="25px">
+
                 </h3>
             </div>
         </div>
@@ -48,24 +50,30 @@
                             [(ngModel)]='postagem.urlImagemVideo'>
                         <div id="txtImagem"></div>
                     </div>
-
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end p-3 px-lg-5">
-                        <div class="form-group mb-1">
-                            <label for="tipoDaPostagem">Tipo de postagem</label>
-                            <select class="form-control" name="tipoDaPostagem" id="tipoDaPostagem"
-                                (change)='tipoDaPostagem($event)'>
-                                <option value="">Escolha aqui: </option>
-                                <option value="TEXTO">Texto</option>
-                                <option value="DOACAO">Doação</option>
-                                <option value="AGRADECIMENTO">Agradecimento</option>
-                                <option value="OUTROS">Outros</option>
-                            </select>
+                    <div class="row">
+                        <div class="col-md-6 d-flex justify-content-start align-items-center">
+                            <div class="d-grid gap-2 d-md-flex justify-content-start p-3 px-lg-5">
+                                <div class="form-group mb-1">
+                                    <label for="tipoDaPostagem">Tipo de postagem</label>
+                                    <select class="form-control" name="tipoDaPostagem" id="tipoDaPostagem"
+                                        (change)='tipoDaPostagem($event)'>
+                                        <option value="">Escolha aqui: </option>
+                                        <option value="TEXTO">Texto</option>
+                                        <option value="DOACAO">Doação</option>
+                                        <option value="AGRADECIMENTO">Agradecimento</option>
+                                        <option value="OUTROS">Outros</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <button class="btn fw-bold temporizadorGo bg-color-cancelar my-3" type="submit"
-                            (click)='cancelarPost()'>Cancelar</button>
 
-                        <button class="btn fw-bold temporizadorCancel bg-color-publicar my-3" type="submit"
-                            (click)='postarNoFeedGrupo()'>Publicar</button>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <button class="btn fw-bold temporizadorGo bg-color-cancelar my-5 me-2" type="submit"
+                                (click)='cancelarPost()'>Cancelar</button>
+
+                            <button class="btn fw-bold temporizadorCancel bg-color-publicar me-5 my-5" type="submit"
+                                (click)='postarNoFeedGrupo()'>Publicar</button>
+                        </div>
                     </div>
 
 
@@ -116,9 +124,14 @@
                                         <div class="ms-2">
                                             <div class="h5 m-0">{{post.autor.nome}}</div>
                                             <div class="h7 mt-1 text-muted">{{post.tipoPostagem}}</div>
-                                            <img *ngIf= "post.autor.categoria == 'USUARIO'" src="../../assets/img/pessoaFisica.svg" class="mt-2" alt="" height="25px" width="25px">
-                                            <img *ngIf= "post.autor.categoria == 'ONG'" src="../../assets/img/ong.svg" class="mt-2" alt="" height="25px" width="25px">
-                                            <img *ngIf= "post.autor.categoria == 'EMPRESA'" src="../../assets/img/empresa.svg" class="mt-2" alt="" height="25px" width="25px">
+                                            <img *ngIf="post.autor.categoria == 'USUARIO'"
+                                                src="../../assets/img/pessoaFisica.svg" class="mt-2" alt=""
+                                                height="25px" width="25px">
+                                            <img *ngIf="post.autor.categoria == 'ONG'" src="../../assets/img/ong.svg"
+                                                class="mt-2" alt="" height="25px" width="25px">
+                                            <img *ngIf="post.autor.categoria == 'EMPRESA'"
+                                                src="../../assets/img/empresa.svg" class="mt-2" alt="" height="25px"
+                                                width="25px">
 
                                         </div>
                                     </div>
